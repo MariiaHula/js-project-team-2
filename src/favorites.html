@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
+    <title>Favorites</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,9 +14,12 @@
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/modal-recipes.html"></include>
-    <include src="./partials/modal-rating.html"></include>
-    <include src="./partials/modal-order.html"></include>
+    <include src="./partials/header.html"></include>
+    <main>
+      <include src="./partials/modal-recipes.html"></include>
+      <include src="./partials/modal-rating.html"></include>
+      <include src="./partials/modal-order.html"></include>
+    </main>
     <script type="module" src="./favorites.js"></script>
   </body>
 </html>
