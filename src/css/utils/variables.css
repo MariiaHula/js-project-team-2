@@ -1,0 +1,11 @@
+:root {
+  --theme-light: #f8f8f8;
+  --theme-dark: #1e1e1e;
+  --accent-color: #9bb537;
+  --dark-text-title: #000000;
+  --white-text-title: #ffffff;
+  --dark-text: #050505;
+  --input-color-theme-dark: rgba(255, 255, 255, 0.5);
+  --input-color-theme-light: rgba(5, 5, 5, 0.3);
+  --stars-color: #eea10c;
+}
