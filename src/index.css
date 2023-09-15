@@ -1,0 +1,11 @@
+@import './css/base/common.css';
+@import './css/base/container.css';
+@import './css/utils/variables.css';
+@import './css/layout/header.css';
+@import './css/layout/hero.css';
+@import './css/layout/categories.css';
+@import './css/layout/popular-recipes.css';
+@import './css/layout/gallery.css';
+@import './css/layout/modal-recipes.css';
+@import './css/layout/modal-rating.css';
+@import './css/layout/modal-order.css';
