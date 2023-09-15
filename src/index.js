@@ -9,6 +9,4 @@ import './js/modal-rating';
 import './js/modal-recipes';
 import './js/popular-recipes';
 
-import { goitGlobalAPI } from './js/axios_api';
-import axiosInstance from "axios";
 
