@@ -1,50 +1,4 @@
 
-.half-stars {
-    text-align: center;
-}
-
-.half-stars .rating-group {
-    display: inline-flex;
-}
-
-.half-stars input {
-    position: absolute;
-    left: -9999px;
-}
-
-.half-stars label {
-    margin: 0;
-    cursor: pointer;
-}
-
-.half-stars label svg {
-    margin: 2px;
-    height: 40px;
-    width: 40px;
-    fill: #EEA10C;
-    transition: fill 0.3s;
-}
-
-.half-stars .hsr {
-    padding-right: 0;
-    margin-right: -22px;
-    width: 22px;
-    overflow: hidden;
-    z-index: 2;
-}
-
-.half-stars input:checked~label svg {
-    fill: #D9D9D9;
-}
-
-.half-stars .rating-group:hover label svg {
-    fill: #EEA10C;
-}
-
-.half-stars .rating-group input:hover~label svg {
-    fill: #D9D9D9;
-}
-
 /* BACKDROP */
 
 .modal-rating-backdrop {
@@ -65,8 +19,62 @@
     visibility: visible;
 }
 
-
 /* /BACKDROP */
+
+/* /STARS */
+
+.rating {
+    display: flex;
+    align-items: flex-end;
+font-size: 40px;
+line-height: 0.75;
+}
+
+.rating-body {
+    position: relative;
+}
+
+.rating-body::before {
+    content: "★★★★★";
+    display: block;
+    color: #D9D9D9;
+
+}
+
+.rating-items {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.rating-item {
+    flex: 0 0 20%;
+    height: 100%;
+    opacity: 0;
+}
+
+.rating-active {
+    position: absolute;
+    width: 50%;
+        height: 100%;
+        top: 0;
+            left: 0;
+            overflow: hidden;
+}
+
+.rating-active::before {
+    content: "★★★★★";
+    position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        color: #EEA10C;;
+}
+
 
 /* MODAL WRAP */
 
@@ -121,11 +129,23 @@
 
 
 .modal-title {
+    font-family: Inter;
+    color: #050505;
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 4px;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.modal-rating-value {
+    font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: left;
 }
 
 
