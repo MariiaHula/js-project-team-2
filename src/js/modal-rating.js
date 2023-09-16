@@ -1,5 +1,5 @@
 const ratings = document.querySelectorAll('.rating');
-        console.log(ratings);
+       
 
 
 if (ratings.length > 0) {
@@ -12,7 +12,7 @@ function initRatings() {
     for (let index = 0; index < ratings.length; index++) {
         const rating = ratings[index];
         initRating(rating);
-        console.log(index);
+       
     }
 
     function initRating(rating) {
@@ -44,7 +44,32 @@ function initRatings() {
                 initRatingVars(rating);
                 setRatingActiveWidth(ratingItem.value);
             });
+             ratingItem.addEventListener('mouseleave', function (e) {
+              
+                setRatingActiveWidth();
+             });
+             ratingItem.addEventListener('click', function (e) {
+                 initRatingVars(rating);
+                 
+                 if (rating.dataset.ajax) {
+                     setRatingValue(ratingItem.value, rating);
+                 } else {
+                     ratingValue.innerHTML = index + 1.0;
+                     setRatingActiveWidth()
+                 }
+                
+            });
         }
     }
+
+//     async function setRatingValue(value, rating) {
+//         if (!rating.classList.contains('.rating-sending')) {
+//             rating.classList.add('.rating-sending');
+
+//             let response = await fetch ('rating.json')
+//     }
+// }
+
+
 }
 
