@@ -23,7 +23,7 @@
   max-width: 335px;
   max-height: 95%;
   padding: 40px 20px 40px 20px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--white-text-title);
   z-index: 100;
   transform: translate(-50%, -50%);
   transition: opacity 250ms ease-in-out;
@@ -60,7 +60,7 @@
 
 /* Заголовок */
 .modal-recipe-name {
-  color: #050505;
+  color: var(--dark-text);
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
@@ -77,14 +77,12 @@
 }
 /* Інградієнти */
 
-.modal-ingradient-list {
-}
 .modal-name-ingradient {
   position: relative;
   display: flex;
   justify-content: space-between;
 
-  color: #050505;
+  color: var(--dark-text);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -138,7 +136,7 @@
   border-radius: 35px;
   border: 1px solid rgba(5, 5, 5, 0.2);
 
-  color: #050505;
+  color: var(--dark-text);
   font-family: Inter;
   font-size: 12px;
   font-style: normal;
@@ -177,9 +175,9 @@
 
   border-radius: 15px;
   border: none;
-  background: #9bb537;
+  background: var(--accent-color);
 
-  color: #f8f8f8;
+  color: var(--theme-light);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -192,7 +190,7 @@
 }
 .modal-add-favorite:hover,
 .modal-add-favorite:focus {
-  color: #050505;
+  color: var(--dark-text);
 }
 .modal-give-rating {
   height: 41px;
@@ -201,10 +199,10 @@
   align-items: center;
 
   border-radius: 15px;
-  border: 1px solid #9bb537;
-  background: #fff;
+  border: 1px solid var(--accent-color);
+  background: var(--white-text-title);
 
-  color: #050505;
+  color: var(--dark-text-title);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -216,8 +214,8 @@
 }
 .modal-give-rating:hover,
 .modal-give-rating:focus {
-  background: #9bb537;
-  color: #f8f8f8;
+  background: var(--accent-color);
+  color: var(--theme-light);
 }
 
 /* кнопка закриття */
@@ -235,5 +233,5 @@
   height: 20px;
   padding: 0;
   border: none;
-  background-color: #fff;
+  background-color: var(--white-text-title);
 }
