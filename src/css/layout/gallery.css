@@ -1,0 +1,37 @@
+.gallery {
+  padding-top: 100px;
+}
+
+
+
+
+/* ====================== */
+
+.gallery-form-filter {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+
+}
+
+.gallery-form-filter label {
+  margin-bottom: 10px;
+}
+
+.gallery-form-filter input[type="text"],
+.gallery-form-filter select {
+  width: 100%;
+  padding: 5px;
+}
+
+
+.gallery-image {
+  max-width: 100%;
+  height: auto;
+}
+
+
+svg {
+  width: 20px;
+  height: 20px;
+}
