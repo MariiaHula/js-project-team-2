@@ -7,11 +7,6 @@ const axios = axiosInstance.create({
 
 export class goitGlobalAPI {
 
-    constructor() {
-        this.page = 1;
-        
-    }
-
     getEvents() {
 
         return axios.get('/events').then(response => response.data);
@@ -28,12 +23,12 @@ export class goitGlobalAPI {
         return axios.get('/areas').then(response => response.data);
     }
 
-    getDatailsById(id) {
+    getRecipesById(id) {
         
         return axios.get(`/recipes/${id}`).then(response => response.data);
     }
     
-    getIgridients() {
+    getIngredients() {
 
         return axios.get('/ingredients').then(response => response.data);
     }
@@ -44,14 +39,12 @@ export class goitGlobalAPI {
         return axios.get('/recipes/popular').then(response => response.data);
     }
 
-    getAllRecipesCategories(perPage) {
+    getRecipes(page, limit, params) {
+        
+        params.page = page;
+        params.limit = limit;
 
-        const options = {
-            params: {
-                page: this.page,
-                limit: perPage,
-            }
-        };
+        const options = { params: params }
         
         return axios.get('/recipes', options).then(response => response.data);
     }
