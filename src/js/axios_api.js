@@ -4,8 +4,6 @@ import axiosInstance from "axios";
 const axios = axiosInstance.create({
     baseURL: 'https://tasty-treats-backend.p.goit.global/api',
 }) 
-
-
 export class goitGlobalAPI {
     constructor(perPage) {
         this.page = 1;
