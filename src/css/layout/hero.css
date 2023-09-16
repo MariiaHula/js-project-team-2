@@ -46,6 +46,29 @@
   line-height: normal;
   color: var(--dark-text);
 }
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  column-gap: 20px;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.slick-dots button {
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: transparent;
+  font-size: 0;
+  background-color: var(--dark-text);
+  cursor: pointer;
+}
+
+.slick-active button {
+  background-color: var(--accent-color);
+}
 
 @media screen and (min-width: 768px) {
   .hero-title {
@@ -76,4 +99,7 @@
     padding-top: 100px;
     padding-bottom: 100px;
   }
+  /* .wrapper {
+    display: flex;
+  } */
 }

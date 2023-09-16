@@ -5,75 +5,65 @@ const axios = axiosInstance.create({
     baseURL: 'https://tasty-treats-backend.p.goit.global/api',
 }) 
 
-
 export class goitGlobalAPI {
-    constructor(perPage) {
+
+    constructor() {
         this.page = 1;
-        this.perPage = perPage;
+        
     }
 
     getEvents() {
-                const options = {
+
+        return axios.get('/events').then(response => response.data);
+
+    };
+
+    getCategories() {
+
+        return axios.get('/categories').then(response => response.data);
+    }
+
+    getAreas() {
+ 
+        return axios.get('/areas').then(response => response.data);
+    }
+
+    getDatailsById(id) {
+        
+        return axios.get(`/recipes/${id}`).then(response => response.data);
+    }
+    
+    getIgridients() {
+
+        return axios.get('/ingredients').then(response => response.data);
+    }
+
+
+    getPopularRecipes() {
+
+        return axios.get('/recipes/popular').then(response => response.data);
+    }
+
+    getAllRecipesCategories(perPage) {
+
+        const options = {
             params: {
-                 query: this.query,
+                page: this.page,
+                limit: perPage,
             }
         };
         
-        return axios.get('/events', options).then(response => response.data);
-        };
-
-         
-    
-    getCategories() {
-        const options = {
-            params: {
-                query: this.query,
-            }
-        }; 
-          return axios.get('/categories', options).then(response => response.data);
-    }
-    getAreas() {
-        const options = {
-            params: {
-                query: this.query,
-            }
-        }; 
-            return axios.get('/areas', options).then(response => response.data);
-    }
-    getAllRecipesCategories() {
-        const options = {
-            params: {
-                query: this.query,
-                page: this.page,
-                limit: this.perPage,
-            }
-        };
-          return axios.get('/recipes', options).then(response => response.data);
-    }
-    getPopularRecipes() {
-        const options = {
-            params: {
-                query: this.query,
-            }
-        };
-        return axios.get('/recipes?popular', options).then(response => response.data);
+        return axios.get('/recipes', options).then(response => response.data);
     }
 
-        getIgridients() {
-        const options = {
-            params: {
-                query: this.query,
-            }
-        };
-          return axios.get('/ingredients', options).then(response => response.data);
-    }
     addRating(id, ...ratingData) {
 
-          return axios.patch(`/${id}`, ratingData);
+          return axios.patch(`/recipes/${id}/rating`, ratingData);
     }
-    createOrder(data) {
+    
+    createOrder(orderData) {
 
-          return axios.post('', data).then(res => res.data);
+          return axios.post('', orderData).then(res => res.data);
     }
 }
 
