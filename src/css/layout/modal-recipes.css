@@ -1,6 +1,10 @@
+/* В джс прописати добавлення класу модал для баді коли модалка відкривається */
+body .modal {
+  overflow: hidden;
+}
 .recipes-modal-container {
-  /* opacity: 0;
-  visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   display: flex;
   justify-content: center;
   position: fixed;
@@ -18,8 +22,8 @@
 }
 
 .modal-recipes-wrap {
-  /* opacity: 0;
-    visibility: hidden; */
+  opacity: 0;
+  visibility: hidden;
   max-width: 335px;
   max-height: 95%;
   padding: 40px 20px 40px 20px;
@@ -141,6 +145,12 @@
 @media screen and (min-width: 768px) {
   .modal-name-ingradient {
     margin-bottom: 16px;
+  }
+}
+/* ПК */
+@media screen and (min-width: 1280px) {
+  .modal-name-ingradient {
+    margin-bottom: 18px;
   }
 }
 .modal-ingradient-list {
