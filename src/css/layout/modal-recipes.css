@@ -56,3 +56,61 @@
   border: none;
   background-color: #fff;
 }
+
+.modal-recipe-name {
+  color: #050505;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+  text-transform: uppercase;
+}
+
+.modal-name-ingradient {
+  color: #050505;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+.modal-measure {
+  color: rgba(5, 5, 5, 0.5);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+.modal-hashtag-item {
+  width: 95px;
+  height: 30px;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 35px;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+
+  color: #050505;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.modal-recipe-instructions {
+  width: 295px;
+  height: 288px;
+
+  color: rgba(5, 5, 5, 0.8);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+
+  overflow-y: auto;
+}
