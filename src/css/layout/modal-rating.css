@@ -2,8 +2,8 @@
 /* BACKDROP */
 
 .modal-rating-backdrop {
-    /* opacity: 0;
-    visibility: hidden; */
+    opacity: 0;
+    visibility: hidden;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,25 +23,26 @@
 
 /* /STARS */
 
-.rating {
+.modal-rating {
     display: flex;
     align-items: flex-end;
-font-size: 40px;
-line-height: 0.75;
+font-size: 24px;
+gap: 8px;
+margin-bottom: 24px;
 }
 
-.rating-body {
+.modal-rating-body {
     position: relative;
 }
 
-.rating-body::before {
+.modal-rating-body::before {
     content: "★★★★★";
     display: block;
     color: #D9D9D9;
 
 }
 
-.rating-items {
+.modal-rating-items {
     display: flex;
     position: absolute;
     width: 100%;
@@ -50,13 +51,13 @@ line-height: 0.75;
     left: 0;
 }
 
-.rating-item {
+.modal-rating-item {
     flex: 0 0 20%;
     height: 100%;
     opacity: 0;
 }
 
-.rating-active {
+.modal-rating-active {
     position: absolute;
     width: 10%;
         height: 100%;
@@ -65,7 +66,7 @@ line-height: 0.75;
             overflow: hidden;
 }
 
-.rating-active::before {
+.modal-rating-active::before {
     content: "★★★★★";
     position: absolute;
         width: 100%;
@@ -74,6 +75,42 @@ line-height: 0.75;
         left: 0;
         color: #EEA10C;;
 }
+
+.modal-rating-email-input {
+    display: flex;
+        width: 295px;
+        height: 46px;
+        padding: 14px 169px 14px 18px;
+        align-items: flex-start;
+        gap: 32px;
+        flex-shrink: 0;
+        
+        border-radius: 15px;
+            border: 1px solid rgba(5, 5, 5, 0.20);
+
+            margin-bottom: 14px;
+}
+
+.modal-rating-btn-submit{
+    display: flex;
+        max-width: 295px;
+        padding: 15px 132px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 15px;
+        background: #9BB537;
+        border: none;
+
+        color: #F8F8F8;
+            font-family: Inter;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+
+}
+
 
 
 /* MODAL WRAP */
@@ -128,19 +165,19 @@ line-height: 0.75;
 }
 
 
-.modal-title {
+.modal-rating-title {
     font-family: Inter;
     color: #050505;
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
-    margin-bottom: 4px;
+    margin-bottom: 1px;
     font-weight: 600;
     font-style: normal;
 }
 
-.modal-rating-value {
+.rating-value {
     font-size: 16px;
         font-weight: 500;
         line-height: 24px;

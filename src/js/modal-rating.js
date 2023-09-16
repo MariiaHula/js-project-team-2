@@ -1,4 +1,4 @@
-const ratings = document.querySelectorAll('.rating');
+const ratings = document.querySelectorAll('.modal-rating');
        
 
 
@@ -19,7 +19,7 @@ function initRatings() {
         initRatingVars(rating);
         setRatingActiveWidth();
 
-        if (rating.classList.contains('rating-set')) {
+        if (rating.classList.contains('modal-rating-set')) {
             setRating(rating);
         }
 
@@ -27,8 +27,8 @@ function initRatings() {
 
 
     function initRatingVars(rating) {
-        ratingActive = rating.querySelector('.rating-active');
-        ratingValue = rating.querySelector('.rating-value');
+        ratingActive = rating.querySelector('.modal-rating-active');
+        ratingValue = rating.querySelector('.modal-rating-value');
     }
 
     function setRatingActiveWidth(index = ratingValue.innerHTML) {
@@ -37,7 +37,7 @@ function initRatings() {
     }
 
     function setRating(rating) {
-        const ratingItems = rating.querySelectorAll('.rating-item');
+        const ratingItems = rating.querySelectorAll('.modal-rating-item');
         for (let index = 0; index < ratingItems.length; index++) {
             const ratingItem = ratingItems[index];
             ratingItem.addEventListener('mouseenter', function (e) {
@@ -54,8 +54,8 @@ function initRatings() {
                  if (rating.dataset.ajax) {
                      setRatingValue(ratingItem.value, rating);
                  } else {
-                     ratingValue.innerHTML = index + 1.0;
-                     setRatingActiveWidth()
+                     ratingValue.innerHTML = index + 1;
+                     setRatingActiveWidth();
                  }
                 
             });
