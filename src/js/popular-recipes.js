@@ -10,8 +10,8 @@ function markupPopularRecipes(recipesArr) {
         <a class="popular-recipes-link link js-popular" href="#">
             <img class="popular-img-wrapper" src="${recipe.preview}" alt="${recipe.title}" />
             <div class="popular-wrapper">
-            <h2 class="popular-recipes-title">${recipe.title}</h2>
-            <p class="popular-recipes-text">${recipe.description}</p>
+            <h2 class="popular-recipes-title js-title">${recipe.title}</h2>
+            <p class="popular-recipes-text js-text">${recipe.description}</p>
             </div>
           </a>
       </li>`
@@ -33,7 +33,8 @@ async function addPopularRecipes() {
                 
         if (window.innerWidth < 768) {
             popularListEl.innerHTML = markupPopularRecipes([data[0], data[1]]);
-            
+            const owerflowTitle = document.querySelector('.js-title')
+            console.log(owerflowTitle);
         } else {
             popularListEl.innerHTML = markupPopularRecipes(data);
         }
