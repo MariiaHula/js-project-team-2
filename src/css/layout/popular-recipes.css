@@ -37,9 +37,6 @@
   max-width: 252px;
 }
 .popular-recipes-title {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   color: var(--dark-text);
   font-size: 14px;
   font-weight: 600;
@@ -50,10 +47,6 @@
 }
 
 .popular-recipes-text {
-  word-wrap: break-word;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-family: Inter;
   color: var(--recipes-text);
   font-size: 12px;
