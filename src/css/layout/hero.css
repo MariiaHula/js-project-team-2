@@ -98,8 +98,31 @@
   .hero-section {
     padding-top: 100px;
     padding-bottom: 100px;
+    padding-left: 100px;
   }
-  /* .wrapper {
+
+  .wrapper {
     display: flex;
-  } */
+  }
+
+  .slide-wrapper {
+    display: flex !important;
+  }
+
+  .slider {
+    width: 895px;
+  }
+  .slide {
+    border-radius: 15px;
+    background: #050505;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .one {
+    width: 182px;
+    display: flex !important;
+    justify-content: center;
+    overflow: hidden;
+  }
 }
