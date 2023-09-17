@@ -11,5 +11,13 @@ import './js/modal-recipes';
 import './js/popular-recipes';
 
 
+// const test = new goitGlobalAPI();
+
+// let n = 'Goat';
+
+// test.getRecipes(1, 6, {
+// category: n,
+// }).then(res => console.log(res)).catch(err => console.log(err));
+
 
 
