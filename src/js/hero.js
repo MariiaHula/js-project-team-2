@@ -14,11 +14,12 @@ goItGlobalAPI
 
     $(document).ready(function () {
       $('.js-slider').slick({
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 1,
+        slidesToScroll: 1,
         dots: true,
         autoplay: true,
         arrows: false,
+        variableWidth: false,
       });
     });
   })
@@ -27,15 +28,17 @@ goItGlobalAPI
 function renderSlider(arr) {
   const markup = arr
     .map(el => {
-      return `  
-  
-     <div class="slide"><img src="${el.cook.imgUrl}" alt="" width=351 height=442/></div>
-      <div class="slide">
+      return `
+  <div class="slide-wrapper">
+     <div class="slide one"><img src="${el.cook.imgUrl}"  alt="" width=351 height=442/></div>
+
+      <div class="slide two">
          <img src="${el.topic.previewUrl}" alt="" width=351 height=442/>
           <p>${el.topic.name}</p>
           <p>${el.topic.area}</p>
       </div>
-     <div class="slide"><img src="${el.topic.imgUrl}" alt="" width=351 height=442/></div>`;
+     <div class="slide"><img src="${el.topic.imgUrl}" alt="" width=351 height=442/></div>
+ </div>`;
     })
     .join('');
   return markup;
