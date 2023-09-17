@@ -7,11 +7,11 @@ function markupPopularRecipes(recipesArr) {
     const markup = recipesArr.map(recipe => {
 
         return `<li class="popular-recipes-item">
-        <a class="popular-recipes-link link" href="${recipe.id}">
-            <img class="img-wrapper" src="${recipe.preview}" alt="${recipe.title}" />
+        <a class="popular-recipes-link link js-popular" href="#">
+            <img class="popular-img-wrapper" src="${recipe.preview}" alt="${recipe.title}" />
             <div class="popular-wrapper">
-            <h2 class="recipes-title">${recipe.title}</h2>
-            <p class="recipes-text">${recipe.description}</p>
+            <h2 class="popular-recipes-title">${recipe.title}</h2>
+            <p class="popular-recipes-text">${recipe.description}</p>
             </div>
           </a>
       </li>`
@@ -24,17 +24,18 @@ const popularListEl = document.querySelector('.js-popular-list');
 
 const popularRecipes = new goitGlobalAPI();
 
+ 
 async function addPopularRecipes() {
     
     try {        
         const data = await popularRecipes.getPopularRecipes();
-        popularListEl.innerHTML = markupPopularRecipes(data);
+        console.log(data);
                 
-        // if (window.innerWidth > 768) {
-        //     popularListEl.innerHTML = markupPopularRecipes(data);
-            
-        //     return;    
-        // } 
+        if (window.innerWidth < 768) {
+            popularListEl.innerHTML = markupPopularRecipes([data[0], data[1]]);
+        } else {
+            popularListEl.innerHTML = markupPopularRecipes(data);
+        }
             
     }
     catch (err) {
