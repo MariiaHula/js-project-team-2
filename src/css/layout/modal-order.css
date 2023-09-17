@@ -13,7 +13,7 @@
 }
 
 
-.modal-order-backdrop .active {
+.modal-order-backdrop.modal-order-backdrop-active {
     opacity: 1;
     visibility: visible;
 }
@@ -23,8 +23,8 @@
 .modal-order-wrap {
     /* opacity: 0;
     visibility: hidden; */
-width: 335px;
-    height: 582px;
+width: 440px;
+    height: 632px;
     padding: 20px 20px 20px 20px;
     position: fixed;
     top: 50%;
@@ -37,7 +37,7 @@ width: 335px;
     border-radius: 15px;
 }
 
-.modal-order-wrap .active {
+.modal-order-wrap .modal-order-wrap-active {
     opacity: 1;
     visibility: visible;
 }
@@ -89,8 +89,8 @@ color: #050505;
 
 .modal-order-input {
     font-size: 16px;
-        width: 295px;
-        height: 46px;
+    width: 360px;
+        height: 48px;
         padding-left: 10px;
         align-items: flex-start;
         gap: 32px;
@@ -98,22 +98,71 @@ color: #050505;
         border: 1px solid rgba(5, 5, 5, 0.20);
 }
 
+
+.modal-order-form {
+        display: flex;
+            flex-direction: column;
+            align-items: center;
+}
+
+
 .modal-order-tag {
     font-size: 16px;
     margin-bottom: 8px;
+    color: rgba(5, 5, 5, 0.50);
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 18px;
 }
 
 .modal-order-textarea {
     gap: 8px;
     display: flex;
     flex-direction: column;
+
+    
+}
+
+.modal-order-input {
+resize: none;
+
+}
+
+.modal-order-comment {
+color: rgba(5, 5, 5, 0.50);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.modal-order-name,
+.modal-order-email,
+.modal-order-phone,
+.modal-comment-label {
+color: rgba(5, 5, 5, 0.50);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+
+.user-message {
+width: 360px;
+    height: 100px;
+padding: 14px 18px 14px 18px;
 }
 
 .modal-order-btn {
     
     margin-top: 40px;
     display: flex;
-        max-width: 295px;
+        width: 360px;
         padding: 15px 132px;
         justify-content: center;
         align-items: center;
@@ -131,3 +180,17 @@ color: #050505;
 }
 
 
+.modal-order-btn:hover,
+.modal-order-btn:focus {
+cursor: pointer;
+
+    background: #6c8214;
+
+}
+
+
+.modal-order-input:focus,
+.modal-order-input:hover {
+    outline: #9BB537 1px solid;
+    box-shadow: 0px 0px 3px 2px rgba(93, 179, 7, 0.5);
+}
