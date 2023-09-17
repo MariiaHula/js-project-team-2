@@ -2,8 +2,8 @@
 /* BACKDROP */
 
 .modal-rating-backdrop {
-    opacity: 0;
-    visibility: hidden;
+    /* opacity: 0;
+    visibility: hidden; */
     position: fixed;
     top: 0;
     left: 0;
@@ -73,7 +73,7 @@ margin-bottom: 24px;
         height: 100%;
         top: 0;
         left: 0;
-        color: #EEA10C;;
+        color: #eee30c;;
 }
 
 .modal-rating-email-input {
@@ -99,19 +99,32 @@ margin-bottom: 24px;
         align-items: center;
         gap: 10px;
         border-radius: 15px;
-        background: #9BB537;
+        background: #F8F8F8;
         border: none;
 
-        color: #F8F8F8;
+    color: #000;
             font-family: Inter;
             font-size: 14px;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
+            transition-delay: 100ms;
 
 }
 
+.modal-rating-btn-submit:hover, 
+.modal-rating-btn-submit:focus {
+cursor: pointer;
 
+color: #F8F8F8;
+background: #9BB537;
+}
+
+.modal-rating-email-input:focus,
+.modal-rating-email-input:hover {
+    outline: #9BB537 3px solid;
+    box-shadow: 0px 0px 3px 2px rgba(93, 179, 7, 0.5);;
+}
 
 /* MODAL WRAP */
 
@@ -160,7 +173,7 @@ margin-bottom: 24px;
     position: absolute;
     stroke: #000;
     cursor: pointer;
-    background-color: #fff;
+    background-color: #47906a;
     border: none;
 }
 
@@ -177,13 +190,15 @@ margin-bottom: 24px;
     font-style: normal;
 }
 
-.rating-value {
+.modal-rating-value {
     font-size: 16px;
         font-weight: 500;
         line-height: 24px;
         letter-spacing: 0em;
         text-align: left;
 }
+
+
 
 
 @media screen and (min-width: 768px) {
@@ -202,4 +217,50 @@ margin-bottom: 24px;
    
 
 
+}
+
+
+#modal-bcg-wrap {
+    margin: 0;
+ 
+    background-color: #47906a;
+    position: relative;
+}
+
+.star {
+    background-color: #f0f0f0;
+    width: 1.5px;
+    height: 1.5px;
+    position: absolute;
+    border: #f0f0f0 0px solid;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0px 0px 3px 2px rgba(255, 255, 255, 0.5);
+    animation-name: glow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes glow {
+    0% {
+        opacity: 0;
+        transform: scale(1, 1);
+    }
+
+    20% {
+        opacity: 0.5;
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(2, 2);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
 }
