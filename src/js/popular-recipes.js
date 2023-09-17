@@ -33,6 +33,7 @@ async function addPopularRecipes() {
                 
         if (window.innerWidth < 768) {
             popularListEl.innerHTML = markupPopularRecipes([data[0], data[1]]);
+            
         } else {
             popularListEl.innerHTML = markupPopularRecipes(data);
         }
