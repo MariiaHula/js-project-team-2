@@ -24,13 +24,21 @@ const popularListEl = document.querySelector('.js-popular-list');
 
 const popularRecipes = new goitGlobalAPI();
 
-function truncateTextMobile() {
-    let title = document.querySelector('.js-title').innerHTML;
-    let text = document.querySelector('.js-text').innerHTML;
-    let truncatedTitle = title.substring(0, 18) + "...";
-    let truncatedText = text.substring(0, 75) + "...";
-    document.querySelector('.js-title').innerHTML = truncatedTitle;
-    document.querySelector('.js-text').innerHTML = truncatedText;
+function truncateTextMobile(data) {
+
+    if (data.title.length > 17) {
+      return  data.title.substring(0, 18) + '...';
+ }
+    if (data.description.length > 75) {
+     return  data.description.substring(0, 75) + '...';
+ }
+ 
+
+    // let truncatedTitle = title.substring(0, 18) + "...";
+    // let truncatedText = text.substring(0, 75) + "...";
+    // document.querySelector('.js-title').innerHTML = truncatedTitle;
+    // document.querySelector('.js-text').innerHTML = truncatedText;
+   
 }
 
 function truncateTablet() {
@@ -58,9 +66,18 @@ async function addPopularRecipes() {
         console.log(data);
                 
         if (window.innerWidth < 768) {
+            
+            let string = '';
 
-            popularListEl.innerHTML = markupPopularRecipes([data[0], data[1]]);
-            truncateTextMobile();   
+            for (let i = 0; i <= data.length/2; i++) {
+                string = markupPopularRecipes([data[i]]);
+                truncateTextMobile(data[i]); 
+                console.log(1);
+            }
+
+            popularListEl.innerHTML = string;
+            // popularListEl.innerHTML = markupPopularRecipes([data[0], data[1]]);
+            // truncateTextMobile();   
             
         } else if (window.innerWidth > 768 && window.innerWidth < 1280) {
             popularListEl.innerHTML = markupPopularRecipes(data);
