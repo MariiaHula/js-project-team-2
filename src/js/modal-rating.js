@@ -83,21 +83,41 @@ const windowRatingModal = document.querySelector('.modal-rating-backdrop');
 const recipes_container = document.querySelector(".recipes-modal-container");
 const recipes_wrap = document.querySelector(".modal-recipes-wrap");
 
-closeIconRatingModal.addEventListener('click', closeRatingModal);
+
 openIconRatingModal.addEventListener('click', openRatingModal);
 
-function closeRatingModal(e) {
-    windowRatingModal.classList.remove('modal-rating-backdrop-active'); 
-}
+
 
 function openRatingModal(e) {
     windowRatingModal.classList.add('modal-rating-backdrop-active'); 
     recipes_container.classList.remove('active');
     recipes_wrap.classList.remove('active');
+
+
+    closeIconRatingModal.addEventListener('click', closeRatingModal);
+    windowRatingModal.addEventListener('click', closeModalByBcg);
+    window.addEventListener('keydown', closeModalByEsc)
 }
 
 
+function closeRatingModal(e) {
+    windowRatingModal.classList.remove('modal-rating-backdrop-active');
+        closeIconRatingModal.removeEventListener("click", closeRatingModal);
+    windowRatingModal.removeEventListener("click", closeModalByBcg);
+    window.removeEventListener("keydown", closeModalByEsc);
+}
 
+function closeModalByBcg(e) {
+      if (e.target === windowRatingModal) {
+        closeRatingModal(e);
+     }
+}
+
+function closeModalByEsc(e) {
+       if (e.key === "Escape") {
+        closeRatingModal(e);
+    }
+}
 
 
 
