@@ -10,7 +10,7 @@ const refs = {
   resetFilterEl: document.querySelector('.gallery-reset-btn')
 };
 
-// =========================INPUT=======================
+// =========================INPUT=========================
 
 refs.galleryFormFilterEl.addEventListener('submit', onFormElSubmit);
 const searchInputApi = new goitGlobalAPI();
