@@ -50,10 +50,6 @@
 }
 
 .popular-recipes-text {
-  word-wrap: break-word;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-family: Inter;
   color: var(--recipes-text);
   font-size: 12px;
@@ -64,7 +60,7 @@
 .popular-recipes-text {
   --max-lines: 3;
   position: relative;
-  max-height: calc(var(--lh) * var(--max-lines));
+  max-height: 255px;
   overflow: hidden;
   padding-right: 1rem;
 }
