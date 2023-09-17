@@ -2,8 +2,8 @@
 /* BACKDROP */
 
 .modal-rating-backdrop {
-    /* opacity: 0;
-    visibility: hidden; */
+    opacity: 0;
+    visibility: hidden;
     position: fixed;
     top: 0;
     left: 0;
@@ -14,7 +14,7 @@
 }
 
 
-.modal-rating-backdrop .active {
+.modal-rating-backdrop.modal-rating-backdrop-active {
     opacity: 1;
     visibility: visible;
 }

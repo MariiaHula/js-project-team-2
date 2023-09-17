@@ -75,6 +75,26 @@ function initRatings() {
 
 
 
+// CLOSE-OPEN MODAL
+
+const closeIconRatingModal = document.querySelector('.modal-rating-close');
+const openIconRatingModal = document.querySelector('.modal-give-rating');
+const windowRatingModal = document.querySelector('.modal-rating-backdrop');
+const recipes_container = document.querySelector(".recipes-modal-container");
+const recipes_wrap = document.querySelector(".modal-recipes-wrap");
+
+closeIconRatingModal.addEventListener('click', closeRatingModal);
+openIconRatingModal.addEventListener('click', openRatingModal);
+
+function closeRatingModal(e) {
+    windowRatingModal.classList.remove('modal-rating-backdrop-active'); 
+}
+
+function openRatingModal(e) {
+    windowRatingModal.classList.add('modal-rating-backdrop-active'); 
+    recipes_container.classList.remove('active');
+    recipes_wrap.classList.remove('active');
+}
 
 
 
