@@ -24,6 +24,32 @@ const popularListEl = document.querySelector('.js-popular-list');
 
 const popularRecipes = new goitGlobalAPI();
 
+function truncateTextMobile() {
+    let title = document.querySelector('.js-title').innerHTML;
+    let text = document.querySelector('.js-text').innerHTML;
+    let truncatedTitle = title.substring(0, 18) + "...";
+    let truncatedText = text.substring(0, 75) + "...";
+    document.querySelector('.js-title').innerHTML = truncatedTitle;
+    document.querySelector('.js-text').innerHTML = truncatedText;
+}
+
+function truncateTablet() {
+    let title = document.querySelector('.js-title').innerHTML;
+    let text = document.querySelector('.js-text').innerHTML;
+    let truncatedTitle = title.substring(0, 13) + "...";
+    let truncatedText = text.substring(0, 70) + "...";
+    document.querySelector('.js-title').innerHTML = truncatedTitle;
+    document.querySelector('.js-text').innerHTML = truncatedText;
+}
+function truncateDesctop() {
+    let title = document.querySelector('.js-title').innerHTML;
+    let text = document.querySelector('.js-text').innerHTML;
+    let truncatedTitle = title.substring(0, 13) + "...";
+    let truncatedText = text.substring(0, 70) + "...";
+    document.querySelector('.js-title').innerHTML = truncatedTitle;
+    document.querySelector('.js-text').innerHTML = truncatedText;
+}
+
  
 async function addPopularRecipes() {
     
@@ -32,11 +58,16 @@ async function addPopularRecipes() {
         console.log(data);
                 
         if (window.innerWidth < 768) {
+
             popularListEl.innerHTML = markupPopularRecipes([data[0], data[1]]);
-            const owerflowTitle = document.querySelector('.js-title')
-            console.log(owerflowTitle);
+            truncateTextMobile();   
+            
+        } else if (window.innerWidth > 768 && window.innerWidth < 1280) {
+            popularListEl.innerHTML = markupPopularRecipes(data);
+            truncateTablet();
         } else {
             popularListEl.innerHTML = markupPopularRecipes(data);
+            truncateDesctop();
         }
             
     }
