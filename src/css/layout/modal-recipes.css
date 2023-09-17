@@ -16,7 +16,7 @@ body .modal {
   transition: opacity 250ms ease-in-out, pointer-events 250ms ease-in-out;
 }
 
-.recipes-modal-container .active {
+.recipes-modal-container.active {
   opacity: 1;
   visibility: visible;
 }
