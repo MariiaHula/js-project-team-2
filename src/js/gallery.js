@@ -1,8 +1,10 @@
 import debounce from "lodash.debounce";
 import { goitGlobalAPI } from "./axios_api";
+import { markupGalleryCard, renderGalleryCard } from "./render-gallery";
 
 const refs = {
   galleryFormFilterEl: document.querySelector('.gallery-form-filter'),
+  galleryListEl: document.querySelector('.gallery-list'),
   inputtEl: document.querySelector('.search-igredien'),
   selectTimeEl: document.querySelector('.select-time'),
   selectAreaEl: document.querySelector('.select-area'),
@@ -10,7 +12,7 @@ const refs = {
   resetFilterEl: document.querySelector('.gallery-reset-btn')
 };
 
-// =========================INPUT=========================
+// =========================INPUT===========================
 
 refs.galleryFormFilterEl.addEventListener('submit', onFormElSubmit);
 const searchInputApi = new goitGlobalAPI();
@@ -22,10 +24,19 @@ function onFormElSubmit(event) {
   searchInputApi.getRecipes(1, 9, {
     title: inputValue,
   }).then(response => {
+
+
+
+    const generatedMarkup = markupGalleryCard(response.results);
+    refs.galleryListEl.innerHTML = generatedMarkup; // В
+
     console.log(response)
+
+
   }).catch(err => {
     console.log(err)
   })
+
 }
 // =========================selectTIME=======================
 
