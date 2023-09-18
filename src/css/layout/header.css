@@ -1,5 +1,5 @@
 @media screen and (max-width: 767px) {
-    body.off- {
+    body.off {
         overflow: hidden;
     }
 
@@ -10,10 +10,6 @@
     }
 
     .header-nav {
-        display: none;
-    }
-
-    .header-darck-light {
         display: none;
     }
 
@@ -33,13 +29,18 @@
         stroke: var(--accent-color);
     }
 
+
+    .switch {
+        display: none;
+    }
+
     .header-burger-modal-window {
         position: absolute;
 
         display: flex;
         flex-direction: column;
 
-        /* justify-content: space-between; */
+        justify-content: space-between;
         /* align-items: center; */
 
         z-index: 10;
@@ -49,7 +50,7 @@
         width: 100%;
         height: 100%;
 
-        background-color: var(--accent-color);
+        background-color: var(--mobail-modal);
     }
 
     .header-bth-modal-close {
@@ -91,7 +92,67 @@
         color: var(--theme-light);
     }
 
-    .modal-header-darck-light {}
+    .mobail-switch {
+        position: relative;
+
+        width: 46px;
+        height: 20px;
+
+        margin: 20px;
+    }
+
+    .mobail-switch input {
+        display: none;
+    }
+
+    .mobail-header-check-circle {
+        position: absolute;
+        display: inline-block;
+        cursor: pointer;
+        width: 46px;
+
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #CECDCD;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    .mobail-header-check-circle:before {
+        position: absolute;
+        content: "";
+        height: 19px;
+        width: 19px;
+        left: 0.5px;
+        bottom: 0.5px;
+        background-color: var(--theme-light);
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    input:checked+.mobail-header-check-circle {
+        background-color: var(--accent-color);
+    }
+
+    input:focus+.mobail-header-check-circle {
+        box-shadow: 0 0 1px var(--accent-color);
+    }
+
+    input:checked+.mobail-header-check-circle:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    .mobail-header-check-circle.mobail-round {
+        border-radius: 34px;
+    }
+
+    .mobail-header-check-circle.mobail-round:before {
+        border-radius: 50%;
+    }
 }
 
 .header-container {
@@ -154,6 +215,7 @@
     .header-burger-modal-window {
         display: none;
     }
+
 }
 
 @media screen and (min-width: 1280px) {
@@ -165,7 +227,7 @@
 
 
 .logo {
-    color: #050505;
+    color: var(--dark-text);
     font-family: Inter;
     font-size: 18px;
     font-style: normal;
@@ -185,47 +247,65 @@
     gap: 24px;
 }
 
-.header-darck-light {
+.switch {
     position: relative;
 
     width: 46px;
     height: 20px;
 
-    border: none;
-    border-radius: 60px;
-    background: #CECDCD;
+    background-color: transparent;
     box-shadow: 7px 5px 15px 0px rgba(160, 158, 160, 0.60);
-
-    cursor: pointer;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header-bth-circle {
+.switch input {
+    display: none;
+}
+
+.header-check-circle {
     position: absolute;
-    left: 1px;
-    top: 50%;
-    left: 1px;
-    transform: translate(0, -50%);
-
-    width: 19px;
-    height: 19px;
-
-    border-radius: 50%;
-    background: #F8F8F8;
-    box-shadow: 4px 4px 15px 0px rgba(243, 243, 243, 0.25);
-
+    display: inline-block;
     cursor: pointer;
-    transition: left 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+    width: 46px;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #CECDCD;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
-.clicked {
-    background-color: #9BB537;
+.header-check-circle:before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 0.5px;
+    bottom: 0.5px;
+    background-color: var(--theme-light);
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
-.header-darck-light:active {
-    background-color: #9BB537;
+input:checked+.header-check-circle {
+    background-color: var(--accent-color);
 }
 
-.header-bth-circle:active {
-    left: 26px;
+input:focus+.header-check-circle {
+    box-shadow: 0 0 1px var(--accent-color);
+}
+
+input:checked+.header-check-circle:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.header-check-circle.round {
+    border-radius: 34px;
+}
+
+.header-check-circle.round:before {
+    border-radius: 50%;
 }
