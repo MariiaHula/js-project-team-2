@@ -1,7 +1,7 @@
 .home-anchor {
   position: fixed;
-  bottom: 40px;
-  right: 60px;
+  bottom: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,12 @@
 .icon-angle:focus {
   fill: var(--accent-color);
 }
-
+@media screen and (min-width: 768px) {
+  .home-anchor {
+    bottom: 30px;
+    right: 50px;
+  }
+}
 @media screen and (min-width: 1280px) {
   .home-anchor {
     bottom: 40px;

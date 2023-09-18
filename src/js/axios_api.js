@@ -58,7 +58,7 @@ export class goitGlobalAPI {
                 params.set(key, this[key]);
             }
         }
-        return axios.get(`/recipes?${params}`).then(response => console.log(response.data));
+        return axios.get(`/recipes?${params}`).then(response => response.data);
     }
 
     addRating(id, ratingData) {
@@ -67,7 +67,7 @@ export class goitGlobalAPI {
     
     createOrder(orderData) {
 
-          return axios.post('/orders/add', orderData).then(res => res.data);
+         return axios.post('/orders/add', orderData).then(res => res.data);
     }
 }
 
