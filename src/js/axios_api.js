@@ -55,7 +55,7 @@ export class goitGlobalAPI {
     
     createOrder(orderData) {
 
-          return axios.post('', orderData).then(res => res.data);
+          return axios.post('/orders/add', orderData).then(res => res.data);
     }
 }
 
