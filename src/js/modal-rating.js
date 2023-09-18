@@ -4,10 +4,11 @@ const openIconRatingModal = document.querySelector('.modal-give-rating');
 const windowRatingModal = document.querySelector('.modal-rating-backdrop');
 const recipes_container = document.querySelector(".recipes-modal-container");
 const recipes_wrap = document.querySelector(".modal-recipes-wrap");
+const input = document.querySelector('.modal-rating-email-input');
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { goitGlobalAPI } from "./axios_api";
 
-
+let starsValue = 1;
 if (ratings.length > 0) {
     initRatings();
 }
@@ -60,9 +61,10 @@ function initRatings() {
                  initRatingVars(rating);
                  
                  
+                //  console.log(`starsValue`, starsValue);
                      ratingValue.innerHTML = index + 1 + '.0';
                      setRatingActiveWidth();
-                 
+                 starsValue = parseInt(ratingValue.textContent);
                 
             });
         }
@@ -70,44 +72,33 @@ function initRatings() {
 }
 
 
-// Функция для проверки заполнения обязательных полей
-function validateForm() {
-  // Проверяем, все ли обязательные поля заполнены
-  const requiredFields = document.querySelectorAll('.email-required-field');
-  let isValid = true;
 
-  requiredFields.forEach((field) => {
-    if (field.value.trim() === '') {
-      isValid = false;
-    }
-  });
-
-  return isValid;
-}
 
 
 const formEl = document.querySelector('.modal-rating-form');
-// Обработчик события отправки формы
+
 formEl.addEventListener('submit', sendForm);
 
 function sendForm(e) {
     e.preventDefault();
 
-    if (validateForm()) {
+ 
         const addRatingApi = new goitGlobalAPI();
         const dataAPI = {
-            rate: 4,
-            email: "test@gmail.com",
+            rate: starsValue,
+            email: input.value,
   
         }
+    addRatingFn(addRatingApi, dataAPI);
+    }
 
-        async function addRatingFn() {
+    async function addRatingFn(addRatingApi, dataAPI) {
     
             try {
                 const data = await addRatingApi.addRating("6462a8f74c3d0ddd28897fbf", dataAPI);
-                console.log("My ", data);
+                // console.log("My ", data);
                 Notify.success('We got your rating!');
-
+   windowRatingModal.classList.remove('modal-rating-backdrop-active');
         
             }
             catch (err) {
@@ -117,13 +108,8 @@ function sendForm(e) {
                 windowRatingModal.classList.remove('modal-rating-backdrop-active');
             }
     
-        }
-    }
-}
+        } 
 
-     
-
-addRatingFn();
 // CLOSE-OPEN MODAL
 
 
