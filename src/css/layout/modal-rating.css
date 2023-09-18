@@ -99,7 +99,7 @@ margin-bottom: 24px;
         align-items: center;
         gap: 10px;
         border-radius: 15px;
-        background: #F8F8F8;
+        background-image: linear-gradient(to right, #9BB537 0%, #37b557 51%, #91db97 100%);
         border: none;
 
     color: #000;
@@ -108,16 +108,21 @@ margin-bottom: 24px;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
-            transition-delay: 100ms;
+       
+
+            flex: 1 1 auto;
+            
+                transition: 0.5s;
+                background-size: 200% auto;
+            
+                box-shadow: 0 0 20px #eee;
 
 }
 
 .modal-rating-btn-submit:hover, 
 .modal-rating-btn-submit:focus {
 cursor: pointer;
-
-color: #F8F8F8;
-background: #9BB537;
+    background-position: right center;
 }
 
 .modal-rating-email-input:focus,
@@ -352,3 +357,5 @@ background: #9BB537;
          transform: scale(2);
      }
  }
+
+ 

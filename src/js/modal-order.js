@@ -10,7 +10,7 @@ const orderName = document.querySelector('#input_name');
 const formEmail = document.querySelector('#input_email');
 const formPhone = document.querySelector('#input_phone');
 const formComment = document.querySelector('.user-message');
-const orderSpinner = document.querySelector('.loader-order-modal');
+const orderSpinner = document.querySelector('.modal-order-loader');
 
 
 

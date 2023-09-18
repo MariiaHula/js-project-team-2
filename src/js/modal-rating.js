@@ -94,7 +94,7 @@ function sendForm(e) {
     
       modalCard.style.display = 'none';
     spinner.style.display = 'block';
-    
+
      setTimeout(() => {
           spinner.style.display = 'none';
          addRatingFn(addRatingApi, dataAPI);
@@ -112,7 +112,7 @@ function sendForm(e) {
             }
             catch (err) {
                 console.log(`Error: ${err}`);
-                Notify.failure('Oops, something wrong');
+                Notify.failure('Oops, probably wrong email. Try another email, please');
                 formEl.reset();
                 windowRatingModal.classList.remove('modal-rating-backdrop-active');
             }
