@@ -252,6 +252,7 @@
 
     width: 46px;
     height: 20px;
+    border-radius: 50%;
 
     background-color: transparent;
     box-shadow: 7px 5px 15px 0px rgba(160, 158, 160, 0.60);
