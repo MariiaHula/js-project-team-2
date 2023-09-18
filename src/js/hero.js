@@ -17,7 +17,7 @@ goItGlobalAPI
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: true,
-        autoplay: true,
+        // autoplay: true,
         arrows: false,
         variableWidth: false,
       });
@@ -30,14 +30,14 @@ function renderSlider(arr) {
     .map(el => {
       return `
   <div class="slide-wrapper">
-     <div class="slide one"><img src="${el.cook.imgUrl}"  alt="" width=351 height=442/></div>
+     <div class="slide one"><img src="${el.cook.imgUrl}"  alt="" /></div>
 
       <div class="slide two">
-         <img src="${el.topic.previewUrl}" alt="" width=351 height=442/>
-          <p>${el.topic.name}</p>
-          <p>${el.topic.area}</p>
+         <img class="" src="${el.topic.previewUrl}" alt=""/>
+          <p class="topic-name">${el.topic.name}</p>
+          <p class="topic-area">${el.topic.area}</p>
       </div>
-     <div class="slide"><img src="${el.topic.imgUrl}" alt="" width=351 height=442/></div>
+     <div class="slide three"><img clas="" src="${el.topic.imgUrl}" alt=""/></div>
  </div>`;
     })
     .join('');
