@@ -389,10 +389,14 @@ position: absolute;
 
 } */
 
-.star-1, .star-2, .star-3, .star-4, .star-5{
+.star-1,
+.star-2,
+.star-3,
+.star-4,
+.star-5 {
   width: 18px;
-    height: 18px;
-    fill: rgba(5, 5, 5, 0.10);
+  height: 18px;
+  fill: rgba(5, 5, 5, 0.1);
 }
 
 .star-1.activeStar,
@@ -400,7 +404,7 @@ position: absolute;
 .star-3.activeStar,
 .star-4.activeStar,
 .star-5.activeStar {
-  fill: #EEA10C;
+  fill: #eea10c;
 }
 
 .recipe-star-modal {
