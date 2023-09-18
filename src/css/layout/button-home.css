@@ -7,13 +7,13 @@
   justify-content: center;
   text-decoration: none;
   border: transparent;
-  border-radius: 50%;
   color: none;
   cursor: pointer;
 }
 .icon-angle {
+  height: 48px;
+  width: 48px;
   stroke-width: 2px;
-  stroke: rgba(106, 114, 114, 0.1);
   fill: var(--input-color-theme-light);
 }
 
@@ -21,12 +21,20 @@
   fill: var(--accent-color);
 }
 @media screen and (min-width: 768px) {
+  .icon-angle {
+    width: 64px;
+    height: 64px;
+  }
   .home-anchor {
     bottom: 30px;
     right: 50px;
   }
 }
 @media screen and (min-width: 1280px) {
+  .icon-angle {
+    width: 76px;
+    height: 76px;
+  }
   .home-anchor {
     bottom: 40px;
     right: 60px;
