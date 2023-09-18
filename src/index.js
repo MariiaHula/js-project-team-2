@@ -12,6 +12,8 @@ import './js/popular-recipes';
 import './js/render-gallery';
 
 
+const test = new goitGlobalAPI();
 
+test.getRecipes(9).then(res => console.log(res)).catch(err => console.log(err));
 
 
