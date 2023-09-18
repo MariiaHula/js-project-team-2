@@ -6,6 +6,14 @@ const axios = axiosInstance.create({
 })
 
 export class goitGlobalAPI {
+    constructor() {
+        this.page = 1;
+        this.category = '';
+        this.title = '';
+        this.time = '';
+        this.area = 'French';
+        this.ingredient = '';
+    }    
 
     getEvents() {
 
@@ -39,14 +47,18 @@ export class goitGlobalAPI {
         return axios.get('/recipes/popular').then(response => response.data);
     }
 
-    getRecipes(page, limit, params) {
-        
-        params.page = page;
-        params.limit = limit;
-
-        const options = { params: params }
-        
-        return axios.get('/recipes', options).then(response => response.data);
+    getRecipes(perPage) {
+                
+        const params = new URLSearchParams({
+            limit: perPage,
+        });
+  
+        for (const key of Object.keys(this)) {
+            if (this[key] !== '') {
+                params.set(key, this[key]);
+            }
+        }
+        return axios.get(`/recipes?${params}`).then(response => console.log(response.data));
     }
 
     addRating(id, ratingData) {
@@ -55,11 +67,25 @@ export class goitGlobalAPI {
     
     createOrder(orderData) {
 
-          return axios.post('', orderData).then(res => res.data);
+          return axios.post('/orders/add', orderData).then(res => res.data);
     }
 }
 
 
 
+    // getAllRecipesCategories() {
+    //     const options = {
+    //         params: {
+    //             query: this.query,
+    //             page: this.page,
+    //             limit: this.perPage,
+    //         }
+    //     };
+    //       return axios.get('/recipes', options).then(response => response.data);
+// }
+    //     constructor(perPage) {
+    //     this.page = 1;
+    //     this.perPage = perPage;
+    // }
 
 

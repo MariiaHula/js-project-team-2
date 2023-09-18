@@ -20,6 +20,7 @@ refsHeader.closeMobailMenu.addEventListener('click', () => {
   document.querySelector('body').classList.remove('off');
 });
 
+
 refsHeader.navigationMenuLink.forEach(link => {
   if (link.href === refsHeader.currentURL) {
     link.classList.add('is-active');
@@ -27,8 +28,6 @@ refsHeader.navigationMenuLink.forEach(link => {
     link.classList.remove('is-active');
   }
 });
-
-console.log(localStorage.getItem('font-color'))
 
 if (localStorage.getItem('font-color') == 'dark') {
   refsHeader.checkDark.checked = true;
