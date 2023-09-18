@@ -9,7 +9,6 @@ const slider = document.querySelector('.js-slider');
 goItGlobalAPI
   .getEvents()
   .then(res => {
-    console.log(res);
     slider.innerHTML = renderSlider(res);
 
     $(document).ready(function () {
@@ -17,7 +16,7 @@ goItGlobalAPI
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: true,
-        // autoplay: true,
+        autoplay: true,
         arrows: false,
         variableWidth: false,
       });
