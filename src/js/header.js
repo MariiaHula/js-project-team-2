@@ -8,6 +8,7 @@ const refsHeader = {
   currentURL: window.location.href,
   body: document.querySelector('body'),
   checkDark: document.querySelector('.check-dark'),
+  mobailCheckDark: document.querySelector('.mobail-check-dark'),
 };
 
 refsHeader.burger.addEventListener('click', () => {
@@ -22,29 +23,37 @@ refsHeader.closeMobailMenu.addEventListener('click', () => {
 refsHeader.navigationMenuLink.forEach(link => {
   if (link.href === refsHeader.currentURL) {
     link.classList.add('is-active');
-    console.log(12);
   } else {
     link.classList.remove('is-active');
-    //   console.log(refsHeader.currentURL);
-    //   console.log(link.href);
   }
 });
 
-refsHeader.checkDark.addEventListener('click', () => {
-  console.log(refsHeader.checkDark.checked);
-  if (refsHeader.checkDark.checked) {
-    document.documentElement.style.setProperty('--body-color', `#050505`);
-    document.documentElement.style.setProperty('--dark-text', `#fff`);
-    document.documentElement.style.setProperty('--recipes-text', `#fff`);
-    return console.log(333);
-  } else {
-    document.documentElement.style.setProperty('--body-color', `#fff`);
-    document.documentElement.style.setProperty('--dark-text', `#050505`);
-    document.documentElement.style.setProperty(
-      '--recipes-text',
-      `rgba(5, 5, 5, 0.8)`
-    );
-  }
-});
+console.log(localStorage.getItem('font-color'))
 
-console.log(44);
+if (localStorage.getItem('font-color') == 'dark') {
+  refsHeader.checkDark.checked = true;
+  refsHeader.mobailCheckDark.checked = true;
+  
+  dark(refsHeader.checkDark)
+}
+
+refsHeader.checkDark.addEventListener('click', () => dark(refsHeader.checkDark));
+refsHeader.mobailCheckDark.addEventListener('click', () => dark(refsHeader.mobailCheckDark));
+
+function dark(button) {
+    if (button.checked) {
+      document.documentElement.style.setProperty('--body-color', `#050505`);
+      document.documentElement.style.setProperty('--dark-text', `#fff`);
+      document.documentElement.style.setProperty('--recipes-text', `#fff`);
+      document.documentElement.style.setProperty('--mobail-modal', `#050505`);
+
+      return localStorage.setItem('font-color', 'dark')
+    } else {
+      document.documentElement.style.setProperty('--body-color', `#fff`);
+      document.documentElement.style.setProperty('--dark-text', `#050505`);
+      document.documentElement.style.setProperty('--recipes-text', `rgba(5, 5, 5, 0.8)`);
+      document.documentElement.style.setProperty('--mobail-modal', `#9bb537`);
+
+      return localStorage.removeItem('font-color')
+    }
+}
