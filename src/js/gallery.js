@@ -31,8 +31,8 @@ function onFormElSubmit(event) {
 
 
 refs.selectTimeEl.addEventListener('click', eventTime => {
-
-  for (i = 10; i <= 160; i += 1) {
+  refs.selectTimeEl.innerHTML = '';
+  for (i = 1; i <= 160; i += 1) {
     const optionTime = document.createElement("option");
     optionTime.textContent = `${i} min`;
     refs.selectTimeEl.appendChild(optionTime);
