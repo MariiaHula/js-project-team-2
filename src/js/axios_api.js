@@ -7,11 +7,11 @@ const axios = axiosInstance.create({
 
 export class goitGlobalAPI {
     constructor() {
-        this.page = 1;
+        this.page = null;
         this.category = '';
         this.title = '';
         this.time = '';
-        this.area = 'French';
+        this.area = '';
         this.ingredient = '';
     }    
 
@@ -72,20 +72,5 @@ export class goitGlobalAPI {
 }
 
 
-
-    // getAllRecipesCategories() {
-    //     const options = {
-    //         params: {
-    //             query: this.query,
-    //             page: this.page,
-    //             limit: this.perPage,
-    //         }
-    //     };
-    //       return axios.get('/recipes', options).then(response => response.data);
-// }
-    //     constructor(perPage) {
-    //     this.page = 1;
-    //     this.perPage = perPage;
-    // }
 
 

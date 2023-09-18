@@ -10,8 +10,6 @@ import './js/modal-rating';
 import './js/modal-recipes';
 import './js/popular-recipes';
 
-const test = new goitGlobalAPI();
 
-test.getRecipes(9).then(res => console.log(res)).catch(err => console.log(err));
 
 

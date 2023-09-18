@@ -22,6 +22,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .home-anchor {
+    bottom: 40px;
+    right: 60px;
+  }
   .icon-angle:hover {
     fill: var(--accent-color);
   }
