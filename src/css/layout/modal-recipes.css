@@ -76,6 +76,9 @@ body .modal {
   margin-bottom: 20px;
 }
 .icon-youtube {
+  fill: #9bb537;
+  width: 38px;
+  height: 38px;
   z-index: 1;
   position: absolute;
   top: 50%;
@@ -334,6 +337,8 @@ body .modal {
 
 /* кнопка закриття */
 .close-recipes-icon {
+  stroke-width: 2px;
+  stroke: #050505;
   width: 20px;
   height: 20px;
 }
