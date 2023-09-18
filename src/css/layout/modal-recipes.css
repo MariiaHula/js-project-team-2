@@ -1,0 +1,363 @@
+/* В джс прописати добавлення класу модал для баді коли модалка відкривається */
+body .modal {
+  overflow: hidden;
+}
+.recipes-modal-container {
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  transition: opacity 250ms ease-in-out, pointer-events 250ms ease-in-out;
+}
+
+.recipes-modal-container.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-recipes-wrap {
+  opacity: 0;
+  visibility: hidden;
+  max-width: 335px;
+  max-height: 95%;
+  padding: 40px 20px 40px 20px;
+  background-color: var(--white-text-title);
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  transition: opacity 250ms ease-in-out;
+  transition-delay: 100ms;
+  border-radius: 15px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.modal-recipes-wrap.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Планшет */
+@media screen and (min-width: 768px) {
+  .modal-recipes-wrap {
+    max-width: 531px;
+    width: 531px;
+    padding: 32px;
+  }
+}
+
+/*  дів для рендера рецепту*/
+.card-markup-modal {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* відео */
+.modal-reverse-title {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.modal-iframe-video {
+  max-width: 295px;
+  max-height: 295px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.icon-youtube {
+  fill: #9bb537;
+  width: 38px;
+  height: 38px;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Заголовок */
+.modal-recipe-name {
+  color: var(--dark-text);
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 133.333% */
+  text-transform: uppercase;
+
+  margin-bottom: 14px;
+}
+/* Планшет */
+@media screen and (min-width: 768px) {
+  .modal-iframe-video {
+    max-width: 467px;
+    max-height: 250px;
+    width: 467px;
+    height: 250px;
+    margin-bottom: 16px;
+  }
+
+  .modal-reverse-title {
+    flex-direction: column-reverse;
+  }
+
+  .modal-recipe-name {
+    margin-bottom: 16px;
+  }
+}
+
+/* Зірочки */
+.card-star-modal {
+  margin-bottom: 33px;
+}
+
+.modal-reverse-list {
+  display: flex;
+  flex-direction: column;
+}
+/* Інградієнти */
+
+.modal-name-ingradient {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  color: var(--dark-text);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+
+  list-style-type: none;
+
+  margin-bottom: 20px;
+}
+/* Планшет */
+@media screen and (min-width: 768px) {
+  .modal-name-ingradient {
+    margin-bottom: 16px;
+  }
+}
+/* ПК */
+@media screen and (min-width: 1280px) {
+  .modal-name-ingradient {
+    margin-bottom: 18px;
+  }
+}
+.modal-ingradient-list {
+  max-height: 224px;
+  overflow-y: auto;
+  margin-bottom: 48px;
+}
+.modal-ingradient-list > :last-child {
+  margin-bottom: 0px;
+}
+/* Планшет */
+@media screen and (min-width: 768px) {
+  .modal-ingradient-list {
+    max-height: 204px;
+    margin-bottom: 40px;
+  }
+}
+
+.modal-measure {
+  color: rgba(5, 5, 5, 0.5);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+}
+
+.modal-name-ingradient::before {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%; /* Займає всю ширину батьківського елемента li */
+  height: 1px; /* Висота лінії */
+  background-color: rgba(5, 5, 5, 0.1); /* Колір лінії */
+  margin-top: 8px;
+}
+
+/* Хештег */
+.modal-hashtag-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.modal-hashtag-item {
+  list-style-type: none;
+
+  height: 30px;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 35px;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+
+  color: var(--dark-text);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+}
+/* Планшет */
+@media screen and (min-width: 768px) {
+  .modal-reverse-list {
+    flex-direction: column-reverse;
+  }
+
+  .modal-hashtag-list {
+    gap: 4px;
+    max-width: 265px;
+  }
+}
+/* рецепт */
+.modal-recipe-instructions {
+  max-width: 295px;
+  max-height: 288px;
+
+  color: rgba(5, 5, 5, 0.8);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+
+  overflow-y: auto;
+
+  margin-bottom: 40px;
+}
+
+/* Планшет */
+@media screen and (min-width: 768px) {
+  .modal-recipe-instructions {
+    max-width: 467px;
+    max-height: 162px;
+    width: 467px;
+    height: 162px;
+    margin-bottom: 32px;
+  }
+}
+
+/* кнопки */
+
+.extra-modal-button {
+  display: flex;
+  gap: 14px;
+}
+
+/* Планшет */
+@media screen and (min-width: 768px) {
+  .extra-modal-button {
+    gap: 16px;
+  }
+}
+
+.modal-add-favorite {
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 15px;
+  border: none;
+  background: var(--accent-color);
+
+  color: var(--theme-light);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  cursor: pointer;
+  white-space: nowrap;
+  height: 41px;
+}
+@media screen and (min-width: 768px) {
+  .modal-add-favorite {
+    padding: 14px 28px;
+    height: 45px;
+  }
+}
+
+.modal-add-favorite:hover,
+.modal-add-favorite:focus {
+  color: var(--dark-text);
+}
+.modal-give-rating {
+  height: 41px;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 15px;
+  border: 1px solid var(--accent-color);
+  background: var(--white-text-title);
+
+  color: var(--dark-text-title);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+@media screen and (min-width: 768px) {
+  .modal-give-rating {
+    padding: 14px 28px;
+    height: 45px;
+  }
+}
+
+.modal-give-rating:hover,
+.modal-give-rating:focus {
+  background: var(--accent-color);
+  color: var(--theme-light);
+}
+
+/* кнопка закриття */
+.close-recipes-icon {
+  stroke-width: 2px;
+  stroke: #050505;
+  width: 20px;
+  height: 20px;
+}
+
+.close-recipes-btn {
+  top: 14px;
+  right: 14px;
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background-color: var(--white-text-title);
+
+  cursor: pointer;
+}
+
+/* Стилізація смуги прокрутки за замовчуванням */
+::-webkit-scrollbar {
+  width: 2px;
+}
