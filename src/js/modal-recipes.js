@@ -6,9 +6,26 @@ const refs = {
     recipes_wrap: document.querySelector(".modal-recipes-wrap"),
     close_btn: document.querySelector(".close-recipes-btn"),
     card_markup_modal: document.querySelector(".card-markup-modal"),
-    
+    popular_recipes: document.querySelector(".popular-recipes-list"),
 }
+
+// API
+const modalRecipesApi = new goitGlobalAPI();
+
 refs.gallery_btn.addEventListener("click", openModalRecipes);
+refs.popular_recipes.addEventListener("click", openModalPopularRecipes);
+
+function openModalPopularRecipes(e) {
+ if (!e.target.closest('.popular-recipes-link')) {
+    return;
+  }
+
+  const clickedRecipe = e.target.closest('.popular-recipes-link');
+  if (!clickedRecipe) return;
+  const recipeId = clickedRecipe.id;
+  catchRecipes(recipeId);
+  openModalRecipes();
+  }
 
 
 
@@ -32,6 +49,8 @@ function closeModalRecipesOnClick(e) {
 
 function closeModalRecipes(e) {
 
+  
+
     refs.recipes_container.classList.remove("active");
     refs.recipes_wrap.classList.remove("active");
 
@@ -48,25 +67,20 @@ function closeModalRecipesOnEsc(e) {
     }
 }
 
-// API
-const modalRecipesApi = new goitGlobalAPI();
 
 
-async function catchRecipes() {
+
+async function catchRecipes(recipeId) {
     
-    try {        
-        const data = await modalRecipesApi.getRecipesById("6462a8f74c3d0ddd28897fbf");
-        console.log("My ",data);
-        
-      refs.card_markup_modal.innerHTML = markupRecipes(data);
-      starRend(data);
-    }
-    catch (err) {
-        console.log(`Error: ${err}`);
-    }
-    
+  try {
+    const data = await modalRecipesApi.getRecipesById(`${recipeId}`);
+    refs.card_markup_modal.innerHTML = markupRecipes(data);
+    starRend(data);
+  }
+  catch (err) {
+    console.log(`Error: ${err}`);
+  }
 }
-catchRecipes();
 
 function markupRecipes(recipesArr) {
     let markup = ``;
