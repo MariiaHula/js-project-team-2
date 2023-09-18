@@ -7,7 +7,7 @@ const axios = axiosInstance.create({
 
 export class goitGlobalAPI {
     constructor() {
-        this.page = 1;
+        this.page = null;
         this.category = '';
         this.title = '';
         this.time = '';
@@ -67,7 +67,7 @@ export class goitGlobalAPI {
 
     createOrder(orderData) {
 
-        return axios.post('/orders/add', orderData).then(res => res.data);
+         return axios.post('/orders/add', orderData).then(res => res.data);
     }
 }
 

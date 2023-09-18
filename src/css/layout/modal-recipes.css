@@ -361,3 +361,56 @@ body .modal {
 ::-webkit-scrollbar {
   width: 2px;
 }
+
+/* .modal-recipe-rating {
+  position: relative;
+}
+
+.modal-recipe-active {
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.modal-recipe-active::before {
+  content: "★★★★★";
+position: absolute;
+  color: #eee30c;
+  top: 337px;
+}
+
+.recipe-star-modal::before {
+  content: "★★★★★";
+  display: block;
+  color: #D9D9D9;
+
+} */
+
+.star-1, .star-2, .star-3, .star-4, .star-5{
+  width: 18px;
+    height: 18px;
+    fill: rgba(5, 5, 5, 0.10);
+}
+
+.star-1.activeStar,
+.star-2.activeStar,
+.star-3.activeStar,
+.star-4.activeStar,
+.star-5.activeStar {
+  fill: #EEA10C;
+}
+
+.recipe-star-modal {
+  display: flex;
+}
+
+.modal-recipe-rating {
+  margin-right: 8px;
+}
+
+.modal-recipe-time {
+  margin-left: 16px;
+}
