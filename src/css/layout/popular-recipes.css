@@ -36,7 +36,7 @@
   flex-direction: column;
   max-width: 252px;
 }
-.popular-recipes-title {
+.popular-recipes-head {
   white-space: nowrap;
   text-overflow: ellipsis;
   color: var(--dark-text);
