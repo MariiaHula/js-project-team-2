@@ -8,8 +8,6 @@ export function markupGalleryCard(arr) {
   const markup = arr.map(cardEl => {
     console.log(cardEl)
     return `
-          
-    
        <li class="gallery-item" data-category="${cardEl.category}" id=" ${cardEl._id}">
         <svg class="gallery-card-heart-svg">
           <use href="./images/icon.svg#icon-search"></use>
@@ -43,9 +41,6 @@ export function markupGalleryCard(arr) {
             <button type="button" class="gallery-btn">See recipe</button>
           </form>
         </div>
-
-
-
       </li>
     `
   }).join();

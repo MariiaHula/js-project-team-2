@@ -25,8 +25,9 @@ async function addPopularRecipes() {
         const data = await popularRecipes.getPopularRecipes();
 
         if (window.innerWidth < 768) {
+            
             popularListEl.innerHTML = markupPopularRecipes([data[0], data[1]]);  
-            console.log(data);
+
         } else {
             popularListEl.innerHTML = markupPopularRecipes(data);     
         }
