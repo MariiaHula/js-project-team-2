@@ -28,6 +28,7 @@
     .header-burger-icon:hover {
         stroke: var(--accent-color);
     }
+
     .switch {
         display: none;
     }
@@ -214,7 +215,7 @@
     .header-burger-modal-window {
         display: none;
     }
-    
+
 }
 
 @media screen and (min-width: 1280px) {
@@ -226,7 +227,7 @@
 
 
 .logo {
-    color: #050505;
+    color: var(--dark-text);
     font-family: Inter;
     font-size: 18px;
     font-style: normal;
