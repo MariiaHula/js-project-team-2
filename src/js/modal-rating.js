@@ -19,7 +19,7 @@ function initRatings() {
     for (let index = 0; index < ratings.length; index++) {
         const rating = ratings[index];
         initRating(rating);
-       
+
     }
 
     function initRating(rating) {
@@ -48,24 +48,24 @@ function initRatings() {
         for (let index = 0; index < ratingItems.length; index++) {
             const ratingItem = ratingItems[index];
             ratingItem.addEventListener('mouseenter', function (e) {
-                 e.preventDefault();
+                e.preventDefault();
                 initRatingVars(rating);
                 setRatingActiveWidth(ratingItem.value);
             });
-             ratingItem.addEventListener('mouseleave', function (e) {
-               e.preventDefault();
+            ratingItem.addEventListener('mouseleave', function (e) {
+                e.preventDefault();
                 setRatingActiveWidth();
-             });
-             ratingItem.addEventListener('click', function (e) {
-                 e.preventDefault();
-                 initRatingVars(rating);
-                 
-                 
+            });
+            ratingItem.addEventListener('click', function (e) {
+                e.preventDefault();
+                initRatingVars(rating);
+
+
                 //  console.log(`starsValue`, starsValue);
-                     ratingValue.innerHTML = index + 1 + '.0';
-                     setRatingActiveWidth();
-                 starsValue = parseInt(ratingValue.textContent);
-                
+                ratingValue.innerHTML = index + 1 + '.0';
+                setRatingActiveWidth();
+                starsValue = parseInt(ratingValue.textContent);
+
             });
         }
     }
@@ -82,33 +82,33 @@ formEl.addEventListener('submit', sendForm);
 function sendForm(e) {
     e.preventDefault();
 
- 
-        const addRatingApi = new goitGlobalAPI();
-        const dataAPI = {
-            rate: starsValue,
-            email: input.value,
-  
-        }
+
+    const addRatingApi = new goitGlobalAPI();
+    const dataAPI = {
+        rate: starsValue,
+        email: input.value,
+
+    }
     addRatingFn(addRatingApi, dataAPI);
+}
+
+async function addRatingFn(addRatingApi, dataAPI) {
+
+    try {
+        const data = await addRatingApi.addRating("6462a8f74c3d0ddd28897fbf", dataAPI);
+        // console.log("My ", data);
+        Notify.success('We got your rating!');
+        windowRatingModal.classList.remove('modal-rating-backdrop-active');
+
+    }
+    catch (err) {
+        console.log(`Error: ${err}`);
+        Notify.failure('Oops, something wrong');
+        formEl.reset();
+        windowRatingModal.classList.remove('modal-rating-backdrop-active');
     }
 
-    async function addRatingFn(addRatingApi, dataAPI) {
-    
-            try {
-                const data = await addRatingApi.addRating("6462a8f74c3d0ddd28897fbf", dataAPI);
-                // console.log("My ", data);
-                Notify.success('We got your rating!');
-   windowRatingModal.classList.remove('modal-rating-backdrop-active');
-        
-            }
-            catch (err) {
-                console.log(`Error: ${err}`);
-                Notify.failure('Oops, something wrong');
-                formEl.reset();
-                windowRatingModal.classList.remove('modal-rating-backdrop-active');
-            }
-    
-        } 
+}
 
 // CLOSE-OPEN MODAL
 
@@ -119,7 +119,7 @@ openIconRatingModal.addEventListener('click', openRatingModal);
 
 
 function openRatingModal(e) {
-    windowRatingModal.classList.add('modal-rating-backdrop-active'); 
+    windowRatingModal.classList.add('modal-rating-backdrop-active');
     recipes_container.classList.remove('active');
     recipes_wrap.classList.remove('active');
 
@@ -132,19 +132,19 @@ function openRatingModal(e) {
 
 function closeRatingModal(e) {
     windowRatingModal.classList.remove('modal-rating-backdrop-active');
-        closeIconRatingModal.removeEventListener("click", closeRatingModal);
+    closeIconRatingModal.removeEventListener("click", closeRatingModal);
     windowRatingModal.removeEventListener("click", closeModalByBcg);
     window.removeEventListener("keydown", closeModalByEsc);
 }
 
 function closeModalByBcg(e) {
-      if (e.target === windowRatingModal) {
+    if (e.target === windowRatingModal) {
         closeRatingModal(e);
-     }
+    }
 }
 
 function closeModalByEsc(e) {
-       if (e.key === "Escape") {
+    if (e.key === "Escape") {
         closeRatingModal(e);
     }
 }
@@ -170,30 +170,30 @@ function closeModalByEsc(e) {
 // BCG MODAL
 
 function generateRandomPercent(min = 0, max = 100) {
-  const randomInteger = Math.floor(Math.random() * (max + 1));
-  return `${randomInteger}%`;
+    const randomInteger = Math.floor(Math.random() * (max + 1));
+    return `${randomInteger}%`;
 }
 function generateRadomDelay(interval = 3) {
-  const randomInteger = Math.random() * (interval + 1);
-  return `${randomInteger}s`;
+    const randomInteger = Math.random() * (interval + 1);
+    return `${randomInteger}s`;
 }
 
 function createStar() {
-  const star = document.createElement("div");
-  star.classList.add("star");
-  star.style.top = generateRandomPercent();
-  star.style.left = generateRandomPercent();
-  star.style.animationDelay = generateRadomDelay();
-  return star;
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = generateRandomPercent();
+    star.style.left = generateRandomPercent();
+    star.style.animationDelay = generateRadomDelay();
+    return star;
 }
 
 function renderStars(amount = 15) {
-  const container = document.getElementById("modal-bcg-wrap");
-  const placeholdersArray = Array(amount).fill("star_placeholder");
-  const starsArray = placeholdersArray.map((starPlacholder, index) =>
-    createStar()
-  );
-  container.append(...starsArray);
+    const container = document.getElementById("modal-bcg-wrap");
+    const placeholdersArray = Array(amount).fill("star_placeholder");
+    const starsArray = placeholdersArray.map((starPlacholder, index) =>
+        createStar()
+    );
+    container.append(...starsArray);
 }
 
 renderStars();

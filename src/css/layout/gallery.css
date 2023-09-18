@@ -77,10 +77,10 @@
 
 .gallery-card-heart-svg {
   position: absolute;
-  right: 16px;
+  margin-right: 0px;
   top: 16px;
-  fill: red;
-  border: 2px;
+  z-index: 1;
+  left: 303px;
 }
 
 
@@ -210,6 +210,10 @@
   .gallery-wrap-reset-btn {
     margin-bottom: 14px;
   }
+
+  .gallery-card-heart-svg {
+    left: 209px;
+  }
 }
 
 
@@ -222,5 +226,9 @@
     width: 250px;
     height: 287px;
     margin-bottom: 20px;
+  }
+
+  .gallery-card-heart-svg {
+    left: 218px;
   }
 }
