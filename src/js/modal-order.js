@@ -1,10 +1,13 @@
 const closeIconOrderModal = document.querySelector('.modal-order-close');
 const openOrderBtn = document.querySelector('.js-hero-btn');
 const windowOrderModal = document.querySelector('.modal-order-backdrop');
+const openOrderBusket = document.querySelector('.header-busket-order');
 
 
 
 openOrderBtn.addEventListener('click', openOrderModal);
+openOrderBusket.addEventListener('click', openOrderModal);
+
 
 function closeOrderModal(e) {
     windowOrderModal.classList.remove('modal-order-backdrop-active'); 
