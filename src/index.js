@@ -9,6 +9,8 @@ import './js/modal-order';
 import './js/modal-rating';
 import './js/modal-recipes';
 import './js/popular-recipes';
+import './js/render-gallery';
+
 
 
 
