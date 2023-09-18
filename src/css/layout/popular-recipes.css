@@ -60,7 +60,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: rgba(5, 5, 5, 0.8);
+  color: var(--recipes-text);
   font-family: Inter;
   font-size: 12px;
   font-weight: 400;
