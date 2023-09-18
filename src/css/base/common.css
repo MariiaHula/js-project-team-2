@@ -4,6 +4,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-family: 'Inter', sans-serif;
   font-family: 'Poppins', sans-serif;
+  background-color: var(--body-color);
 }
 
 img {

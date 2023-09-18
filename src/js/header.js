@@ -6,35 +6,26 @@ const refsHeader = {
   closeMobailMenu: document.querySelector('.header-bth-modal-close'),
   burger: document.querySelector('.header-bth-burger'),
   currentURL: window.location.href,
+  body: document.querySelector('body'),
+  checkDark: document.querySelector('.check-dark'),
 };
-console.log('xep')
-// if (visualViewport < 767) {
-//     refsHeader.burger.classList.remove('is-hidden');
-//     console.log('aefad')
-// }
-// window.addEventListener('resize', debounce(() => {
-//     let visualViewport = window.innerWidth;
 
-//     if (visualViewport < 767) {
-//         refsHeader.burger.classList.remove('is-hidden')
-//     } else {
-//         refsHeader.burger.classList.add('is-hidden')
-//     }
-//     // console.log(1)
-// }, 250)
-// );
 
-refsHeader.burger.addEventListener('click', () =>
+refsHeader.burger.addEventListener('click', () => {
   refsHeader.mobailModal.classList.remove('is-hidden')
+  document.querySelector('body').classList.add('off')
+}
 );
-refsHeader.closeMobailMenu.addEventListener('click', () =>
+refsHeader.closeMobailMenu.addEventListener('click', () => {
   refsHeader.mobailModal.classList.add('is-hidden')
+  document.querySelector('body').classList.remove('off')
+}
 );
 
 refsHeader.navigationMenuLink.forEach(link => {
   if (link.href === refsHeader.currentURL) {
     link.classList.add('is-active');
-    //   console.log(12);
+      console.log(12);
   } else {
     link.classList.remove('is-active');
     //   console.log(refsHeader.currentURL);
@@ -42,4 +33,16 @@ refsHeader.navigationMenuLink.forEach(link => {
   }
 });
 
-// console.log(21)
+refsHeader.checkDark.addEventListener('click', () => {
+  console.log(refsHeader.checkDark.checked)
+  if (refsHeader.checkDark.checked) {
+    document.documentElement.style.setProperty('--body-color', `#050505`);
+    document.documentElement.style.setProperty('--dark-text', `#fff`);
+    return console.log(333)
+  } else {
+    document.documentElement.style.setProperty('--body-color', `#fff`);
+    document.documentElement.style.setProperty('--dark-text', `#050505`);
+  }
+});
+
+console.log(44)
