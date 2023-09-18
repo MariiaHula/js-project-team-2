@@ -49,8 +49,7 @@ export class goitGlobalAPI {
         return axios.get('/recipes', options).then(response => response.data);
     }
 
-    addRating(id, ...ratingData) {
-
+    addRating(id, ratingData) {
           return axios.patch(`/recipes/${id}/rating`, ratingData);
     }
     
