@@ -1,5 +1,11 @@
 const ratings = document.querySelectorAll('.modal-rating');
-       
+const closeIconRatingModal = document.querySelector('.modal-rating-close');
+const openIconRatingModal = document.querySelector('.modal-give-rating');
+const windowRatingModal = document.querySelector('.modal-rating-backdrop');
+const recipes_container = document.querySelector(".recipes-modal-container");
+const recipes_wrap = document.querySelector(".modal-recipes-wrap");
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { goitGlobalAPI } from "./axios_api";
 
 
 if (ratings.length > 0) {
@@ -41,47 +47,85 @@ function initRatings() {
         for (let index = 0; index < ratingItems.length; index++) {
             const ratingItem = ratingItems[index];
             ratingItem.addEventListener('mouseenter', function (e) {
+                 e.preventDefault();
                 initRatingVars(rating);
                 setRatingActiveWidth(ratingItem.value);
             });
              ratingItem.addEventListener('mouseleave', function (e) {
-              
+               e.preventDefault();
                 setRatingActiveWidth();
              });
              ratingItem.addEventListener('click', function (e) {
+                 e.preventDefault();
                  initRatingVars(rating);
                  
-                 if (rating.dataset.ajax) {
-                     setRatingValue(ratingItem.value, rating);
-                 } else {
-                     ratingValue.innerHTML = index + 1 + `${'.0'}`;
+                 
+                     ratingValue.innerHTML = index + 1 + '.0';
                      setRatingActiveWidth();
-                 }
+                 
                 
             });
         }
     }
-
-//     async function setRatingValue(value, rating) {
-//         if (!rating.classList.contains('.rating-sending')) {
-//             rating.classList.add('.rating-sending');
-
-//             let response = await fetch ('rating.json')
-//     }
-// }
-
-
 }
 
 
+// Функция для проверки заполнения обязательных полей
+function validateForm() {
+  // Проверяем, все ли обязательные поля заполнены
+  const requiredFields = document.querySelectorAll('.email-required-field');
+  let isValid = true;
 
+  requiredFields.forEach((field) => {
+    if (field.value.trim() === '') {
+      isValid = false;
+    }
+  });
+
+  return isValid;
+}
+
+
+const formEl = document.querySelector('.modal-rating-form');
+// Обработчик события отправки формы
+formEl.addEventListener('submit', sendForm);
+
+function sendForm(e) {
+    e.preventDefault();
+
+    if (validateForm()) {
+        const addRatingApi = new goitGlobalAPI();
+        const dataAPI = {
+            rate: 4,
+            email: "test@gmail.com",
+  
+        }
+
+        async function addRatingFn() {
+    
+            try {
+                const data = await addRatingApi.addRating("6462a8f74c3d0ddd28897fbf", dataAPI);
+                console.log("My ", data);
+                Notify.success('We got your rating!');
+
+        
+            }
+            catch (err) {
+                console.log(`Error: ${err}`);
+                Notify.failure('Oops, something wrong');
+                formEl.reset();
+                windowRatingModal.classList.remove('modal-rating-backdrop-active');
+            }
+    
+        }
+    }
+}
+
+     
+
+addRatingFn();
 // CLOSE-OPEN MODAL
 
-const closeIconRatingModal = document.querySelector('.modal-rating-close');
-const openIconRatingModal = document.querySelector('.modal-give-rating');
-const windowRatingModal = document.querySelector('.modal-rating-backdrop');
-const recipes_container = document.querySelector(".recipes-modal-container");
-const recipes_wrap = document.querySelector(".modal-recipes-wrap");
 
 
 openIconRatingModal.addEventListener('click', openRatingModal);
