@@ -1,5 +1,8 @@
 @import '../../../node_modules/modern-normalize/modern-normalize.css';
 
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'DM Sans', sans-serif;
   font-family: 'Inter', sans-serif;
