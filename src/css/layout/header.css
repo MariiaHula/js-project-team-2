@@ -29,6 +29,7 @@
         stroke: var(--accent-color);
     }
 
+
     .switch {
         display: none;
     }
@@ -152,7 +153,6 @@
     .mobail-header-check-circle.mobail-round:before {
         border-radius: 50%;
     }
-
 }
 
 .header-container {

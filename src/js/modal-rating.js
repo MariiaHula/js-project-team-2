@@ -1,7 +1,14 @@
 const ratings = document.querySelectorAll('.modal-rating');
-       
+const closeIconRatingModal = document.querySelector('.modal-rating-close');
+const openIconRatingModal = document.querySelector('.modal-give-rating');
+const windowRatingModal = document.querySelector('.modal-rating-backdrop');
+const recipes_container = document.querySelector(".recipes-modal-container");
+const recipes_wrap = document.querySelector(".modal-recipes-wrap");
+const input = document.querySelector('.modal-rating-email-input');
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { goitGlobalAPI } from "./axios_api";
 
-
+let starsValue = 1;
 if (ratings.length > 0) {
     initRatings();
 }
@@ -41,47 +48,70 @@ function initRatings() {
         for (let index = 0; index < ratingItems.length; index++) {
             const ratingItem = ratingItems[index];
             ratingItem.addEventListener('mouseenter', function (e) {
+                 e.preventDefault();
                 initRatingVars(rating);
                 setRatingActiveWidth(ratingItem.value);
             });
              ratingItem.addEventListener('mouseleave', function (e) {
-              
+               e.preventDefault();
                 setRatingActiveWidth();
              });
              ratingItem.addEventListener('click', function (e) {
+                 e.preventDefault();
                  initRatingVars(rating);
                  
-                 if (rating.dataset.ajax) {
-                     setRatingValue(ratingItem.value, rating);
-                 } else {
-                     ratingValue.innerHTML = index + 1 + `${'.0'}`;
+                 
+                //  console.log(`starsValue`, starsValue);
+                     ratingValue.innerHTML = index + 1 + '.0';
                      setRatingActiveWidth();
-                 }
+                 starsValue = parseInt(ratingValue.textContent);
                 
             });
         }
     }
-
-//     async function setRatingValue(value, rating) {
-//         if (!rating.classList.contains('.rating-sending')) {
-//             rating.classList.add('.rating-sending');
-
-//             let response = await fetch ('rating.json')
-//     }
-// }
-
-
 }
 
 
 
+
+
+const formEl = document.querySelector('.modal-rating-form');
+
+formEl.addEventListener('submit', sendForm);
+
+function sendForm(e) {
+    e.preventDefault();
+
+ 
+        const addRatingApi = new goitGlobalAPI();
+        const dataAPI = {
+            rate: starsValue,
+            email: input.value,
+  
+        }
+    addRatingFn(addRatingApi, dataAPI);
+    }
+
+    async function addRatingFn(addRatingApi, dataAPI) {
+    
+            try {
+                const data = await addRatingApi.addRating("6462a8f74c3d0ddd28897fbf", dataAPI);
+                // console.log("My ", data);
+                Notify.success('We got your rating!');
+   windowRatingModal.classList.remove('modal-rating-backdrop-active');
+        
+            }
+            catch (err) {
+                console.log(`Error: ${err}`);
+                Notify.failure('Oops, something wrong');
+                formEl.reset();
+                windowRatingModal.classList.remove('modal-rating-backdrop-active');
+            }
+    
+        } 
+
 // CLOSE-OPEN MODAL
 
-const closeIconRatingModal = document.querySelector('.modal-rating-close');
-const openIconRatingModal = document.querySelector('.modal-give-rating');
-const windowRatingModal = document.querySelector('.modal-rating-backdrop');
-const recipes_container = document.querySelector(".recipes-modal-container");
-const recipes_wrap = document.querySelector(".modal-recipes-wrap");
 
 
 openIconRatingModal.addEventListener('click', openRatingModal);

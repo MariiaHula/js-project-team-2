@@ -19,14 +19,12 @@ refsHeader.closeMobailMenu.addEventListener('click', () => {
   document.querySelector('body').classList.remove('off');
 });
 
+
 refsHeader.navigationMenuLink.forEach(link => {
   if (link.href === refsHeader.currentURL) {
     link.classList.add('is-active');
-    console.log(12);
   } else {
     link.classList.remove('is-active');
-    //   console.log(refsHeader.currentURL);
-    //   console.log(link.href);
   }
 });
 
@@ -46,5 +44,3 @@ refsHeader.checkDark.addEventListener('click', () => {
     );
   }
 });
-
-console.log(44);
