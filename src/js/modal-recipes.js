@@ -11,6 +11,7 @@ const refs = {
 refs.gallery_btn.addEventListener("click", openModalRecipes);
 
 
+
 // OPEN AND CLOSE MODAL
 function openModalRecipes(e) {
     refs.recipes_container.classList.add("active");
@@ -57,7 +58,8 @@ async function catchRecipes() {
         const data = await modalRecipesApi.getRecipesById("6462a8f74c3d0ddd28897fbf");
         console.log("My ",data);
         
-        refs.card_markup_modal.innerHTML = markupRecipes(data);
+      refs.card_markup_modal.innerHTML = markupRecipes(data);
+      starRend(data);
     }
     catch (err) {
         console.log(`Error: ${err}`);
@@ -70,7 +72,7 @@ function markupRecipes(recipesArr) {
     let markup = ``;
 
     markup += createVideoAndTitle(recipesArr);
-    markup += markupStar(recipesArr);
+  markup += markupStar(recipesArr);
     markup += markupIngradientAndTeg(recipesArr);
     markup += markupInstructions(recipesArr);
     
@@ -103,16 +105,89 @@ function createVideoAndTitle(recipesArr) {
       </div>`
 }
 
+
+// function markupStar(recipesArr) {
+//   return ` <div class="modal-general-info">
+       
+//         <div class="card-star-modal">
+//         <div class="recipe-star-modal">
+//             <div class="modal-recipe-rating">${recipesArr.rating}</div>
+//             <div class="modal-recipe-active"></div>
+//             <div class="modal-recipe-time">${recipesArr.time} min</div>
+//         </div>
+//         </div>
+//        `;
+  
+// }
 function markupStar(recipesArr) {
-    return ` <div class="modal-general-info">
-        <!-- Matt start-->
+  return ` <div class="modal-general-info">
+       
         <div class="card-star-modal">
-          <!-- <p class="modal-raiting cards-raiting">4.5</p>
-          <div class="starts-modal rating-wrapper"></div>
-          <p class="modal-card-time">40 min</p> -->
+        <div class="recipe-star-modal">
+            <div class="modal-recipe-rating">${recipesArr.rating}</div>
+            <div class="modal-recipe-active">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="#EEA10C" class="star-1">
+<path d="M6.04894 0.927052C6.3483 0.0057416 7.6517 0.00574088 7.95106 0.927052L8.79611 3.52786C8.92999 3.93989 9.31394 4.21885 9.74717 4.21885H12.4818C13.4505 4.21885 13.8533 5.45846 13.0696 6.02786L10.8572 7.63525C10.5067 7.8899 10.3601 8.34127 10.494 8.75329L11.339 11.3541C11.6384 12.2754 10.5839 13.0415 9.80017 12.4721L7.58779 10.8647C7.2373 10.6101 6.7627 10.6101 6.41222 10.8647L4.19983 12.4721C3.41612 13.0415 2.36164 12.2754 2.66099 11.3541L3.50604 8.75329C3.63992 8.34127 3.49326 7.8899 3.14277 7.63525L0.930391 6.02787C0.146677 5.45846 0.549452 4.21885 1.51818 4.21885H4.25283C4.68606 4.21885 5.07001 3.93989 5.20389 3.52786L6.04894 0.927052Z" />
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="#EEA10C" class="star-2">
+<path d="M6.04894 0.927052C6.3483 0.0057416 7.6517 0.00574088 7.95106 0.927052L8.79611 3.52786C8.92999 3.93989 9.31394 4.21885 9.74717 4.21885H12.4818C13.4505 4.21885 13.8533 5.45846 13.0696 6.02786L10.8572 7.63525C10.5067 7.8899 10.3601 8.34127 10.494 8.75329L11.339 11.3541C11.6384 12.2754 10.5839 13.0415 9.80017 12.4721L7.58779 10.8647C7.2373 10.6101 6.7627 10.6101 6.41222 10.8647L4.19983 12.4721C3.41612 13.0415 2.36164 12.2754 2.66099 11.3541L3.50604 8.75329C3.63992 8.34127 3.49326 7.8899 3.14277 7.63525L0.930391 6.02787C0.146677 5.45846 0.549452 4.21885 1.51818 4.21885H4.25283C4.68606 4.21885 5.07001 3.93989 5.20389 3.52786L6.04894 0.927052Z" />
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="#EEA10C" class="star-3">
+<path d="M6.04894 0.927052C6.3483 0.0057416 7.6517 0.00574088 7.95106 0.927052L8.79611 3.52786C8.92999 3.93989 9.31394 4.21885 9.74717 4.21885H12.4818C13.4505 4.21885 13.8533 5.45846 13.0696 6.02786L10.8572 7.63525C10.5067 7.8899 10.3601 8.34127 10.494 8.75329L11.339 11.3541C11.6384 12.2754 10.5839 13.0415 9.80017 12.4721L7.58779 10.8647C7.2373 10.6101 6.7627 10.6101 6.41222 10.8647L4.19983 12.4721C3.41612 13.0415 2.36164 12.2754 2.66099 11.3541L3.50604 8.75329C3.63992 8.34127 3.49326 7.8899 3.14277 7.63525L0.930391 6.02787C0.146677 5.45846 0.549452 4.21885 1.51818 4.21885H4.25283C4.68606 4.21885 5.07001 3.93989 5.20389 3.52786L6.04894 0.927052Z" />
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="#EEA10C" class="star-4">
+<path d="M6.04894 0.927052C6.3483 0.0057416 7.6517 0.00574088 7.95106 0.927052L8.79611 3.52786C8.92999 3.93989 9.31394 4.21885 9.74717 4.21885H12.4818C13.4505 4.21885 13.8533 5.45846 13.0696 6.02786L10.8572 7.63525C10.5067 7.8899 10.3601 8.34127 10.494 8.75329L11.339 11.3541C11.6384 12.2754 10.5839 13.0415 9.80017 12.4721L7.58779 10.8647C7.2373 10.6101 6.7627 10.6101 6.41222 10.8647L4.19983 12.4721C3.41612 13.0415 2.36164 12.2754 2.66099 11.3541L3.50604 8.75329C3.63992 8.34127 3.49326 7.8899 3.14277 7.63525L0.930391 6.02787C0.146677 5.45846 0.549452 4.21885 1.51818 4.21885H4.25283C4.68606 4.21885 5.07001 3.93989 5.20389 3.52786L6.04894 0.927052Z" />
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13" fill="#EEA10C" class="star-5">
+<path d="M6.04894 0.927052C6.3483 0.0057416 7.6517 0.00574088 7.95106 0.927052L8.79611 3.52786C8.92999 3.93989 9.31394 4.21885 9.74717 4.21885H12.4818C13.4505 4.21885 13.8533 5.45846 13.0696 6.02786L10.8572 7.63525C10.5067 7.8899 10.3601 8.34127 10.494 8.75329L11.339 11.3541C11.6384 12.2754 10.5839 13.0415 9.80017 12.4721L7.58779 10.8647C7.2373 10.6101 6.7627 10.6101 6.41222 10.8647L4.19983 12.4721C3.41612 13.0415 2.36164 12.2754 2.66099 11.3541L3.50604 8.75329C3.63992 8.34127 3.49326 7.8899 3.14277 7.63525L0.930391 6.02787C0.146677 5.45846 0.549452 4.21885 1.51818 4.21885H4.25283C4.68606 4.21885 5.07001 3.93989 5.20389 3.52786L6.04894 0.927052Z" />
+</svg>
+            </div>
+            <div class="modal-recipe-time">${recipesArr.time} min</div>
         </div>
-        <!-- Matt end-->`;
+        </div>
+       `;
+  
 }
+
+
+
+
+function starRend(recipesArr) {
+  const starInt = Math.round(recipesArr.rating); 
+
+  for (let i = 1; i <= starInt; i++){
+    const star = document.querySelector(`.star-${i}`);
+    star.classList.add("activeStar");
+
+  }
+
+  // const starsRecipeModal = document.querySelector('.modal-recipe-active'); 
+  // const ratingActiveWidth = recipesArr.rating / 0.05;  
+  // starsRecipeModal.style.width = `${ratingActiveWidth}%`;
+}
+
+
+
+
+
+  // function initRatingVars(rating) {
+  //       ratingActive = rating.querySelector('.modal-rating-active');
+  //       ratingValue = rating.querySelector('.modal-rating-value');
+  //   }
+
+  //   function setRatingActiveWidth(index = ratingValue.innerHTML) {
+  //       const ratingActiveWidth = index / 0.05;
+  //       ratingActive.style.width = `${ratingActiveWidth}%`;
+  //   }
+
+
+
+
+
+
+
+
+
 
 function markupIngradientAndTeg(recipesArr) {
     const ingradient = recipesArr.ingredients
