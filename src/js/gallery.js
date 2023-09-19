@@ -1,6 +1,6 @@
 import debounce from "lodash.debounce";
 import { goitGlobalAPI } from "./axios_api";
-import { markupGalleryCard, renderGalleryCard } from "./render-gallery";
+import { markupGalleryCard } from "./render-gallery";
 import Notiflix from "notiflix";
 
 const refs = {
@@ -65,7 +65,7 @@ async function onGalleryDivSelectOptions(event) {
       searchInputApi.ingredient = ingId;
     }
   }
-  
+
   try {
     const response = await searchInputApi.getRecipes();
     if (response.totalPages === 0) {
