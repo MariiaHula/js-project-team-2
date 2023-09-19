@@ -3,6 +3,7 @@ import iconSvg from '../images/icon.svg'
 import { goitGlobalAPI } from "./axios_api"
 
 export function markupGalleryCard(arr) {
+
   if (!Array.isArray(arr)) {
 
     return '';
@@ -12,15 +13,25 @@ export function markupGalleryCard(arr) {
        <li class="gallery-item" data-category="${cardEl.category}" id=" ${cardEl._id}">
           <label class="label" > <input type="checkbox" name="favorite" class="checkbox-favorite" >
         
-          <svg class='gallery-icon-checkbox'>
-            <use href="${iconSvg}#icon-heart" > </use>
-            
+          <svg class='gallery-icon-checkbox  '>
+            <use href="${iconSvg}#icon-heart" class="icon-svg-heart"> </use>
+
           </svg>
-       
+
         </label>
-       
-        
-          <img src="${cardEl.thumb}"class="gallery-image" width=alt="dish image" />
+
+
+          <img
+              class="gallery-image"
+              style="
+                background:
+                  linear-gradient(1deg, rgba(5, 5, 5, 0.60) 4.82%, rgba(5, 5, 5, 0.00) 108.72%),
+                  url(${cardEl.thumb});
+                background-position: -36.5px 0px;
+                background-size: 129.2% 112.544%;
+                background-repeat: no-repeat;
+              "
+           />
         <div class="gallery-wrap-descr-reciept-card">
           <h2 class="gallery-card-title">${cardEl.title}</h2>
           <h3 class="gallery-card-subtitle">${cardEl.description}</h3>
@@ -42,8 +53,11 @@ export function markupGalleryCard(arr) {
         </div>
       </li>
     `
+
   }).join('');
   return markup
+
+
 }
 
 // export function renderGalleryCard() {
@@ -58,15 +72,8 @@ export function markupGalleryCard(arr) {
 // }
 
 
-// const checkedHeart = document.querySelector('.gallery-icon-checkbox');
-
-// checkedHeart.addEventListener('click', () => {
-//   const useElement = document.createElement('use');
-//   useElement.setAttribute('href', `${iconSvg}#icon-heart-checked`);
-
-
-//   checkedHeart.appendChild(useElement);
-// });
+// const checkedHeart = document.querySelector('[name="heart"]');
+// console.log(checkedHeart);
 
 
 
