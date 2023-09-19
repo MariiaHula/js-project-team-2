@@ -42,13 +42,13 @@ const onAllCategoriesBtnElClick = async event => {
 
 refs.allCategoriesBtnEl.addEventListener('click', onAllCategoriesBtnElClick);
 
-const onCategoryElClick = event => {
+const onCategoryElClick = async event => {
     if (event.target.classList.contains('active')) {
         return;
     }
     goitGlobalApi.perPage = 9;
-    const value = event.target.textContent;   
-    let data = dataArray();
+    const value = event.target.textContent;  
+    let data = await dataArray();
     const recipesCategory = data.filter(results => results.category === value);
     
     refs.galleryListEl.innerHTML = markupGalleryCard(recipesCategory);
