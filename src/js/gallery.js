@@ -14,6 +14,7 @@ const refs = {
   galleryInputEl: document.querySelector('.search-igredient'),
 };
 
+
 let searchInputApi;
 
 if (window.innerWidth < 768) {
