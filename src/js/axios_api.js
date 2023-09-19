@@ -6,13 +6,14 @@ const axios = axiosInstance.create({
 })
 
 export class goitGlobalAPI {
-    constructor() {
-        this.page = null;
+    constructor(perPage) {
+        this.page = 1;
         this.category = '';
         this.title = '';
         this.time = '';
         this.area = '';
         this.ingredient = '';
+        this.perPage = perPage;
     }
 
     getEvents() {
@@ -47,10 +48,10 @@ export class goitGlobalAPI {
         return axios.get('/recipes/popular').then(response => response.data);
     }
 
-    getRecipes(perPage) {
+    getRecipes() {
 
         const params = new URLSearchParams({
-            limit: perPage,
+            limit: this.perPage,
         });
 
         for (const key of Object.keys(this)) {
