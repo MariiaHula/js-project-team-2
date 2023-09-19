@@ -45,7 +45,7 @@ function dark(button) {
       document.documentElement.style.setProperty('--dark-text', `#fff`);
       document.documentElement.style.setProperty('--recipes-text', `#fff`);
       document.documentElement.style.setProperty('--mobail-modal', `#050505`);
-      document.documentElement.style.setProperty('--modal-rating-theme', `#050505`);
+      document.documentElement.style.setProperty('--modal-rating-theme-light', `#050505`);
       document.documentElement.style.setProperty('--modal-measure-recipes', `rgba(255, 255, 255, 0.50)`);
       document.documentElement.style.setProperty('--modal-name-ingradient', `rgba(255, 255, 255, 0.10)`);
       document.documentElement.style.setProperty('--modal-hashtag-item', `rgba(255, 255, 255, 0.20)`);
