@@ -2,8 +2,8 @@
 /* BACKDROP */
 
 .modal-rating-backdrop {
-    opacity: 0;
-    visibility: hidden;
+     opacity: 0;
+   visibility: hidden;
     position: fixed;
     top: 0;
     left: 0;
@@ -84,11 +84,11 @@ margin-bottom: 24px;
         align-items: flex-start;
         gap: 32px;
         flex-shrink: 0;
-        
+        background-color: var(--body-color);
         border-radius: 15px;
-            border: 1px solid rgba(5, 5, 5, 0.20);
-
+            border: 1px solid var(--theme-dark);
             margin-bottom: 14px;
+            color: var(--dark-text);
 }
 
 .modal-rating-btn-submit{
@@ -102,7 +102,7 @@ margin-bottom: 24px;
         background-image: linear-gradient(to right, #9BB537 0%, #37b557 51%, #91db97 100%);
         border: none;
 
-    color: #000;
+    color: var(--dark-text);
             font-family: Inter;
             font-size: 14px;
             font-style: normal;
@@ -115,7 +115,7 @@ margin-bottom: 24px;
                 transition: 0.5s;
                 background-size: 200% auto;
             
-                box-shadow: 0 0 20px #eee;
+                box-shadow: 0 0 10px var(--dark-text);
 
 }
 
@@ -144,7 +144,8 @@ cursor: pointer;
     position: fixed;
     top: 50%;
     left: 50%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color:var(--modal-rating-theme-light);
+
     text-align: center;
     z-index: 100;
     transform: translate(-50%, -50%);
@@ -176,16 +177,18 @@ cursor: pointer;
     height: 20px;
     padding: 4px;
     position: absolute;
-    stroke: #000;
+    stroke: var(--dark-text);
     cursor: pointer;
-    background-color: #47906a;
+    background-color: var(--modal-rating-theme-light); 
+    /* --modal-rating-theme-light */
     border: none;
+    
 }
 
 
 .modal-rating-title {
     font-family: Inter;
-    color: #050505;
+    color: var(--dark-text);
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0em;
@@ -201,6 +204,7 @@ cursor: pointer;
         line-height: 24px;
         letter-spacing: 0em;
         text-align: left;
+        color: var(--dark-text);
 }
 
 
@@ -229,6 +233,7 @@ cursor: pointer;
     margin: 0;
  
     background-color: #47906a;
+    /* --modal-rating-theme-light */
     position: relative;
 }
 

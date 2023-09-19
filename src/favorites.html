@@ -15,7 +15,75 @@
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/header.html"></include>
-    <main></main>
+    <main>
+      <section class="favorites-section">
+        <div class="container">
+          <h1 class="is-hidden">Favorites</h1>
+          <picture class="favorites-picture">
+            <!-- DEKSTOP -->
+            <source
+              srcset="
+                ./images/favorites/dekstop.jpg    1x,
+                ./images/favorites/dekstop@2x.jpg 2x
+              "
+              media="(min-width:1200px)"
+            />
+
+            <!-- TABLET -->
+            <source
+              srcset="
+                ./images/favorites/tablet.jpg    1x,
+                ./images/favorites/tablet@2x.jpg 2x
+              "
+              media="(min-width:768px)"
+            />
+            <!-- MOBILE -->
+            <source
+              srcset="
+                ./images/favorites/mobile.jpg    1x,
+                ./images/favorites/mobile@2x.jpg 2x
+              "
+              media="(min-width:375px)"
+            />
+
+            <img
+              class="favorites-bg"
+              src="./images/favorites/mobile.jpg "
+              alt="fish dish"
+            />
+          </picture>
+
+          <!-- /////////////////////////////////////////////////// -->
+          <div>
+            <svg class="favorites-icon" width="68" height="58">
+              <use href="./images/icon.svg#icon-cheef-head"></use>
+            </svg>
+            <p class="favorites-error-text">
+              It appears that you haven't added any recipes to your favorites
+              yet. To get started, you can add recipes that you like to your
+              favorites for easier access in the future.
+            </p>
+
+            <div>
+              <button type="button" class="favorites-btn"></button>
+            </div>
+            <ul class="favorites-list">
+              ul to render cards
+            </ul>
+          </div>
+        </div>
+      </section>
+      <!-- <section class="favorites-likes">
+        <div class="container">
+          <div class="favorites-list-categories">
+
+          </div>
+          <div class="favorites-gallery-img">
+            
+          </div>
+        </div>
+      </section> -->
+    </main>
     <script type="module" src="./favorites.js"></script>
   </body>
 </html>
