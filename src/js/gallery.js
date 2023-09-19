@@ -1,18 +1,175 @@
 import debounce from "lodash.debounce";
 import { goitGlobalAPI } from "./axios_api";
-import { markupGalleryCard, renderGalleryCard } from "./render-gallery";
+import { markupGalleryCard } from "./render-gallery";
+import Notiflix from "notiflix";
 
 const refs = {
   galleryFormFilterEl: document.querySelector('.gallery-form-filter'),
   galleryListEl: document.querySelector('.gallery-list'),
-  inputtEl: document.querySelector('.search-igredien'),
   selectTimeEl: document.querySelector('.select-time'),
   selectAreaEl: document.querySelector('.select-area'),
   selectIgredientEl: document.querySelector('.select-ingredients'),
-  resetFilterEl: document.querySelector('.gallery-reset-btn')
-
+  resetFilterEl: document.querySelector('.gallery-reset-btn'),
+  gallerySelectEl: document.querySelector('.gallery-div-select'),
+  galleryInputEl: document.querySelector('.search-igredient'),
 };
-console.log(refs.selectAreaEl);
+
+let searchInputApi;
+
+if (window.innerWidth < 768) {
+  searchInputApi = new goitGlobalAPI(6);
+} else if (window.innerWidth > 768 && window.innerWidth < 1280) {
+  searchInputApi = new goitGlobalAPI(8);
+} else {
+  searchInputApi = new goitGlobalAPI(9);
+}
+ 
+//================INPUT=====================================
+
+async function onGalleryInputElInput(event) {
+
+ searchInputApi.page = 1;
+  searchInputApi.title = event.target.value.trim().toLowerCase();
+  try {
+    const response = await searchInputApi.getRecipes();
+  if (response.totalPages === 0) {
+      Notiflix.Notify.failure('Incorrect search value, please change the name');
+      event.target.reset();
+      refs.galleryListEl.innerHTML = '';
+      return;
+    }
+    refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+
+   } catch (err) {
+    console.log(err);
+  }
+}
+
+async function onGalleryDivSelectOptions(event) {
+
+  searchInputApi.page = 1;
+
+  const { name, value } = event.target;
+  if (name === 'time') {
+    searchInputApi.time = value;
+
+  } else if (name === 'area') {
+    searchInputApi.area = value;
+
+  } else if (name === 'ingredients') {
+    
+    const ingId = event.target.selectedOptions[0].getAttribute('data-id');
+    if (ingId === null || ingId === '') {
+      searchInputApi.ingredient = '';
+    } else {
+      searchInputApi.ingredient = ingId;
+    }
+  }
+
+  try {
+    const response = await searchInputApi.getRecipes();
+    if (response.totalPages === 0) {
+      Notiflix.Notify.failure('Sorry, no recipe was found with these parameters');
+    } else {
+      refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+    }
+  } catch (err) {
+    console.log(err);
+  };
+}
+
+function onResetFilterElClick(event) {
+  if (event.target !== event.currentTarget) {
+    return;
+  } else {
+    galleryFormFilterEl.reset();
+    searchInputApi.title = '';
+    searchInputApi.area = '';
+    searchInputApi.time = '';
+    searchInputApi.ingredient = '';
+    galleryListEl.innerHTML = '';   
+  }
+
+}
+
+function ongalleryFormFilterElSubmit(event) {
+  event.preventDefault();
+}
+
+refs.galleryInputEl.addEventListener('input', debounce(onGalleryInputElInput, 300));
+refs.selectTimeEl.addEventListener('change', onGalleryDivSelectOptions);
+refs.selectAreaEl.addEventListener('change', onGalleryDivSelectOptions);
+refs.selectIgredientEl.addEventListener('change', onGalleryDivSelectOptions);
+refs.resetFilterEl.addEventListener('click', onResetFilterElClick);
+refs.galleryFormFilterEl.addEventListener('submit', ongalleryFormFilterElSubmit);
+
+// =========================selectTIME=======================
+function markupTime() {
+
+  const time = [];
+
+  for (let i = 1; i < 160; i++) {
+    time.push(i);
+  }
+
+  const markup = time.map((elem) => {
+    return `
+      <option class="options" value="${elem}">${elem} min</option>
+    `;
+    })
+    .join('');
+
+  refs.selectTimeEl.insertAdjacentHTML('beforeend', markup);
+}
+markupTime();
+
+// =========================selectAREA=======================
+
+function markupArea(arr) {
+  const markup = arr.map(areaEl => {
+    return `
+      <option value="${areaEl.name}">${areaEl.name}</option>        
+    `
+  }).join('');
+  return markup
+
+}
+
+  async function renderArea() {
+    const selectArea = new goitGlobalAPI();
+    try {
+      const response = await selectArea.getAreas();
+      refs.selectAreaEl.insertAdjacentHTML('beforeend', markupArea(response));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+renderArea();
+
+// =========================selectINGREDIENTS=======================
+function markupIngredients(arr) {
+  const markup = arr.map(ingredientEl => {
+    return `
+      <option value="${ingredientEl.name}" data-id="${ingredientEl._id}">${ingredientEl.name}</option>        
+    `
+  }).join('');
+  return markup
+}
+
+  async function renderIngredients() {
+    const selectIngredient = new goitGlobalAPI();
+
+    try {
+      const response = await selectIngredient.getIngredients();
+      refs.selectIgredientEl.insertAdjacentHTML('beforeend', markupIngredients(response));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+renderIngredients();
+
+
+
 // 1  Если посетитель начал выбирать сперва select,
 // тогда ему уведомление, что сначала надо ввести инпут или моргает сам инпут
 
@@ -50,141 +207,11 @@ console.log(refs.selectAreaEl);
 //   })
 
 // }
-
-
-// ============================*******************
-refs.galleryFormFilterEl.addEventListener('submit', onFormElSubmit);
-const searchInputApi = new goitGlobalAPI();
-searchInputApi.page = 1;
-function yakasTam() {
-  if (window.innerWidth < 768) {
-    searchInputApi.getRecipes(6).then(data => {
-      const generatedMarkup = markupGalleryCard(data.results);
-      refs.galleryListEl.innerHTML = generatedMarkup;
-    }).catch(err => {
-      console.log(err)
-    })
-  } else if (window.innerWidth < 768 && window.innerWidth < 1280) {
-    searchInputApi.getRecipes(8).then(data => {
-      const generatedMarkup = markupGalleryCard(data.results);
-      refs.galleryListEl.innerHTML = generatedMarkup;
-    }).catch(err => {
-      console.log(err)
-    })
-  } else {
-    searchInputApi.getRecipes(9).then(data => {
-      const generatedMarkup = markupGalleryCard(data.results);
-      refs.galleryListEl.innerHTML = generatedMarkup;
-    }).catch(err => {
-      console.log(err)
-    })
-  }
-}
-
-yakasTam();
-function onFormElSubmit(event) {
-  event.preventDefault()
-  searchInputApi.title = event.target.elements.query.value.trim().toLowerCase();
-  searchInputApi.area = refs.selectAreaEl.value;
-  searchInputApi.ingredient = refs.selectIgredientEl.value;
-  searchInputApi.time = refs.selectTimeEl.value;
-  searchInputApi.getRecipes(9).then(data => {
-    if (data.totalPages === 0) {
-      alert('Invalid search term');
-      event.target.reset();
-      galleryEl.innerHTML = '';
-      return;
-    }
-    if (data.totalPages === 1) {
-      const generatedMarkup = markupGalleryCard(data.results);
-      refs.galleryListEl.innerHTML = generatedMarkup;
-    } event.target.reset();
-  }).catch(err => {
-    console.log(err)
-  })
-}
-
-
-
-
-
-
-// =========================selectTIME=======================
-
-
-refs.selectTimeEl.addEventListener('click', eventTime => {
-  refs.selectTimeEl.innerHTML = '';
-  for (i = 1; i <= 160; i += 1) {
-    const optionTime = document.createElement("option");
-    optionTime.textContent = `${i} min`;
-    refs.selectTimeEl.appendChild(optionTime);
-
-  }
-})
-
-
-
-// =========================selectAREA=======================
-
-function markupArea(arr) {
-  const markup = arr.map(areaEl => {
-    return `
-          <option class="query-option" >${areaEl.name}</option>        
-    `
-
-  }).join();
-  return markup
-
-}
-
-
-function renderArea() {
-  const selectArea = new goitGlobalAPI();
-  selectArea.getAreas()
-    .then(response => {
-      refs.selectAreaEl.innerHTML = markupArea(response)
-
-    })
-    .catch(err => {
-      console.log(err)
-    })
-
-}
-renderArea();
-
+//==============
 // refs.selectAreaEl.addEventListener('click', elArea => {
 //   const valueArea = elArea.target.value;
 //   console.log(valueArea);
 //   renderArea();
 // })
 
-
-
-
-
-
-// =========================selectINGREDIENTS=======================
-function markupIngredients(arr) {
-  const markup = arr.map(ingredientEl => {
-    return `
-          <option>${ingredientEl.name}</option>        
-    `
-  }).join();
-  return markup
-}
-
-function renderIngredients() {
-  const selectIngredient = new goitGlobalAPI();
-  selectIngredient.getIngredients()
-    .then(response => {
-      refs.selectIgredientEl.innerHTML = markupIngredients(response)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-}
-renderIngredients();
-
-
-
-
+// ============================*******************
