@@ -12,7 +12,7 @@ const refs = {
 // API
 const modalRecipesApi = new goitGlobalAPI();
 
-refs.gallery_btn.addEventListener("click", openModalRecipes);
+// refs.gallery_btn.addEventListener("click", openModalRecipes);
 refs.popular_recipes.addEventListener("click", openModalPopularRecipes);
 
 function openModalPopularRecipes(e) {
