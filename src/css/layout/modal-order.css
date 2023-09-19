@@ -29,7 +29,7 @@ width: 440px;
     position: fixed;
     top: 50%;
     left: 50%;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--body-color);
     z-index: 100;
     transform: translate(-50%, -50%);
     transition: opacity 250ms ease-in-out;
@@ -60,15 +60,15 @@ width: 440px;
     height: 20px;
     padding: 4px;
     position: absolute;
-    stroke: #000;
+    stroke: var(--dark-text);
     cursor: pointer;
-    background-color: #fff;
+    background-color: var(--body-color);
     border: none;
 }
 
 
 .modal-order-title {
-color: #050505;
+color: var(--dark-text);;
     font-family: Inter;
     font-size: 18px;
     font-style: normal;
@@ -85,6 +85,7 @@ color: #050505;
     display: flex;
     margin-bottom: 28px;
     flex-direction: column;
+   
 }
 
 
@@ -96,7 +97,10 @@ color: #050505;
         align-items: flex-start;
         gap: 32px;
        border-radius: 15px;
-        border: 1px solid rgba(5, 5, 5, 0.20);
+    border: 1px solid var(--theme-dark);
+        background-color: var(--body-color);
+         color: var(--dark-text);
+         
 }
 
 
@@ -143,8 +147,10 @@ color: rgba(5, 5, 5, 0.50);
 .modal-order-name,
 .modal-order-email,
 .modal-order-phone,
-.modal-comment-label {
-color: rgba(5, 5, 5, 0.50);
+.modal-comment-label,
+.modal-order-tag,
+.modal-order-comment {
+color: var(--dark-text);
     font-family: Inter;
     font-size: 14px;
     font-style: normal;
@@ -172,7 +178,7 @@ padding: 14px 18px 14px 18px;
     background-image: linear-gradient(to right, #9BB537 0%, #37b557 51%, #91db97 100%);
         border: none;
     
-        color: #F8F8F8;
+        color: var(--dark-text);;
         font-family: Inter;
         font-size: 14px;
         font-style: normal;
@@ -185,7 +191,7 @@ padding: 14px 18px 14px 18px;
   transition: 0.5s;
   background-size: 200% auto;
 
-  box-shadow: 0 0 20px #eee;
+  box-shadow: 0 0 10px var(--dark-text);;
 
 }
 
