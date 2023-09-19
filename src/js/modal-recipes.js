@@ -1,5 +1,6 @@
 import { goitGlobalAPI } from "./axios_api"
 
+
 const refs = {
     gallery_btn: document.querySelector(".gallery-btn"),
     recipes_container: document.querySelector(".recipes-modal-container"),
@@ -7,10 +8,14 @@ const refs = {
     close_btn: document.querySelector(".close-recipes-btn"),
     card_markup_modal: document.querySelector(".card-markup-modal"),
     popular_recipes: document.querySelector(".popular-recipes-list"),
+    skelet: document.querySelector(".cardSkelet"),
+    extra_modal_button: document.querySelector(".extra-modal-button",)
+    
 }
 
 // API
 const modalRecipesApi = new goitGlobalAPI();
+
 
 // refs.gallery_btn.addEventListener("click", openModalRecipes);
 refs.popular_recipes.addEventListener("click", openModalPopularRecipes);
@@ -23,8 +28,13 @@ function openModalPopularRecipes(e) {
   const clickedRecipe = e.target.closest('.popular-recipes-link');
   if (!clickedRecipe) return;
   const recipeId = clickedRecipe.id;
-  catchRecipes(recipeId);
   openModalRecipes();
+  catchRecipes(recipeId);
+  setTimeout(() => {
+    refs.skelet.classList.add("is-hidden");
+    refs.card_markup_modal.classList.remove("is-hidden");
+    refs.extra_modal_button.classList.remove("is-hidden");
+    }, 1500);
   }
 
 
@@ -49,8 +59,6 @@ function closeModalRecipesOnClick(e) {
 
 function closeModalRecipes(e) {
 
-  
-
     refs.recipes_container.classList.remove("active");
     refs.recipes_wrap.classList.remove("active");
 
@@ -59,6 +67,9 @@ function closeModalRecipes(e) {
     refs.close_btn.removeEventListener("click", closeModalRecipes);
     window.removeEventListener("keydown", closeModalRecipesOnEsc);
     
+    refs.skelet.classList.remove("is-hidden");
+    refs.card_markup_modal.classList.add("is-hidden");
+    refs.extra_modal_button.classList.add("is-hidden");
 }
 
 function closeModalRecipesOnEsc(e) {

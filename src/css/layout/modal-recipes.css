@@ -418,3 +418,137 @@ position: absolute;
 .modal-recipe-time {
   margin-left: 16px;
 }
+
+/* LODER */
+
+.loader {
+  top: 25%;
+  left: 20%;
+  z-index: 150;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 75px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.loader-star {
+  position: absolute;
+  top: calc(50% - 12px);
+}
+
+/*LOADER-9*/
+
+.loader-9 .star1 {
+  -webkit-animation: stars-pulse 1s ease-in-out infinite;
+  animation: stars-pulse 1s ease-in-out infinite;
+  left: 0;
+}
+
+.loader-9 .star2 {
+  -webkit-animation: stars-pulse 1s 0.2s ease-in-out infinite;
+  animation: stars-pulse 1s 0.2s ease-in-out infinite;
+  left: 50px;
+}
+
+.loader-9 .star3 {
+  -webkit-animation: stars-pulse 1s 0.4s ease-in-out infinite;
+  animation: stars-pulse 1s 0.4s ease-in-out infinite;
+  left: 100px;
+}
+
+@-webkit-keyframes stars-pulse {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes stars-pulse {
+  0%,
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* SKELETON */
+
+:root {
+  --loading-grey: #ededed;
+}
+
+.cardSkelet {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 5%;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.12);
+}
+
+.imageSkelet {
+  height: 300px;
+}
+
+.contentSkelet {
+  padding: 2rem 1.8rem;
+}
+
+.hSkelet {
+  margin: 0 0 1rem;
+  height: 50px;
+}
+
+.descriptionSkelet {
+  height: 200px;
+}
+
+.loadingSkelet .imageSkelet,
+.loadingSkelet .hSkelet,
+.loadingSkelet .descriptionSkelet {
+  background-color: var(--loading-grey);
+  background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 60%
+    )
+    var(--loading-grey);
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s loading ease-in-out infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -20%;
+  }
+}
+
+.loadingSkelet .hSkelet {
+  min-height: 1.6rem;
+  border-radius: 4px;
+  animation-delay: 0.05s;
+}
+
+.loadingSkelet .descriptionSkelet {
+  min-height: 4rem;
+  border-radius: 4px;
+  animation-delay: 0.06s;
+}
