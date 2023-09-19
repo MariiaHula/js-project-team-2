@@ -93,7 +93,7 @@ margin-bottom: 24px;
 
 .modal-rating-btn-submit{
     display: flex;
-        max-width: 295px;
+        width: 295px;
         padding: 15px 132px;
         justify-content: center;
         align-items: center;
@@ -128,7 +128,8 @@ cursor: pointer;
 .modal-rating-email-input:focus,
 .modal-rating-email-input:hover {
     outline: #9BB537 3px solid;
-    box-shadow: 0px 0px 3px 2px rgba(93, 179, 7, 0.5);;
+    box-shadow: 0px 0px 3px 2px rgba(93, 179, 7, 0.5);
+    border-color: #37b557;
 }
 
 /* MODAL WRAP */
@@ -193,7 +194,7 @@ cursor: pointer;
     line-height: 18px;
     letter-spacing: 0em;
     text-align: left;
-    margin-bottom: 1px;
+    margin-bottom: 4px;
     font-weight: 600;
     font-style: normal;
 }
@@ -210,23 +211,6 @@ cursor: pointer;
 
 
 
-@media screen and (min-width: 768px) {
-   
-    .modal {
-            width: 685px;
-            height: 681px;
-            padding: 32px 48px 32px 32px;
-        }
-
-       
-
-}
-
-@media screen and (min-width: 1280px) {
-   
-
-
-}
 
 
 #modal-bcg-wrap {
@@ -363,4 +347,37 @@ cursor: pointer;
      }
  }
 
- 
+ @media screen and (min-width: 768px) {
+
+     .modal-rating-wrap {
+         width: 424px;
+         height: 254px;
+         padding: 32px 32px 32px 32px;
+     }
+
+     .modal-rating-icon {
+         width: 24px;
+         height: 24px;
+     }
+
+     .modal-rating-email-input {
+         width: 360px;
+         height: 48px;
+         margin-bottom: 16px;
+     }
+
+     .user-message {
+         height: 100px;
+     }
+
+
+
+     .modal-rating-btn-submit {
+         width: 360px;
+     }
+
+
+
+ }
+
+ @media screen and (min-width: 1280px) {}
