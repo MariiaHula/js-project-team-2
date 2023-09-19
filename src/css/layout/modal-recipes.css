@@ -12,7 +12,7 @@ body .modal {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(46, 47, 66, 0.4);
+  background-color: var(--background-color-recipes);
   transition: opacity 250ms ease-in-out, pointer-events 250ms ease-in-out;
 }
 
@@ -27,7 +27,7 @@ body .modal {
   max-width: 335px;
   max-height: 95%;
   padding: 40px 20px 40px 20px;
-  background-color: var(--white-text-title);
+  background-color: var(--body-color);
   z-index: 100;
   transform: translate(-50%, -50%);
   transition: opacity 250ms ease-in-out;
@@ -173,7 +173,7 @@ body .modal {
 }
 
 .modal-measure {
-  color: rgba(5, 5, 5, 0.5);
+  color: var(--modal-measure-recipes);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -188,7 +188,7 @@ body .modal {
   left: 0;
   width: 100%; /* Займає всю ширину батьківського елемента li */
   height: 1px; /* Висота лінії */
-  background-color: rgba(5, 5, 5, 0.1); /* Колір лінії */
+  background-color: var(--modal-name-ingradient); /* Колір лінії */
   margin-top: 8px;
 }
 
@@ -209,7 +209,7 @@ body .modal {
   align-items: center;
 
   border-radius: 35px;
-  border: 1px solid rgba(5, 5, 5, 0.2);
+  border: 1px solid var(--modal-hashtag-item);
 
   color: var(--dark-text);
   font-family: Inter;
@@ -234,7 +234,7 @@ body .modal {
   max-width: 295px;
   max-height: 288px;
 
-  color: rgba(5, 5, 5, 0.8);
+  color: var(--modal-recipe-instruction);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -300,7 +300,7 @@ body .modal {
 
 .modal-add-favorite:hover,
 .modal-add-favorite:focus {
-  color: var(--dark-text);
+  color: #050505;
 }
 .modal-give-rating {
   height: 41px;
@@ -310,9 +310,9 @@ body .modal {
 
   border-radius: 15px;
   border: 1px solid var(--accent-color);
-  background: var(--white-text-title);
+  background: var(--body-color);
 
-  color: var(--dark-text-title);
+  color: var(--dark-text);
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
@@ -338,7 +338,7 @@ body .modal {
 /* кнопка закриття */
 .close-recipes-icon {
   stroke-width: 2px;
-  stroke: #050505;
+  stroke: var(--dark-text);
   width: 20px;
   height: 20px;
 }
@@ -352,7 +352,7 @@ body .modal {
   height: 20px;
   padding: 0;
   border: none;
-  background-color: var(--white-text-title);
+  background-color: var(--body-color);
 
   cursor: pointer;
 }
@@ -396,7 +396,7 @@ position: absolute;
 .star-5 {
   width: 18px;
   height: 18px;
-  fill: rgba(5, 5, 5, 0.1);
+  fill: rgba(255, 255, 255, 0.1);
 }
 
 .star-1.activeStar,
@@ -413,9 +413,11 @@ position: absolute;
 
 .modal-recipe-rating {
   margin-right: 8px;
+  color: var(--modal-measure-recipes);
 }
 
 .modal-recipe-time {
+  color: var(--modal-measure-recipes);
   margin-left: 16px;
 }
 
@@ -438,8 +440,6 @@ position: absolute;
   position: absolute;
   top: calc(50% - 12px);
 }
-
-/*LOADER-9*/
 
 .loader-9 .star1 {
   -webkit-animation: stars-pulse 1s ease-in-out infinite;
@@ -496,7 +496,7 @@ position: absolute;
 .cardSkelet {
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: var(--body-color);
   border-radius: 5%;
   overflow: hidden;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.12);
@@ -529,7 +529,8 @@ position: absolute;
       rgba(255, 255, 255, 0.5) 50%,
       rgba(255, 255, 255, 0) 60%
     )
-    var(--loading-grey);
+    var(--modal-name-ingradient);
+
   background-size: 200% 100%;
   background-position-x: 180%;
   animation: 1s loading ease-in-out infinite;
