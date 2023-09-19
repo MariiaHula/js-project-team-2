@@ -32,6 +32,7 @@
     transition: opacity 250ms ease-in-out;
     transition-delay: 100ms;
     border-radius: 15px;
+    box-shadow: 7px 5px 15px 0px rgba(127, 235, 188, 0.4);
 }
 
 .modal-order-wrap .modal-order-wrap-active {
@@ -334,9 +335,6 @@
 
 @media screen and (min-width: 1280px) {
 
-.modal-order-wrap {
-    width: ;
-}
 
 
 }
