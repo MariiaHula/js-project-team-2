@@ -22,7 +22,7 @@ goItGlobalAPI
       });
     });
   })
-  .catch();
+  .catch(err => console.log(err));
 
 function renderSlider(arr) {
   const markup = arr
