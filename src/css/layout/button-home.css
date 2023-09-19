@@ -31,10 +31,6 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .icon-angle {
-    width: 76px;
-    height: 76px;
-  }
   .home-anchor {
     bottom: 40px;
     right: 60px;
