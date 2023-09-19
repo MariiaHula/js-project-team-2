@@ -45,6 +45,8 @@ function dark(button) {
       document.documentElement.style.setProperty('--dark-text', `#fff`);
       document.documentElement.style.setProperty('--recipes-text', `#fff`);
       document.documentElement.style.setProperty('--mobail-modal', `#050505`);
+      document.documentElement.style.setProperty('--modal-rating-theme', `#050505`);
+
 
       return localStorage.setItem('font-color', 'dark')
     } else {
@@ -52,6 +54,7 @@ function dark(button) {
       document.documentElement.style.setProperty('--dark-text', `#050505`);
       document.documentElement.style.setProperty('--recipes-text', `rgba(5, 5, 5, 0.8)`);
       document.documentElement.style.setProperty('--mobail-modal', `#9bb537`);
+      document.documentElement.style.setProperty('--modal-rating-theme-light', `#47906a`);
 
       return localStorage.removeItem('font-color')
     }
