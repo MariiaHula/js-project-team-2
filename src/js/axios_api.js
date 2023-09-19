@@ -13,7 +13,7 @@ export class goitGlobalAPI {
         this.time = '';
         this.area = '';
         this.ingredient = '';
-    }    
+    }
 
     getEvents() {
 
@@ -27,15 +27,15 @@ export class goitGlobalAPI {
     }
 
     getAreas() {
- 
+
         return axios.get('/areas').then(response => response.data);
     }
 
     getRecipesById(id) {
-        
+
         return axios.get(`/recipes/${id}`).then(response => response.data);
     }
-    
+
     getIngredients() {
 
         return axios.get('/ingredients').then(response => response.data);
@@ -48,11 +48,11 @@ export class goitGlobalAPI {
     }
 
     getRecipes(perPage) {
-                
+
         const params = new URLSearchParams({
             limit: perPage,
         });
-  
+
         for (const key of Object.keys(this)) {
             if (this[key] !== '') {
                 params.set(key, this[key]);
@@ -62,15 +62,13 @@ export class goitGlobalAPI {
     }
 
     addRating(id, ratingData) {
-          return axios.patch(`/recipes/${id}/rating`, ratingData);
+        return axios.patch(`/recipes/${id}/rating`, ratingData);
     }
-    
+
     createOrder(orderData) {
 
          return axios.post('/orders/add', orderData).then(res => res.data);
     }
 }
-
-
 
 

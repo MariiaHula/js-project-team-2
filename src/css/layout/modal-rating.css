@@ -99,7 +99,7 @@ margin-bottom: 24px;
         align-items: center;
         gap: 10px;
         border-radius: 15px;
-        background: #F8F8F8;
+        background-image: linear-gradient(to right, #9BB537 0%, #37b557 51%, #91db97 100%);
         border: none;
 
     color: #000;
@@ -108,16 +108,21 @@ margin-bottom: 24px;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
-            transition-delay: 100ms;
+       
+
+            flex: 1 1 auto;
+            
+                transition: 0.5s;
+                background-size: 200% auto;
+            
+                box-shadow: 0 0 20px #eee;
 
 }
 
 .modal-rating-btn-submit:hover, 
 .modal-rating-btn-submit:focus {
 cursor: pointer;
-
-color: #F8F8F8;
-background: #9BB537;
+    background-position: right center;
 }
 
 .modal-rating-email-input:focus,
@@ -266,3 +271,91 @@ background: #9BB537;
 }
 
 
+
+
+ .modal-rating-loader {
+     position: absolute;
+     width: 60px;
+     height: 60px;
+     border-radius: 50%;
+     
+     display: inline-block;
+     vertical-align: middle;
+    left: 41%;
+    bottom: 40%;
+    display: none;
+ }
+
+  .loader-star {
+      position: absolute;
+      top: calc(50% - 12px);
+  }
+
+.loader-14 .loader-star {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 12px);
+}
+
+.star-small {
+    -webkit-animation: star-small-pulse 1s ease-in-out alternate infinite;
+    animation: star-small-pulse 1s ease-in-out alternate infinite;
+}
+ .loader-14 .star-big {
+     -webkit-animation: star-big-pulse 2s -0.2s ease-in-out infinite;
+     animation: star-big-pulse 2s -0.2s ease-in-out infinite;
+ }
+
+ @-webkit-keyframes star-big-pulse {
+     0% {
+         -webkit-transform: scale(0);
+         transform: scale(0);
+         opacity: 1;
+     }
+
+     100% {
+         -webkit-transform: scale(5);
+         transform: scale(5);
+         opacity: 0;
+     }
+ }
+
+ @keyframes star-big-pulse {
+     0% {
+         -webkit-transform: scale(0);
+         transform: scale(0);
+         opacity: 1;
+     }
+
+     100% {
+         -webkit-transform: scale(5);
+         transform: scale(5);
+         opacity: 0;
+     }
+ }
+
+ @-webkit-keyframes star-small-pulse {
+     0% {
+         -webkit-transform: scale(1);
+         transform: scale(1);
+     }
+
+     100% {
+         -webkit-transform: scale(2);
+         transform: scale(2);
+     }
+ }
+
+ @keyframes star-small-pulse {
+     0% {
+         -webkit-transform: scale(1);
+         transform: scale(1);
+     }
+
+     100% {
+         -webkit-transform: scale(2);
+         transform: scale(2);
+     }
+ }
+
+ 

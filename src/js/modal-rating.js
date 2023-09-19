@@ -5,6 +5,8 @@ const windowRatingModal = document.querySelector('.modal-rating-backdrop');
 const recipes_container = document.querySelector(".recipes-modal-container");
 const recipes_wrap = document.querySelector(".modal-recipes-wrap");
 const input = document.querySelector('.modal-rating-email-input');
+const spinner = document.querySelector('.modal-rating-loader');
+      const modalCard = document.querySelector('.modal-rating-card');
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { goitGlobalAPI } from "./axios_api";
 
@@ -19,7 +21,7 @@ function initRatings() {
     for (let index = 0; index < ratings.length; index++) {
         const rating = ratings[index];
         initRating(rating);
-       
+
     }
 
     function initRating(rating) {
@@ -48,24 +50,24 @@ function initRatings() {
         for (let index = 0; index < ratingItems.length; index++) {
             const ratingItem = ratingItems[index];
             ratingItem.addEventListener('mouseenter', function (e) {
-                 e.preventDefault();
+                e.preventDefault();
                 initRatingVars(rating);
                 setRatingActiveWidth(ratingItem.value);
             });
-             ratingItem.addEventListener('mouseleave', function (e) {
-               e.preventDefault();
+            ratingItem.addEventListener('mouseleave', function (e) {
+                e.preventDefault();
                 setRatingActiveWidth();
-             });
-             ratingItem.addEventListener('click', function (e) {
-                 e.preventDefault();
-                 initRatingVars(rating);
-                 
-                 
+            });
+            ratingItem.addEventListener('click', function (e) {
+                e.preventDefault();
+                initRatingVars(rating);
+
+
                 //  console.log(`starsValue`, starsValue);
-                     ratingValue.innerHTML = index + 1 + '.0';
-                     setRatingActiveWidth();
-                 starsValue = parseInt(ratingValue.textContent);
-                
+                ratingValue.innerHTML = index + 1 + '.0';
+                setRatingActiveWidth();
+                starsValue = parseInt(ratingValue.textContent);
+
             });
         }
     }
@@ -88,8 +90,15 @@ function sendForm(e) {
             rate: starsValue,
             email: input.value,
   
-        }
-    addRatingFn(addRatingApi, dataAPI);
+    }
+    
+      modalCard.style.display = 'none';
+    spinner.style.display = 'block';
+
+     setTimeout(() => {
+          spinner.style.display = 'none';
+         addRatingFn(addRatingApi, dataAPI);
+    }, 2000); 
     }
 
     async function addRatingFn(addRatingApi, dataAPI) {
@@ -103,7 +112,7 @@ function sendForm(e) {
             }
             catch (err) {
                 console.log(`Error: ${err}`);
-                Notify.failure('Oops, something wrong');
+                Notify.failure('Oops, probably wrong email. Try another email, please');
                 formEl.reset();
                 windowRatingModal.classList.remove('modal-rating-backdrop-active');
             }
@@ -119,10 +128,10 @@ openIconRatingModal.addEventListener('click', openRatingModal);
 
 
 function openRatingModal(e) {
-    windowRatingModal.classList.add('modal-rating-backdrop-active'); 
+    windowRatingModal.classList.add('modal-rating-backdrop-active');
     recipes_container.classList.remove('active');
     recipes_wrap.classList.remove('active');
-
+  modalCard.style.display = 'block';
 
     closeIconRatingModal.addEventListener('click', closeRatingModal);
     windowRatingModal.addEventListener('click', closeModalByBcg);
@@ -132,19 +141,19 @@ function openRatingModal(e) {
 
 function closeRatingModal(e) {
     windowRatingModal.classList.remove('modal-rating-backdrop-active');
-        closeIconRatingModal.removeEventListener("click", closeRatingModal);
+    closeIconRatingModal.removeEventListener("click", closeRatingModal);
     windowRatingModal.removeEventListener("click", closeModalByBcg);
     window.removeEventListener("keydown", closeModalByEsc);
 }
 
 function closeModalByBcg(e) {
-      if (e.target === windowRatingModal) {
+    if (e.target === windowRatingModal) {
         closeRatingModal(e);
-     }
+    }
 }
 
 function closeModalByEsc(e) {
-       if (e.key === "Escape") {
+    if (e.key === "Escape") {
         closeRatingModal(e);
     }
 }
@@ -170,30 +179,30 @@ function closeModalByEsc(e) {
 // BCG MODAL
 
 function generateRandomPercent(min = 0, max = 100) {
-  const randomInteger = Math.floor(Math.random() * (max + 1));
-  return `${randomInteger}%`;
+    const randomInteger = Math.floor(Math.random() * (max + 1));
+    return `${randomInteger}%`;
 }
 function generateRadomDelay(interval = 3) {
-  const randomInteger = Math.random() * (interval + 1);
-  return `${randomInteger}s`;
+    const randomInteger = Math.random() * (interval + 1);
+    return `${randomInteger}s`;
 }
 
 function createStar() {
-  const star = document.createElement("div");
-  star.classList.add("star");
-  star.style.top = generateRandomPercent();
-  star.style.left = generateRandomPercent();
-  star.style.animationDelay = generateRadomDelay();
-  return star;
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = generateRandomPercent();
+    star.style.left = generateRandomPercent();
+    star.style.animationDelay = generateRadomDelay();
+    return star;
 }
 
 function renderStars(amount = 15) {
-  const container = document.getElementById("modal-bcg-wrap");
-  const placeholdersArray = Array(amount).fill("star_placeholder");
-  const starsArray = placeholdersArray.map((starPlacholder, index) =>
-    createStar()
-  );
-  container.append(...starsArray);
+    const container = document.getElementById("modal-bcg-wrap");
+    const placeholdersArray = Array(amount).fill("star_placeholder");
+    const starsArray = placeholdersArray.map((starPlacholder, index) =>
+        createStar()
+    );
+    container.append(...starsArray);
 }
 
 renderStars();

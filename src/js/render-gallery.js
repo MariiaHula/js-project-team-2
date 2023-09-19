@@ -30,7 +30,7 @@ export function markupGalleryCard(arr) {
           <h3 class="gallery-card-subtitle">${cardEl.description}</h3>
           <form class="gallery-form-rating">
             <div class="gallery-card-stars-rating">
-              <label class="gallery-average-rating">4.5</label>
+              <label class="gallery-average-rating">${cardEl.rating}</label>
               <input type="radio" name="rating" value="5" id="gallery-star-rating" />
               <input type="radio" name="rating" value="4" id="gallery-star-rating" />
               <input type="radio" name="rating" value="3" id="gallery-star-rating" />
@@ -49,9 +49,9 @@ export function markupGalleryCard(arr) {
 
 export function renderGalleryCard() {
   const galleryListEl = new goitGlobalAPI();
-  galleryListEl.getRecipes()
+  galleryListEl.getRecipes(6)
     .then(response => {
-      galleryListEl.innerHTML = markupGalleryCard(response)
+      galleryListEl.innerHTML = markupGalleryCard(response.results)
     })
     .catch(err => {
       console.log(err)
