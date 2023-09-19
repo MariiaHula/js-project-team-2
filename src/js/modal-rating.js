@@ -197,7 +197,7 @@ function createStar() {
 }
 
 function renderStars(amount = 15) {
-    const container = document.getElementById("modal-bcg-wrap");
+    const container = document.querySelector('.modal-bcg-wrap');
     const placeholdersArray = Array(amount).fill("star_placeholder");
     const starsArray = placeholdersArray.map((starPlacholder, index) =>
         createStar()

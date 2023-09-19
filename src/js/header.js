@@ -45,7 +45,7 @@ function dark(button) {
       document.documentElement.style.setProperty('--dark-text', `#fff`);
       document.documentElement.style.setProperty('--recipes-text', `#fff`);
       document.documentElement.style.setProperty('--mobail-modal', `#050505`);
-      document.documentElement.style.setProperty('--modal-rating-theme', `#050505`);
+      document.documentElement.style.setProperty('--modal-rating-theme-light', `#050505`);
 
 
       return localStorage.setItem('font-color', 'dark')
