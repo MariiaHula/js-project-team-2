@@ -12,7 +12,7 @@ export function markupGalleryCard(arr) {
         <svg class="gallery-card-heart-svg">
           <use href="./images/icon.svg#icon-search"></use>
         </svg>
-
+        <input type="checkbox" name="favorite">
         <picture class="gallery-picture">
           <!-- <source srcset="#" media="(min-width: 1200px)" type="image/webp" />
           <source srcset="#" media="(min-width: 1200px)" />
