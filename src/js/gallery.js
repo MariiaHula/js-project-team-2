@@ -9,10 +9,11 @@ const refs = {
   selectTimeEl: document.querySelector('.select-time'),
   selectAreaEl: document.querySelector('.select-area'),
   selectIgredientEl: document.querySelector('.select-ingredients'),
-  resetFilterEl: document.querySelector('.gallery-reset-btn')
+  resetFilterEl: document.querySelector('.gallery-reset-btn'),
+
 
 };
-console.log(refs.selectAreaEl);
+
 // 1  Если посетитель начал выбирать сперва select,
 // тогда ему уведомление, что сначала надо ввести инпут или моргает сам инпут
 

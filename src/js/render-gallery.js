@@ -1,4 +1,4 @@
-// ====
+import iconSvg from '../images/icon.svg'
 import { goitGlobalAPI } from "./axios_api";
 export function markupGalleryCard(arr) {
   if (!Array.isArray(arr)) {
@@ -9,22 +9,19 @@ export function markupGalleryCard(arr) {
     console.log(cardEl)
     return `
        <li class="gallery-item" data-category="${cardEl.category}" id=" ${cardEl._id}">
-        <svg class="gallery-card-heart-svg">
-          <use href="./images/icon.svg#icon-search"></use>
-        </svg>
-        <input type="checkbox" name="favorite">
-        <picture class="gallery-picture">
-          <!-- <source srcset="#" media="(min-width: 1200px)" type="image/webp" />
-          <source srcset="#" media="(min-width: 1200px)" />
+          <label class="label" > <input type="checkbox" name="favorite" class="checkbox-favorite" >
+        
+          <svg class='gallery-icon-checkbox'>
+            <use href="${iconSvg}#icon-heart" > </use>
+            
+          </svg>
+       
+        </label>
+       
+        
+          <img src="${cardEl.thumb}"class="gallery-image" width=alt="dish image" />
 
-          <source srcset="#" media="(min-width: 768px)" type="image/webp" />
-          <source srcset="#" media="(min-width: 768px)" />
 
-          <source srcset="#" media="(min-width: 320px)" type="image/webp" />
-          <source srcset="#" media="(min-width: 320px)" /> -->
-          <img src="${cardEl.thumb}" width=alt="dish image"
-            class="gallery-image" />
-        </picture>
         <div class="gallery-wrap-descr-reciept-card">
           <h2 class="gallery-card-title">${cardEl.title}</h2>
           <h3 class="gallery-card-subtitle">${cardEl.description}</h3>
@@ -43,7 +40,7 @@ export function markupGalleryCard(arr) {
         </div>
       </li>
     `
-  }).join();
+  }).join('');
   return markup
 }
 
@@ -57,3 +54,17 @@ export function renderGalleryCard() {
       console.log(err)
     })
 }
+
+
+// const checkedHeart = document.querySelector('.gallery-icon-checkbox');
+
+// checkedHeart.addEventListener('click', () => {
+//   const useElement = document.createElement('use');
+//   useElement.setAttribute('href', `${iconSvg}#icon-heart-checked`);
+
+
+//   checkedHeart.appendChild(useElement);
+// });
+
+
+

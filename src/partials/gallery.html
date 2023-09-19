@@ -1,51 +1,61 @@
 <section class="gallery">
   <div class="container">
-    <form class="gallery-form-filter">
-      <div class="wrap-input-search">
-        <label class="gallery-form-label">
-          Search
-          <input
-            type="text"
-            placeholder="Enter Text"
-            class="search-igredient form-el-border"
-            name="query"
-          />
-        </label>
-        <svg class="gallery-form-svg">
-          <use href="./images/icon.svg#icon-search"></use>
-        </svg>
-      </div>
-    </form>
-    <!-- <div for selects"> -->
-    <div>
-      <label class="gallery-time gallery-form-label">
-        Time
-        <select class="select-time form-el-border" name="time">
-          <option>0 min</option>
-        </select>
-      </label>
-      <label class="gallery-form-label">
-        Area
-        <select class="select-area form-el-border" name="area">
-          <option>Region</option>
-        </select>
-      </label>
-      <label class="gallery-form-label">
-        Ingredients
-        <select class="select-ingredients form-el-border" name="ingredients">
-          <option>Product</option>
-        </select>
-      </label>
-      <div class="gallery-wrap-reset-btn">
-        <svg class="gallery-form-reset-svg">
-          <use href="./images/icon.svg#icon-search"></use>
-        </svg>
-        <button class="gallery-reset-btn" type="reset">Reset the filter</button>
-      </div>
 
-    </form>
+    <div class="form-wrap">
+
+      <form class="gallery-form-filter">
+        <ul class="wrap-input-search list">
+          <li>
+            <label class="gallery-form-label">
+              Search
+              <input type="text" placeholder="Enter Text" class="search-igredient form-el-border" name="query" />
+            </label>
+          </li>
+          <li>
+            <svg class="gallery-form-svg">
+              <use href="./images/icon.svg#icon-search"></use>
+            </svg>
+          </li>
 
 
+      </form>
+      <!-- <div for selects"> -->
+      <form>
+        <ul class="gallery-selectes list">
+          <li>
+            <label class="gallery-time gallery-form-label">
+              Time
+              <select class="select-time form-el-border" name="time">
+                <option>0 min</option>
+              </select>
+            </label>
+          </li>
+          <li>
+            <label class="gallery-form-label">
+              Area
+              <select class="select-area form-el-border" name="area">
+                <option>Region</option>
+              </select>
+            </label>
+          </li>
+          <li>
+            <label class="gallery-form-label">
+              Ingredients
+              <select class="select-ingredients form-el-border" name="ingredients">
+                <option>Product</option>
+              </select>
+            </label>
+          </li>
+
+        </ul>
+        <div class="gallery-wrap-reset-btn">
+          <svg class="gallery-form-reset-svg">
+            <use href="./images/icon.svg#icon-reset-btn"></use>
+          </svg>
+          <button class="gallery-reset-btn" type="reset">Reset the filter</button>
+        </div>
+      </form>
+    </div>
 
 
 
