@@ -33,7 +33,7 @@ const renderCategories = async event => {
 };
 renderCategories();
 
-const onAllCategoriesBtnElClick = async event => {
+export const onAllCategoriesBtnElClick = async event => {
     goitGlobalApi.perPage = 9;
     let data = await dataArray();
     
