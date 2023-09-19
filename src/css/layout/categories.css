@@ -8,9 +8,9 @@
   cursor: pointer;
   padding: 14px 29px;
   border-radius: 15px;
-  border: 1px solid var(--dark-text);
-  background-color: var(--body-color);
-  color: var(--dark-text);
+  border: 1px solid rgba(5, 5, 5, 0.5);
+  background-color: transparent;
+  color: rgba(5, 5, 5, 0.5);
 }
 
 .btn-all-categories:hover,
@@ -45,7 +45,7 @@
   cursor: pointer;
   margin-bottom: 18px;
   border: none;
-  background-color: var(--body-color);
+  background-color: transparent;
   color: var(--input-color-theme-light);
 }
 
