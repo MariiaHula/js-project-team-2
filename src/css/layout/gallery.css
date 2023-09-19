@@ -12,6 +12,13 @@
   display: flex;
 }
 
+.gallery-item {
+  background-image: linear-gradient(1deg, rgba(5, 5, 5, 0.60) 4.82%, rgba(5, 5, 5, 0.00) 108.72%);
+}
+
+
+
+
 
 .wrap-time-area {
   display: flex;
@@ -101,13 +108,53 @@
 
 
 
+
+/*========================================================================================== stars */
+.gallery-star-ckeckbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+
+
+.galerry-checkbox-icon {
+
+  display: inline-block;
+  z-index: 1;
+
+
+
+  width: 20px;
+  height: 20px;
+  border: 2px solid tomato;
+}
+
+.gallery-average-rating {
+
+  column-gap: 4px;
+  display: flex;
+  align-items: center;
+
+}
+
+.gallery-star-ckeckbox:checked+.galerry-checkbox-icon {
+
+
+  background-color: tomato;
+
+
+}
+
+
+
+
+/*========================================================================================== stars */
 .checkbox-favorite {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   position: absolute;
-
-
 
 }
 
@@ -121,18 +168,26 @@
   left: 303px;
   width: 20px;
   height: 20px;
-  stroke: rgb(194, 255, 205);
+  stroke: rgb(252, 71, 0);
 
 
 }
 
 .checkbox-favorite:checked+.gallery-icon-checkbox {
 
-  border-color: turquoise;
-  background-color: rgb(1, 255, 1);
+
+  background-color: tomato;
   background-size: contain;
 
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -282,6 +337,29 @@
   .gallery-selectes {
     display: inline;
   }
+
+  .gallery-list {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .gallery-image {
+    margin-bottom: 0px;
+  }
+
+  .gallery-list {
+    justify-content: end;
+  }
+
+  .gallery-card-title {
+    font-size: 18px;
+  }
+
+  .gallery-icon-checkbox {
+    left: 205px;
+  }
 }
 
 
@@ -293,7 +371,7 @@
   .gallery-image {
     width: 250px;
     height: 287px;
-    margin-bottom: 20px;
+
   }
 
   .gallery-card-heart-svg {
@@ -319,5 +397,29 @@
 
   .search-igredient {
     height: 48px;
+  }
+
+  .gallery-list {
+    width: 782px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .form-wrap {
+    justify-content: end;
+  }
+
+  .gallery-list {
+
+    margin-left: auto;
+  }
+
+  .gallery-btn {
+    width: 93px;
+  }
+
+  .gallery-icon-checkbox {
+    left: 215px;
   }
 }
