@@ -149,7 +149,7 @@
 
 
 
-/*========================================================================================== stars */
+/*============================================================================================ stars */
 .checkbox-favorite {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -176,7 +176,7 @@
 .checkbox-favorite:checked+.gallery-icon-checkbox {
 
 
-  background-color: tomato;
+  /* background-color: tomato; */
   background-size: contain;
 
 }

@@ -24,6 +24,7 @@
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6",
     "notifyjs": "^3.0.0",
+    "react-loading-skeleton": "^3.3.1",
     "slick-carousel": "^1.8.1",
     "tui-pagination": "^3.4.1"
   },
