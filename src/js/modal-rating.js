@@ -5,6 +5,8 @@ const windowRatingModal = document.querySelector('.modal-rating-backdrop');
 const recipes_container = document.querySelector(".recipes-modal-container");
 const recipes_wrap = document.querySelector(".modal-recipes-wrap");
 const input = document.querySelector('.modal-rating-email-input');
+const spinner = document.querySelector('.modal-rating-loader');
+      const modalCard = document.querySelector('.modal-rating-card');
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { goitGlobalAPI } from "./axios_api";
 
@@ -82,33 +84,40 @@ formEl.addEventListener('submit', sendForm);
 function sendForm(e) {
     e.preventDefault();
 
-
-    const addRatingApi = new goitGlobalAPI();
-    const dataAPI = {
-        rate: starsValue,
-        email: input.value,
-
+ 
+        const addRatingApi = new goitGlobalAPI();
+        const dataAPI = {
+            rate: starsValue,
+            email: input.value,
+  
     }
-    addRatingFn(addRatingApi, dataAPI);
-}
+    
+      modalCard.style.display = 'none';
+    spinner.style.display = 'block';
 
-async function addRatingFn(addRatingApi, dataAPI) {
-
-    try {
-        const data = await addRatingApi.addRating("6462a8f74c3d0ddd28897fbf", dataAPI);
-        // console.log("My ", data);
-        Notify.success('We got your rating!');
-        windowRatingModal.classList.remove('modal-rating-backdrop-active');
-
-    }
-    catch (err) {
-        console.log(`Error: ${err}`);
-        Notify.failure('Oops, something wrong');
-        formEl.reset();
-        windowRatingModal.classList.remove('modal-rating-backdrop-active');
+     setTimeout(() => {
+          spinner.style.display = 'none';
+         addRatingFn(addRatingApi, dataAPI);
+    }, 2000); 
     }
 
-}
+    async function addRatingFn(addRatingApi, dataAPI) {
+    
+            try {
+                const data = await addRatingApi.addRating("6462a8f74c3d0ddd28897fbf", dataAPI);
+                // console.log("My ", data);
+                Notify.success('We got your rating!');
+   windowRatingModal.classList.remove('modal-rating-backdrop-active');
+        
+            }
+            catch (err) {
+                console.log(`Error: ${err}`);
+                Notify.failure('Oops, probably wrong email. Try another email, please');
+                formEl.reset();
+                windowRatingModal.classList.remove('modal-rating-backdrop-active');
+            }
+    
+        } 
 
 // CLOSE-OPEN MODAL
 
@@ -122,7 +131,7 @@ function openRatingModal(e) {
     windowRatingModal.classList.add('modal-rating-backdrop-active');
     recipes_container.classList.remove('active');
     recipes_wrap.classList.remove('active');
-
+  modalCard.style.display = 'block';
 
     closeIconRatingModal.addEventListener('click', closeRatingModal);
     windowRatingModal.addEventListener('click', closeModalByBcg);
