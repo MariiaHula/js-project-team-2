@@ -11,7 +11,7 @@ export function markupGalleryCard(arr) {
         </svg>
         <input type="checkbox" name="favorite">
         <div class="gallery-picture">
-          <img src="${cardEl.thumb}" alt="${cardEl.title}"
+          <img src="${cardEl.thumb}" width=alt="${cardEl.title}"
             class="gallery-image" />
         </div>
         <div class="gallery-wrap-descr-reciept-card">
@@ -20,12 +20,13 @@ export function markupGalleryCard(arr) {
           <form class="gallery-form-rating">
             <div class="gallery-card-stars-rating">
               <label class="gallery-average-rating">${cardEl.rating}</label>
-              <svg class="is-active"><use href="./images/icon.svg#icon-star"></use></svg>
-              <svg class="is-active"><use href="./images/icon.svg#icon-star"></use></svg>
-              <svg class="is-active"><use href="./images/icon.svg#icon-star"></use></svg>
-              <svg class="is-active"><use href="./images/icon.svg#icon-star"></use></svg>
-              <svg class="is-active"><use href="./images/icon.svg#icon-star"></use></svg>  
+              <input type="radio" name="rating" value="5" id="gallery-star-rating" />
+              <input type="radio" name="rating" value="4" id="gallery-star-rating" />
+              <input type="radio" name="rating" value="3" id="gallery-star-rating" />
+              <input type="radio" name="rating" value="2" id="gallery-star-rating" />
+              <input type="radio" name="rating" value="1" id="gallery-star-rating" />
             </div>
+
             <button type="button" class="gallery-btn" data-id="${cardEl._id}">See recipe</button>
           </form>
         </div>
