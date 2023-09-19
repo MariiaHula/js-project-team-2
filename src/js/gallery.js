@@ -2,7 +2,10 @@ import debounce from "lodash.debounce";
 import { goitGlobalAPI } from "./axios_api";
 import { markupGalleryCard } from "./render-gallery";
 import Notiflix from "notiflix";
-
+import Pagination from 'tui-pagination';
+import '../../node_modules/tui-pagination/dist/tui-pagination.css';
+import { onAllCategoriesBtnElClick } from "./categories";
+  
 const refs = {
   galleryFormFilterEl: document.querySelector('.gallery-form-filter'),
   galleryListEl: document.querySelector('.gallery-list'),
@@ -39,6 +42,7 @@ async function onGalleryInputElInput(event) {
       refs.galleryListEl.innerHTML = '';
       return;
     }
+
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
 
    } catch (err) {
@@ -83,12 +87,13 @@ function onResetFilterElClick(event) {
   if (event.target !== event.currentTarget) {
     return;
   } else {
-    galleryFormFilterEl.reset();
+    refs.galleryFormFilterEl.reset();
     searchInputApi.title = '';
     searchInputApi.area = '';
     searchInputApi.time = '';
     searchInputApi.ingredient = '';
-    galleryListEl.innerHTML = '';   
+    galleryListEl.innerHTML = '';    
+    onAllCategoriesBtnElClick();
   }
 
 }
