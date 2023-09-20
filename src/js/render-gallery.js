@@ -1,7 +1,6 @@
 
-import iconSvg from '../images/icon.svg'
-import { goitGlobalAPI } from "./axios_api"
-
+import iconSvg from '../images/icon.svg';
+import localStorage from '../js/localStorage';
 export function markupGalleryCard(arr) {
 
   if (!Array.isArray(arr)) {
@@ -10,7 +9,7 @@ export function markupGalleryCard(arr) {
   }
   const markup = arr.map(cardEl => {
     return `
-       <li class="gallery-item" data-category="${cardEl.category}" id=" ${cardEl._id}">
+       <li class="gallery-item" data-category="${cardEl.category}" data-id=" ${cardEl._id}">
           <label class="label" >
            <input type="checkbox" name="favorite" class="checkbox-favorite" >
           <svg class='gallery-icon-checkbox  '>
@@ -51,25 +50,38 @@ export function markupGalleryCard(arr) {
     `
 
   }).join('');
-  return markup
-
+  return markup;
 
 }
 
-// export function renderGalleryCard() {
-//   const galleryListEl = new goitGlobalAPI();
-//   galleryListEl.getRecipes(6)
-//     .then(response => {
-//       galleryListEl.innerHTML = markupGalleryCard(response.results)
-//     })
-//     .catch(err => {
-//       console.log(err)
-//     })
-// }
 
 
-// const checkedHeart = document.querySelector('[name="heart"]');
-// console.log(checkedHeart);
+function onrecipeCartClick() {
+  let recipeArray = [];
+
+  if (!recipeCart.checked) {
+
+//delite
+  }
+  if (recipeCart.checked) {
+
+    const fevRes = document.querySelector('.gallery-item').getAttribute('data-id');
+     
+  }
+   console.log(33);
+}
+console.log(1);
+
+
+setTimeout(() => {
+  const recipeCart = document.querySelector('.checkbox-favorite');
+  const favoritesList = document.querySelector('.gallery-item');
+  recipeCart.addEventListener('click', onrecipeCartClick);
+
+}, 2);
+
+
+
 
 
 

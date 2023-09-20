@@ -4,7 +4,7 @@ import { markupGalleryCard } from "./render-gallery";
 import Notiflix from "notiflix";
 import Pagination from 'tui-pagination';
 import '../../node_modules/tui-pagination/dist/tui-pagination.css';
-import { onAllCategoriesBtnElClick } from "./categories";
+import { renderAllRecipes } from "./categories";
   
 const refs = {
   galleryFormFilterEl: document.querySelector('.gallery-form-filter'),
@@ -77,6 +77,7 @@ async function onGalleryDivSelectOptions(event) {
     const response = await searchInputApi.getRecipes();
     if (response.totalPages === 0) {
       Notiflix.Notify.failure('Sorry, no recipe was found with these parameters');
+      return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
     }
@@ -94,7 +95,8 @@ function onResetFilterElClick(event) {
     searchInputApi.area = '';
     searchInputApi.time = '';
     searchInputApi.ingredient = '';
-    galleryListEl.innerHTML = '';
+    refs.galleryListEl.innerHTML = '';
+    renderAllRecipes();
   }
 
 }
