@@ -1,6 +1,8 @@
 import { data, event } from "jquery";
 import { goitGlobalAPI } from "./axios_api";
-import { markupGalleryCard} from "./render-gallery";
+import { markupGalleryCard } from "./render-gallery";
+import Pagination from 'tui-pagination';
+import '../../node_modules/tui-pagination/dist/tui-pagination.css';
 
 const refs = {
     allCategoriesBtnEl: document.querySelector('.btn-all-categories'),
@@ -10,9 +12,19 @@ const refs = {
 
 }
 
+let goitGlobalApi;
+
+if (window.innerWidth < 768) {
+  goitGlobalApi = new goitGlobalAPI(6);
+} else if (window.innerWidth > 768 && window.innerWidth < 1280) {
+  goitGlobalApi = new goitGlobalAPI(8);
+} else {
+  goitGlobalApi = new goitGlobalAPI(9);
+}
+
 
 let recipes = [];
-const goitGlobalApi = new goitGlobalAPI();
+// const goitGlobalApi = new goitGlobalAPI();
 
 
 const renderCategories = async event => {
@@ -26,48 +38,69 @@ const renderCategories = async event => {
         </li>`
         }).join('');
 
-        refs.categoryEl.innerHTML = markup;
-       
-    
+        refs.categoryEl.innerHTML = markup;   
     
 };
 renderCategories();
 
-const onAllCategoriesBtnElClick = async event => {
-    goitGlobalApi.perPage = 9;
+
+const renderAllRecipes = async event => {
+    
+    const response = await goitGlobalApi.getRecipes();
+
+    refs.galleryListEl.innerHTML = markupGalleryCard(response.results);          
+    
+};
+renderAllRecipes();
+
+
+export const onAllCategoriesBtnElClick = async event => {
+
     let data = await dataArray();
     
     refs.galleryListEl.innerHTML = markupGalleryCard(data);
+    
+    // const options = {
+    //   totalItems: 288,
+    //   itemsPerPage: goitGlobalApi.perPages,
+    //   visiblePages: 3,
+    //   page: 1,
+    // }
+
+    // const pagination = new Pagination('pagination', options);
+
+    // pagination.on('afterMove', event => { console.log(event) });
 };
 
 refs.allCategoriesBtnEl.addEventListener('click', onAllCategoriesBtnElClick);
 
-const onCategoryElClick = event => {
+const onCategoryElClick = async event => {
+
+    // goitGlobalApi.page = 32;
     if (event.target.classList.contains('active')) {
         return;
     }
-    goitGlobalApi.perPage = 9;
+    let data = await dataArray();
+    // goitGlobalApi.perPage = 9;
     const value = event.target.textContent;   
-    let data = dataArray();
-    const recipesCategory = data.filter(results => results.category === value);
+
     
+    const recipesCategory = data.filter(results => results.category === value);
+    console.log(recipesCategory);
     refs.galleryListEl.innerHTML = markupGalleryCard(recipesCategory);
 };
-
+console.log(onCategoryElClick);
 refs.categoryEl.addEventListener('click', onCategoryElClick)
 
 
-const dataArray = async event => {
-    
+const dataArray = async event => {    
     let data = [];
-    if (recipes[0]) {
-        data = [];
+    if (recipes[0]) {data = [];
     } else {
         let response = await goitGlobalApi.getRecipes();
-        data = response.results;
+        data = response.results;        
     }
-    return data;
-    
+    return data;    
 };
 
 
