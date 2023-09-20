@@ -512,3 +512,7 @@ z-index: -1;
     box-shadow: 1px 1px 1px #a9aaa6;
     color: #0d0a0a;
 }
+
+.modal-order-backdrop-active {
+    z-index: 2;
+}
