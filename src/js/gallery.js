@@ -4,7 +4,7 @@ import { markupGalleryCard } from "./render-gallery";
 import Notiflix from "notiflix";
 import Pagination from 'tui-pagination';
 import '../../node_modules/tui-pagination/dist/tui-pagination.css';
-import { onAllCategoriesBtnElClick } from "./categories";
+import { renderAllRecipes } from "./categories";
   
 const refs = {
   galleryFormFilterEl: document.querySelector('.gallery-form-filter'),
@@ -15,9 +15,11 @@ const refs = {
   resetFilterEl: document.querySelector('.gallery-reset-btn'),
   gallerySelectEl: document.querySelector('.gallery-div-select'),
   galleryInputEl: document.querySelector('.search-igredient'),
+  galleryCheckboxFavorite: document.querySelector('.checkbox-favorite')
 };
 
 
+console.log(1);
 let searchInputApi;
 
 if (window.innerWidth < 768) {
@@ -27,16 +29,16 @@ if (window.innerWidth < 768) {
 } else {
   searchInputApi = new goitGlobalAPI(9);
 }
- 
+
 //================INPUT=====================================
 
 async function onGalleryInputElInput(event) {
 
- searchInputApi.page = 1;
+  searchInputApi.page = 1;
   searchInputApi.title = event.target.value.trim().toLowerCase();
   try {
     const response = await searchInputApi.getRecipes();
-  if (response.totalPages === 0) {
+    if (response.totalPages === 0) {
       Notiflix.Notify.failure('Incorrect search value, please change the name');
       event.target.reset();
       refs.galleryListEl.innerHTML = '';
@@ -45,7 +47,7 @@ async function onGalleryInputElInput(event) {
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
 
-   } catch (err) {
+  } catch (err) {
     console.log(err);
   }
 }
@@ -62,7 +64,7 @@ async function onGalleryDivSelectOptions(event) {
     searchInputApi.area = value;
 
   } else if (name === 'ingredients') {
-    
+
     const ingId = event.target.selectedOptions[0].getAttribute('data-id');
     if (ingId === null || ingId === '') {
       searchInputApi.ingredient = '';
@@ -75,6 +77,7 @@ async function onGalleryDivSelectOptions(event) {
     const response = await searchInputApi.getRecipes();
     if (response.totalPages === 0) {
       Notiflix.Notify.failure('Sorry, no recipe was found with these parameters');
+      return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
     }
@@ -92,8 +95,8 @@ function onResetFilterElClick(event) {
     searchInputApi.area = '';
     searchInputApi.time = '';
     searchInputApi.ingredient = '';
-    galleryListEl.innerHTML = '';    
-    onAllCategoriesBtnElClick();
+    refs.galleryListEl.innerHTML = '';
+    renderAllRecipes();
   }
 
 }
@@ -122,7 +125,7 @@ function markupTime() {
     return `
       <option class="options" value="${elem}">${elem} min</option>
     `;
-    })
+  })
     .join('');
 
   refs.selectTimeEl.insertAdjacentHTML('beforeend', markup);
@@ -141,15 +144,15 @@ function markupArea(arr) {
 
 }
 
-  async function renderArea() {
-    const selectArea = new goitGlobalAPI();
-    try {
-      const response = await selectArea.getAreas();
-      refs.selectAreaEl.insertAdjacentHTML('beforeend', markupArea(response));
-    } catch (err) {
-      console.log(err);
-    }
+async function renderArea() {
+  const selectArea = new goitGlobalAPI();
+  try {
+    const response = await selectArea.getAreas();
+    refs.selectAreaEl.insertAdjacentHTML('beforeend', markupArea(response));
+  } catch (err) {
+    console.log(err);
   }
+}
 renderArea();
 
 // =========================selectINGREDIENTS=======================
@@ -162,16 +165,16 @@ function markupIngredients(arr) {
   return markup
 }
 
-  async function renderIngredients() {
-    const selectIngredient = new goitGlobalAPI();
+async function renderIngredients() {
+  const selectIngredient = new goitGlobalAPI();
 
-    try {
-      const response = await selectIngredient.getIngredients();
-      refs.selectIgredientEl.insertAdjacentHTML('beforeend', markupIngredients(response));
-    } catch (err) {
-      console.log(err);
-    }
+  try {
+    const response = await selectIngredient.getIngredients();
+    refs.selectIgredientEl.insertAdjacentHTML('beforeend', markupIngredients(response));
+  } catch (err) {
+    console.log(err);
   }
+}
 renderIngredients();
 
 

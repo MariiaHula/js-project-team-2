@@ -38,20 +38,18 @@ const renderCategories = async event => {
         </li>`
         }).join('');
 
-        refs.categoryEl.innerHTML = markup;
-       
-    
+        refs.categoryEl.innerHTML = markup;   
     
 };
 renderCategories();
 
-export const onAllCategoriesBtnElClick = async event => {
 
-    let data = await dataArray();
+export const renderAllRecipes = async event => {
     
-    refs.galleryListEl.innerHTML = markupGalleryCard(data);
-    
-    // const options = {
+    const response = await goitGlobalApi.getRecipes();
+
+    refs.galleryListEl.innerHTML = markupGalleryCard(response.results);          
+        // const options = {
     //   totalItems: 288,
     //   itemsPerPage: goitGlobalApi.perPages,
     //   visiblePages: 3,
@@ -61,6 +59,17 @@ export const onAllCategoriesBtnElClick = async event => {
     // const pagination = new Pagination('pagination', options);
 
     // pagination.on('afterMove', event => { console.log(event) });
+};
+renderAllRecipes();
+
+
+export const onAllCategoriesBtnElClick = async event => {
+
+    let data = await dataArray();
+    
+    refs.galleryListEl.innerHTML = markupGalleryCard(data);
+    
+
 };
 
 refs.allCategoriesBtnEl.addEventListener('click', onAllCategoriesBtnElClick);
@@ -84,18 +93,14 @@ console.log(onCategoryElClick);
 refs.categoryEl.addEventListener('click', onCategoryElClick)
 
 
-const dataArray = async event => {
-    
+const dataArray = async event => {    
     let data = [];
-    if (recipes[0]) {
-        data = [];
+    if (recipes[0]) {data = [];
     } else {
         let response = await goitGlobalApi.getRecipes();
-        data = response.results;
-        
+        data = response.results;        
     }
-    return data;
-    
+    return data;    
 };
 
 
