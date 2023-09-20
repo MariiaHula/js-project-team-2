@@ -2,10 +2,11 @@ import debounce from "lodash.debounce";
 import { goitGlobalAPI } from "./axios_api";
 import { markupGalleryCard } from "./render-gallery";
 import Notiflix from "notiflix";
-import Pagination from 'tui-pagination';
-import '../../node_modules/tui-pagination/dist/tui-pagination.css';
 import { renderAllRecipes } from "./categories";
-  
+import Pagination from 'tui-pagination';
+import '../../node_modules/tui-pagination/dist/tui-pagination.css';  
+
+
 const refs = {
   galleryFormFilterEl: document.querySelector('.gallery-form-filter'),
   galleryListEl: document.querySelector('.gallery-list'),
@@ -19,7 +20,7 @@ const refs = {
 };
 
 
-console.log(1);
+
 let searchInputApi;
 
 if (window.innerWidth < 768) {
@@ -46,7 +47,25 @@ async function onGalleryInputElInput(event) {
     }
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+  
+    const options = {
+        totalItems: response.results.length * response.totalPages,
+        itemsPerPage: searchInputApi.perPage,
+        visiblePages: 3,
+        page: searchInputApi.page,
+    }
 
+    const pagination = new Pagination('pagination', options);
+        
+    pagination.on('afterMove', async event => {
+       searchInputApi.page = event.page;
+      try {
+        const response = await searchInputApi.getRecipes();
+        refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+      } catch (err) {
+        console.log(err);
+      }
+    });
   } catch (err) {
     console.log(err);
   }
@@ -80,6 +99,25 @@ async function onGalleryDivSelectOptions(event) {
       return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+
+    const options = {
+        totalItems: response.results.length * response.totalPages,
+        itemsPerPage: searchInputApi.perPage,
+        visiblePages: 3,
+        page: searchInputApi.page,
+    }
+
+    const pagination = new Pagination('pagination', options);
+        
+    pagination.on('afterMove', async event => {
+       searchInputApi.page = event.page;
+      try {
+        const response = await searchInputApi.getRecipes();
+        refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+      } catch (err) {
+        console.log(err);
+      }
+    });
     }
   } catch (err) {
     console.log(err);

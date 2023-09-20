@@ -66,6 +66,7 @@
 @media screen and (min-width: 768px) {
   .btn-all-categories {
     margin-bottom: 30px;
+    margin-top: 20px;
   }
 
   .btn-categories-item {
@@ -85,5 +86,9 @@
 @media screen and (min-width: 1280px) {
   .btn-all-categories {
     margin-bottom: 42px;
+    margin-top: 25px;
+  }
+  .categories-list {
+    width: 235px;
   }
 }

@@ -11,6 +11,7 @@ const formEmail = document.querySelector('#input_email');
 const formPhone = document.querySelector('#input_phone');
 const formComment = document.querySelector('.user-message');
 const orderSpinner = document.querySelector('.modal-order-loader');
+const modalOrdBtn = document.querySelector('.modal-order-btn');
 
 
 
@@ -29,7 +30,6 @@ function closeOrderModal(e) {
 
 function openOrderModal(e) {
     windowOrderModal.classList.add('modal-order-backdrop-active'); 
-formOreder.style.display = 'flex';
     closeIconOrderModal.addEventListener('click', closeOrderModal);
      windowOrderModal.addEventListener('click', closeOrderByBcg);
     window.addEventListener('keydown', closeOrderByEsc)
@@ -63,15 +63,15 @@ function sendOrderForm(e) {
   "comment": formComment.value,
     }
 
-    formOreder.style.display = 'none';
-     orderSpinner.style.display = 'block';
 
+     orderSpinner.style.display = 'block';
+    modalOrdBtn.classList.add('non-active-btn');
      setTimeout(() => {
         addOrderFn(addOrderApi, dataAPI);
 
         // Після завершення відправки, приховати спіннер
          orderSpinner.style.display = 'none';
-         
+         modalOrdBtn.classList.remove('non-active-btn');
     }, 2000);
     
     }

@@ -1,6 +1,7 @@
 .popular {
   margin: 0 auto;
 }
+
 .popular-recipes-title {
   max-width: 166px;
   color: var(--dark-text);
@@ -11,21 +12,26 @@
   font-family: Inter;
   margin-bottom: 20px;
 }
+
 .popular-recipes-list {
   margin-bottom: 40px;
 }
+
 .popular-recipes-item {
   max-width: 335px;
 }
+
 .popular-recipes-item:not(:last-child) {
   margin-bottom: 24px;
 }
+
 .popular-recipes-link {
   display: flex;
   max-width: 100%;
   max-height: 100%;
   cursor: pointer;
 }
+
 .popular-img-wrapper {
   box-sizing: content-box;
   width: 64px;
@@ -33,11 +39,13 @@
   margin-right: 16px;
   border-radius: 15%;
 }
+
 .popular-wrapper-text {
   display: flex;
   flex-direction: column;
   max-width: 256px;
 }
+
 .popular-recipes-head {
   display: block;
   display: -webkit-box;
@@ -69,6 +77,8 @@
 .js-popular-big-wrapper {
   position: relative;
   max-width: 335px;
+  height: 168px;
+  overflow-y: hidden;
 }
 .popular-wrapper-skeleton {
   position: absolute;
@@ -79,7 +89,7 @@
   justify-content: center;
   align-items: center;
   max-width: 256px;
-  max-height: 42px;
+  max-height: 30px;
   height: 100%;
   width: 100%;
 }
@@ -89,18 +99,18 @@
   padding: 0 15px;
 }
 .skeleton {
-  padding: 15px;
+  padding: 10px;
   max-width: 300px;
   width: 100%;
   background: #fff;
-  margin-bottom: 20px;
+
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .skeleton .square {
-  height: 80px;
+  height: 60px;
   border-radius: 5px;
   background: rgba(130, 130, 130, 0.2);
   background: -webkit-gradient(
@@ -194,11 +204,7 @@
 .m10 {
   margin-bottom: 10px !important;
 }
-.circle {
-  border-radius: 50% !important;
-  height: 80px !important;
-  width: 80px;
-}
+
 @keyframes wave-lines {
   0% {
     background-position: -468px 0;
@@ -220,43 +226,55 @@
   .popular-recipes-title {
     margin-bottom: 32px;
   }
+
   .popular-recipes-item:not(:last-child) {
     margin-bottom: 16px;
   }
+
   .popular-img-wrapper {
     width: 48px;
     height: 48px;
     margin-right: 8px;
   }
+  .js-popular-big-wrapper {
+    overflow-y: visible;
+  }
   .popular-wrapper-text {
     max-width: 176px;
     max-height: 67px;
   }
+
   .popular-recipes-head {
     max-width: 120px;
   }
+
   .popular-recipes-text {
     max-width: 120px;
     font-size: 10px;
     -webkit-line-clamp: 3;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .popular-recipes-item:not(:last-child) {
     margin-bottom: 32px;
   }
+
   .popular-img-wrapper {
     width: 64px;
     height: 64px;
     margin-right: 16px;
   }
+
   .popular-wrapper-text {
     max-width: 240px;
     max-height: 67px;
   }
+
   .popular-recipes-head {
     max-width: 155px;
   }
+
   .popular-recipes-text {
     max-width: 155px;
     font-size: 10px;
