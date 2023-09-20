@@ -5,6 +5,10 @@
 /* ================================================mobile */
 /* ======================================================filter */
 
+
+
+
+
 .gallery-form-filter {
   flex-direction: row;
   flex-wrap: wrap;
@@ -12,9 +16,6 @@
   display: flex;
 }
 
-.gallery-item {
-  background-image: linear-gradient(1deg, rgba(5, 5, 5, 0.60) 4.82%, rgba(5, 5, 5, 0.00) 108.72%);
-}
 
 
 
@@ -119,19 +120,14 @@
 
 
 .galerry-checkbox-icon {
-
   display: inline-block;
   z-index: 1;
-
-
-
   width: 20px;
   height: 20px;
   border: 2px solid tomato;
 }
 
 .gallery-average-rating {
-
   column-gap: 4px;
   display: flex;
   align-items: center;
@@ -140,12 +136,9 @@
 
 .gallery-star-ckeckbox:checked+.galerry-checkbox-icon {
 
-
   background-color: tomato;
 
-
 }
-
 
 
 
@@ -176,20 +169,10 @@
 .checkbox-favorite:checked+.gallery-icon-checkbox {
 
 
-  /* background-color: tomato; */
+  background-color: tomato;
   background-size: contain;
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -259,6 +242,11 @@
   line-height: 1.33;
   margin-bottom: 16px;
   font-size: 12px;
+  height: 34px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .gallery-form-rating {
