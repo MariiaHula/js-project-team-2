@@ -174,7 +174,7 @@
 
 .gallery-image {
   position: relative;
-  width: 335px;
+  width: 305px;
   height: 335px;
   border-radius: 8px;
   margin-bottom: 24px;
@@ -264,9 +264,13 @@
 /* ================================================================================tablet */
 
 @media screen and (min-width: 768px) {
+  .gallery-sections {
+    flex-direction: row !important;
+  }
+
   .container-gallery {
-    margin: 0 auto;
-    padding-left: 30px;
+    padding-left: 32px;
+
   }
   .wrap-input-search {
     gap: 16px;
@@ -297,7 +301,7 @@
 
   .gallery-form-filter {
     display: flex;
-    width: 420px;
+    width: 496px;
   }
 
   .gallery-image {
@@ -344,6 +348,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .container-gallery {
+    padding-left: 50px;
+  }
   .gallery-image {
     width: 250px;
     height: 287px;
