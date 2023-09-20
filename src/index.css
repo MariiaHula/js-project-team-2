@@ -10,14 +10,15 @@
 @import './css/layout/modal-rating.css';
 @import './css/layout/modal-order.css';
 @import './css/layout/button-home.css';
+@import './css/layout/tui.css';
 
 .gallery-sections {
-    display: flex;
+  display: flex;
 }
 
 @media screen and (max-width: 768px) {
-    .gallery-sections {
-        display: flex;
-        flex-direction: column;
-    }
+  .gallery-sections {
+    display: flex;
+    flex-direction: column;
+  }
 }
