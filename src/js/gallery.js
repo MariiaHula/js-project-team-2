@@ -19,7 +19,7 @@ const refs = {
 };
 
 
-console.log(1);
+
 let searchInputApi;
 
 if (window.innerWidth < 768) {

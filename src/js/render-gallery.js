@@ -1,7 +1,4 @@
-
-import { event, nodeName } from 'jquery';
 import iconSvg from '../images/icon.svg';
-import localStorage from '../js/localStorage';
 export function markupGalleryCard(arr) {
 
   if (!Array.isArray(arr)) {
