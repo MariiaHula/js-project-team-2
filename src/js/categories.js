@@ -38,12 +38,21 @@ const renderCategories = async event => {
         </li>`
         }).join('');
 
-        refs.categoryEl.innerHTML = markup;
-       
-    
+        refs.categoryEl.innerHTML = markup;   
     
 };
 renderCategories();
+
+
+const renderAllRecipes = async event => {
+    
+    const response = await goitGlobalApi.getRecipes();
+
+    refs.galleryListEl.innerHTML = markupGalleryCard(response.results);          
+    
+};
+renderAllRecipes();
+
 
 export const onAllCategoriesBtnElClick = async event => {
 
@@ -84,18 +93,14 @@ console.log(onCategoryElClick);
 refs.categoryEl.addEventListener('click', onCategoryElClick)
 
 
-const dataArray = async event => {
-    
+const dataArray = async event => {    
     let data = [];
-    if (recipes[0]) {
-        data = [];
+    if (recipes[0]) {data = [];
     } else {
         let response = await goitGlobalApi.getRecipes();
-        data = response.results;
-        
+        data = response.results;        
     }
-    return data;
-    
+    return data;    
 };
 
 
