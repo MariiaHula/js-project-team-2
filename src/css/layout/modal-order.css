@@ -206,6 +206,8 @@
 }
 
 
+
+
 .modal-order-input:focus,
 .modal-order-input:hover {
     outline: #9BB537 1px solid;
@@ -357,7 +359,8 @@ width: 440px;
     align-items: center;
     padding: 1em;
 bottom: -43px;
-right: -40px
+right: -40px;
+z-index: -1;
     
 }
 
@@ -498,4 +501,11 @@ right: -40px
         opacity: 1;
         height: 100%;
     }
+}
+
+.non-active-btn {
+    background-color: #989a96;
+    background-image: none;
+    box-shadow: 1px 1px 1px #a9aaa6;
+    color: #0d0a0a;
 }
