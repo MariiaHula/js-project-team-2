@@ -7,6 +7,10 @@ import './js/modal-order';
 import './js/modal-rating';
 import './js/modal-recipes';
 import './js/popular-recipes';
+import { markupGalleryCard } from './js/render-gallery';
+const refsFav = {
+    cardList: document.querySelector('.favorites-list'),
+};
 
 
 const clickHeart = document.querySelector('.gallery-list');
@@ -49,3 +53,4 @@ clickHeart.addEventListener('click', ev => {
   }
 });
 
+console.log(123)
