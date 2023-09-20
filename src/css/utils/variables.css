@@ -13,4 +13,9 @@
   --recipes-text: rgba(5, 5, 5, 0.8);
   --bordes-radius-slick: rgba(155, 181, 55, 0.3);
   --modal-rating-theme-light: #47906a;
+  --background-color-recipes: rgba(46, 47, 66, 0.4);
+  --modal-measure-recipes: rgba(5, 5, 5, 0.5);
+  --modal-name-ingradient: rgba(5, 5, 5, 0.1);
+  --modal-hashtag-item: rgba(5, 5, 5, 0.2);
+  --modal-recipe-instruction: rgba(5, 5, 5, 0.8);
 }

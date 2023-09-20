@@ -46,7 +46,7 @@ const renderCategories = async event => {
 renderCategories();
 
 export const onAllCategoriesBtnElClick = async event => {
-    
+
     let data = await dataArray();
     
     refs.galleryListEl.innerHTML = markupGalleryCard(data);
@@ -66,6 +66,7 @@ export const onAllCategoriesBtnElClick = async event => {
 refs.allCategoriesBtnEl.addEventListener('click', onAllCategoriesBtnElClick);
 
 const onCategoryElClick = async event => {
+
     // goitGlobalApi.page = 32;
     if (event.target.classList.contains('active')) {
         return;
@@ -73,6 +74,7 @@ const onCategoryElClick = async event => {
     let data = await dataArray();
     // goitGlobalApi.perPage = 9;
     const value = event.target.textContent;   
+
     
     const recipesCategory = data.filter(results => results.category === value);
     console.log(recipesCategory);
