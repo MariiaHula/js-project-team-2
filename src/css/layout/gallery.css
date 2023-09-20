@@ -46,11 +46,12 @@
 
 
 /* ================================================mobile */
-/* ========================================================filter */
 
-
-
-
+/* ======================================================filter */
+.container-gallery {
+  margin: 0 auto;
+  padding-left: 30px;
+}
 
 .gallery-form-filter {
   flex-direction: row;
@@ -62,17 +63,18 @@
   display: flex;
 }
 
-
 .form-text-col {
   color: var(--gal-form-col);
   border-color: var(--gal-form-border-col);
 }
 
-
-
-
-
-
+.gallery-item {
+  background-image: linear-gradient(
+    1deg,
+    rgba(5, 5, 5, 0.6) 4.82%,
+    rgba(5, 5, 5, 0) 108.72%
+  );
+}
 
 .wrap-time-area {
   display: flex;
@@ -95,8 +97,6 @@
   height: 46px;
 }
 
-
-
 .search-igredient {
   width: 335px;
   padding-left: 42px;
@@ -110,9 +110,6 @@
   outline: 1px;
 
 }
-
-
-
 
 .gallery-form-label {
   position: relative;
@@ -146,8 +143,6 @@
   margin-right: 0px;
 }
 
-
-
 .gallery-form-svg {
   position: absolute;
   top: 53%;
@@ -156,17 +151,11 @@
   width: 18px;
   height: 18px;
   fill: var(--input-color-theme-light);
-
 }
 
 .gallery-form-reset-svg {
   margin-right: 4px;
 }
-
-
-
-
-
 
 /*========================================================================================== stars */
 .gallery-star-ckeckbox {
@@ -175,7 +164,6 @@
   appearance: none;
   position: absolute;
 }
-
 
 .galerry-checkbox-icon {
   display: inline-block;
@@ -189,13 +177,10 @@
   column-gap: 4px;
   display: flex;
   align-items: center;
-
 }
 
-.gallery-star-ckeckbox:checked+.galerry-checkbox-icon {
-
+.gallery-star-ckeckbox:checked + .galerry-checkbox-icon {
   background-color: tomato;
-
 }
 
 .checkbox-favorite {
@@ -203,7 +188,6 @@
   -moz-appearance: none;
   appearance: none;
   position: absolute;
-
 }
 
 .gallery-icon-checkbox {
@@ -223,7 +207,7 @@
   cursor: pointer;
 }
 
-.checkbox-favorite:checked+.gallery-icon-checkbox {
+.checkbox-favorite:checked + .gallery-icon-checkbox {
   stroke: #fff;
   fill: #fff;
 }
@@ -243,10 +227,9 @@
 
 /* =========================================================================begin=======CARDS */
 
-
 .gallery-image {
   position: relative;
-  width: 335px;
+  width: 305px;
   height: 335px;
   border-radius: 8px;
   margin-bottom: 24px;
@@ -258,7 +241,6 @@
 
 .gallery-wrap-descr-reciept-card {
   position: absolute;
-
 
   bottom: 16px;
   left: 16px;
@@ -312,7 +294,6 @@
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
-
 }
 
 .gallery-average-rating {
@@ -337,11 +318,16 @@
 
 /* ================================================================================tablet */
 
-
 @media screen and (min-width: 768px) {
+  .gallery-sections {
+    flex-direction: row !important;
+  }
 
+  .container-gallery {
+    padding-left: 32px;
+
+  }
   .wrap-input-search {
-
     gap: 16px;
   }
 
@@ -353,7 +339,6 @@
   .select-time {
     width: 125px;
   }
-
 
   .form-el-border {
     height: 48px;
@@ -371,7 +356,7 @@
 
   .gallery-form-filter {
     display: flex;
-    width: 420px;
+    width: 496px;
   }
 
   .gallery-image {
@@ -399,7 +384,6 @@
   }
 
   .gallery-list {
-
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
@@ -418,16 +402,13 @@
   }
 }
 
-
-
-
 @media screen and (min-width: 1280px) {
-
-
+  .container-gallery {
+    padding-left: 50px;
+  }
   .gallery-image {
     width: 250px;
     height: 287px;
-
   }
 
   .gallery-card-heart-svg {
@@ -436,7 +417,6 @@
 
   .wrap-input-search {
     flex-wrap: nowrap;
-
   }
 
   .gallery-form-filter {
@@ -462,7 +442,6 @@
   }
 
   .gallery-list {
-
     margin-left: auto;
   }
 

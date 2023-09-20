@@ -44,12 +44,21 @@ const renderCategories = async event => {
 renderCategories();
 
 
-const renderAllRecipes = async event => {
+export const renderAllRecipes = async event => {
     
     const response = await goitGlobalApi.getRecipes();
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);          
-    
+        // const options = {
+    //   totalItems: 288,
+    //   itemsPerPage: goitGlobalApi.perPages,
+    //   visiblePages: 3,
+    //   page: 1,
+    // }
+
+    // const pagination = new Pagination('pagination', options);
+
+    // pagination.on('afterMove', event => { console.log(event) });
 };
 renderAllRecipes();
 
@@ -60,16 +69,7 @@ export const onAllCategoriesBtnElClick = async event => {
     
     refs.galleryListEl.innerHTML = markupGalleryCard(data);
     
-    // const options = {
-    //   totalItems: 288,
-    //   itemsPerPage: goitGlobalApi.perPages,
-    //   visiblePages: 3,
-    //   page: 1,
-    // }
 
-    // const pagination = new Pagination('pagination', options);
-
-    // pagination.on('afterMove', event => { console.log(event) });
 };
 
 refs.allCategoriesBtnEl.addEventListener('click', onAllCategoriesBtnElClick);

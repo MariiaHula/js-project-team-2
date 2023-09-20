@@ -1,4 +1,9 @@
 .btn-all-categories {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 176px;
+  height: 50px;
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
@@ -6,7 +11,7 @@
   line-height: normal;
   margin-bottom: 24px;
   cursor: pointer;
-  padding: 14px 29px;
+  padding: 14px 28px;
   border-radius: 15px;
   border: 1px solid rgba(5, 5, 5, 0.5);
   background-color: transparent;
@@ -61,6 +66,7 @@
 @media screen and (min-width: 768px) {
   .btn-all-categories {
     margin-bottom: 30px;
+    margin-top: 20px;
   }
 
   .btn-categories-item {
@@ -80,5 +86,9 @@
 @media screen and (min-width: 1280px) {
   .btn-all-categories {
     margin-bottom: 42px;
+    margin-top: 25px;
+  }
+  .categories-list {
+    width: 235px;
   }
 }
