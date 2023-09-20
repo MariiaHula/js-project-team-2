@@ -159,7 +159,7 @@ body .modal {
 .modal-ingradient-list {
   max-height: 224px;
   overflow-y: auto;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 .modal-ingradient-list > :last-child {
   margin-bottom: 0px;
@@ -244,6 +244,7 @@ body .modal {
   overflow-y: auto;
 
   margin-bottom: 40px;
+  margin-top: 0px !important;
 }
 
 /* Планшет */
@@ -409,16 +410,17 @@ position: absolute;
 
 .recipe-star-modal {
   display: flex;
+  align-items: center;
 }
 
 .modal-recipe-rating {
-  margin-right: 8px;
+  margin-right: 6px;
   color: var(--modal-measure-recipes);
 }
 
 .modal-recipe-time {
   color: var(--modal-measure-recipes);
-  margin-left: 16px;
+  padding-left: 16px;
 }
 
 /* LODER */
@@ -552,4 +554,34 @@ position: absolute;
   min-height: 4rem;
   border-radius: 4px;
   animation-delay: 0.06s;
+}
+
+
+@media screen and (min-width: 768px) {
+
+.recipe-star-modal {
+      
+      position: absolute;
+        top: 353px;
+        left: 295px;
+        align-content: center;
+        align-items: center;
+}
+  
+.modal-hashtag-list {
+  justify-content: flex-start;
+    position: relative;
+    padding-top: 8px;
+    gap: 3px;
+    margin-bottom: 32px;
+}
+
+.modal-recipe-time {
+  padding-left: 5px;
+}
+
+.card-star-modal {
+  margin-bottom: 0px;
+}
+
 }
