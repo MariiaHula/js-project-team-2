@@ -32,6 +32,7 @@
     transition: opacity 250ms ease-in-out;
     transition-delay: 100ms;
     border-radius: 15px;
+    box-shadow: 0 7px 15px var(--accent-color);
 }
 
 .modal-order-wrap .modal-order-wrap-active {
@@ -74,6 +75,7 @@
     /* 122.222% */
     text-transform: uppercase;
     margin-bottom: 28px;
+    text-shadow: 6px 3px 5px var(--accent-color);
     
 }
 
@@ -332,11 +334,168 @@
 
 }
 
-@media screen and (min-width: 1280px) {
-
-.modal-order-wrap {
-    width: ;
+.anima-wrap {
+    position: relative;
 }
 
+.card-modal-order {
+    position: absolute;
+width: 440px;
+    height: 632px;
+    color: #fff;
+    background: transparent;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 49, 49, 0.5);
+    border-right: 1px solid rgba(0, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(57, 255, 20, 0.5);
+    border-left: 1px solid rgba(255, 255, 113, 0.5);
+    border-radius: 2%;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+bottom: -43px;
+right: -40px
+    
+}
 
+.p-modal-order {
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.span-modal-order {
+    
+    border-radius: 100vmax;
+}
+
+.top-modal-order {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background: linear-gradient(90deg,
+            transparent 50%,
+            rgba(255, 49, 49, 0.5),
+            rgb(255, 49, 49));
+}
+
+.bottom-modal-order {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    background: linear-gradient(90deg,
+            rgb(57, 255, 20),
+            rgba(57, 255, 20, 0.5),
+            transparent 50%);
+}
+
+.right-modal-order {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 0;
+    background: linear-gradient(180deg,
+            transparent 30%,
+            rgba(0, 255, 255, 0.5),
+            rgb(0, 255, 255));
+}
+
+.left-modal-order {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    height: 0;
+    background: linear-gradient(180deg,
+            rgb(255, 255, 113),
+            rgba(255, 255, 113, 0.5),
+            transparent 70%);
+}
+
+.top-modal-order {
+    animation: animateTop 3s ease-in-out infinite;
+}
+
+.bottom-modal-order {
+    animation: animateBottom 3s ease-in-out infinite;
+}
+
+.right-modal-order {
+    animation: animateRight 3s ease-in-out infinite;
+}
+
+.left-modal-order {
+    animation: animateLeft 3s ease-in-out infinite;
+}
+
+@keyframes animateTop {
+    25% {
+        width: 100%;
+        opacity: 1;
+    }
+
+    30%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes animateBottom {
+
+    0%,
+    50% {
+        opacity: 0;
+        width: 0;
+    }
+
+    75% {
+        opacity: 1;
+        width: 100%;
+    }
+
+    76%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes animateRight {
+
+    0%,
+    25% {
+        opacity: 0;
+        height: 0;
+    }
+
+    50% {
+        opacity: 1;
+        height: 100%;
+    }
+
+    55%,
+    100% {
+        height: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes animateLeft {
+
+    0%,
+    75% {
+        opacity: 0;
+        bottom: 0;
+        height: 0;
+    }
+
+    100% {
+        opacity: 1;
+        height: 100%;
+    }
 }
