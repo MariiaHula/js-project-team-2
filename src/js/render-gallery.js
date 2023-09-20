@@ -11,16 +11,12 @@ export function markupGalleryCard(arr) {
   const markup = arr.map(cardEl => {
     return `
        <li class="gallery-item" data-category="${cardEl.category}" id=" ${cardEl._id}">
-          <label class="label" > <input type="checkbox" name="favorite" class="checkbox-favorite" >
-        
+          <label class="label" >
+           <input type="checkbox" name="favorite" class="checkbox-favorite" >
           <svg class='gallery-icon-checkbox  '>
             <use href="${iconSvg}#icon-heart" class="icon-svg-heart"> </use>
-
           </svg>
-
         </label>
-
-
           <img
               class="gallery-image"
               style="
