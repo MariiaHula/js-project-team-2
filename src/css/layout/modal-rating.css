@@ -153,7 +153,7 @@ cursor: pointer;
     transition: opacity 250ms ease-in-out;
     transition-delay: 100ms;
     border-radius: 15px;
-    box-shadow: 0 7px 15px var(--accent-color);
+    box-shadow: 0 7px 15px #47906a;
 }
 
 .modal-rating-wrap .active {
