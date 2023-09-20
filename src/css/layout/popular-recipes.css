@@ -69,6 +69,8 @@
 .js-popular-big-wrapper {
   position: relative;
   max-width: 335px;
+  max-height: 168px;
+  overflow-y: hidden;
 }
 .popular-wrapper-skeleton {
   position: absolute;
@@ -227,6 +229,9 @@
     width: 48px;
     height: 48px;
     margin-right: 8px;
+  }
+  .js-popular-big-wrapper {
+    overflow-y: visible;
   }
   .popular-wrapper-text {
     max-width: 176px;
