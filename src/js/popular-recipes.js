@@ -1,64 +1,64 @@
 
 import { goitGlobalAPI } from "./axios_api"
 
-function skeletonMarkup() {
-    const markup = `<div class="popular-wrapper-skeleton">
-        <div class="box">
+// function skeletonMarkup() {
+//     const markup = `<div class="popular-wrapper-skeleton">
+//         <div class="box">
 
-          <div class="skeleton">
-            <div class="skeleton-left flex1">
-              <div class="square"></div>
-            </div>
-            <div class="skeleton-right flex2">
-              <div class="line h17 w40 m10"></div>
-              <div class="line"></div>
-              <div class="line h8 w50"></div>
-              <div class="line w75"></div>
-            </div>
-          </div>
-        </div>
-                <div class="box">
+//           <div class="skeleton">
+//             <div class="skeleton-left flex1">
+//               <div class="square"></div>
+//             </div>
+//             <div class="skeleton-right flex2">
+//               <div class="line h17 w40 m10"></div>
+//               <div class="line"></div>
+//               <div class="line h8 w50"></div>
+//               <div class="line w75"></div>
+//             </div>
+//           </div>
+//         </div>
+//                 <div class="box">
 
-          <div class="skeleton">
-            <div class="skeleton-left flex1">
-              <div class="square"></div>
-            </div>
-            <div class="skeleton-right flex2">
-              <div class="line h17 w40 m10"></div>
-              <div class="line"></div>
-              <div class="line h8 w50"></div>
-              <div class="line w75"></div>
-            </div>
-          </div>
-        </div>             
-      </div>`;
+//           <div class="skeleton">
+//             <div class="skeleton-left flex1">
+//               <div class="square"></div>
+//             </div>
+//             <div class="skeleton-right flex2">
+//               <div class="line h17 w40 m10"></div>
+//               <div class="line"></div>
+//               <div class="line h8 w50"></div>
+//               <div class="line w75"></div>
+//             </div>
+//           </div>
+//         </div>             
+//       </div>`;
     
-    return markup;   
-}
+//     return markup;   
+// }
 
 
-function skeletonRender() {
+// function skeletonRender() {
 
-    let skeleton = ''; 
+//     let skeleton = ''; 
  
-    if (window.innerWidth > 768) {
+//     if (window.innerWidth > 768) {
             
-        for (i = 0; i < 2; i++) {
+//         for (i = 0; i < 2; i++) {
                 
-                skeleton += skeletonMarkup();  
-        }
+//                 skeleton += skeletonMarkup();  
+//         }
         
-        } else {           
-                skeleton += skeletonMarkup();     
-    }  
-    return skeleton;
-}
+//         } else {           
+//                 skeleton += skeletonMarkup();     
+//     }  
+//     return skeleton;
+// }
 
-const skeletonContainer = document.querySelector('.js-popular-big-wrapper');
-skeletonContainer.insertAdjacentHTML('beforeend', skeletonRender());
+// const skeletonContainer = document.querySelector('.js-popular-big-wrapper');
+// skeletonContainer.insertAdjacentHTML('beforeend', skeletonRender());
 
-const divSkeletonIsHidden = document.querySelectorAll('.popular-wrapper-skeleton');
-console.log(divSkeletonIsHidden);
+// const divSkeletonIsHidden = document.querySelectorAll('.popular-wrapper-skeleton');
+// console.log(divSkeletonIsHidden);
 
 function markupPopularRecipes(recipesArr) {
     const markup = recipesArr.map(recipe => {
