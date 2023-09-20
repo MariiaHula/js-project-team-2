@@ -44,7 +44,7 @@ const renderCategories = async event => {
 renderCategories();
 
 
-const renderAllRecipes = async event => {
+export const renderAllRecipes = async event => {
     
     const response = await goitGlobalApi.getRecipes();
 
