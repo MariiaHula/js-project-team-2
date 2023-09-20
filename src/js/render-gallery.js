@@ -1,6 +1,4 @@
-
 import iconSvg from '../images/icon.svg';
-import localStorage from '../js/localStorage';
 export function markupGalleryCard(arr) {
 
   if (!Array.isArray(arr)) {
@@ -9,9 +7,9 @@ export function markupGalleryCard(arr) {
   }
   const markup = arr.map(cardEl => {
     return `
-       <li class="gallery-item" data-category="${cardEl.category}" data-id=" ${cardEl._id}">
+       <li class="gallery-item" data-category="${cardEl.category}" >
           <label class="label" >
-           <input type="checkbox" name="favorite" class="checkbox-favorite" >
+           <input type="checkbox" name="favorite" class="checkbox-favorite" data-id-name="${cardEl._id}">
           <svg class='gallery-icon-checkbox  '>
             <use href="${iconSvg}#icon-heart" class="icon-svg-heart"> </use>
           </svg>
@@ -52,52 +50,10 @@ export function markupGalleryCard(arr) {
           </form>
         </div>
       </li>
-    `
+    `;
 
   }).join('');
   
   return markup;
 
 }
-
-
-
-function onrecipeCartClick() {
-  let recipeArray = [];
-
-  if (!recipeCart.checked) {
-
-//delite
-  }
-  if (recipeCart.checked) {
-
-    const fevRes = document.querySelector('.gallery-item').getAttribute('data-id');
-     
-  }
-   console.log(33);
-}
-console.log(1);
-
-
-setTimeout(() => {
-  const recipeCart = document.querySelector('.checkbox-favorite');
-  const favoritesList = document.querySelector('.gallery-item');
-  recipeCart.addEventListener('click', onrecipeCartClick);
-
-}, 2);
-
-
-
-
-
-
-{/* <div class="gallery-card-stars-rating">
-  <label class="gallery-average-rating">${cardEl.rating}
-    <input type="radio" name="rating" value="5" class="gallery-star-ckeckbox" />
-    <span class='galerry-checkbox-icon' ></span>
-    <input type="radio" name="rating" value="4" class="gallery-star-ckeckbox" />
-    <input type="radio" name="rating" value="3" class="gallery-star-ckeckbox" />
-    <input type="radio" name="rating" value="2" class="gallery-star-ckeckbox" />
-    <input type="radio" name="rating" value="1" class="gallery-star-ckeckbox" />
-  </label>
-</div> */}
