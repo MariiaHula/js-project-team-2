@@ -202,11 +202,18 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
+<<<<<<< Updated upstream
   gap: 14px;
 }
 
 .select-time,
 .select-area {
+=======
+  gap: 16px;
+}
+
+.select-time, .select-area {
+>>>>>>> Stashed changes
   width: 160px;
 }
 
@@ -305,7 +312,11 @@
 @media screen and (min-width: 768px) {
 
   .wrap-input-search {
+<<<<<<< Updated upstream
     gap: 16px;
+=======
+
+>>>>>>> Stashed changes
   }
 
   .search-igredient {
@@ -314,8 +325,11 @@
   }
 
   .select-time {
+<<<<<<< Updated upstream
     width: 125px;
   }
+=======
+>>>>>>> Stashed changes
 
   .form-el-border {
     height: 48px;
@@ -329,6 +343,11 @@
     justify-content: flex-end;
 
     /* width: 420px; */
+  }
+
+  .gallery-form-filter {
+    display: flex;
+    width: 420px;
   }
 
   .gallery-image {
