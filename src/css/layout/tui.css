@@ -9,6 +9,7 @@
 }
 .tui-pagination .tui-page-btn:hover {
   background-color: var(--body-color) !important;
+  cursor: pointer !important;
 }
 
 .tui-pagination .tui-is-selected,
