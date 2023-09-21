@@ -15,11 +15,19 @@ const refs = {
 // API
 const modalRecipesApi = new goitGlobalAPI();
 
-
-refs.gallery_btn.addEventListener("click", openModalGaleryRecipesPre);
+try {
 refs.popular_recipes.addEventListener("click", openModalPopularRecipes);
+}catch (error) {
 
-function openModalGaleryRecipesPre(e) {
+};
+
+try {
+refs.gallery_btn.addEventListener("click", openModalGaleryRecipesPre);
+}catch (error) {
+
+};
+
+export function openModalGaleryRecipesPre(e) {
   if (!e.target.closest('.gallery-btn')) {
     return;
   };
@@ -33,7 +41,6 @@ function openModalGaleryRecipes(e) {
   const clickedRecipe = e.target.closest('.gallery-item');
   if (!clickedRecipe) return;
   const recipeId = clickedRecipe.id;
-  console.log(clickedRecipe);
   openModalRecipes();
   catchRecipes(recipeId);
   setTimeout(() => {
