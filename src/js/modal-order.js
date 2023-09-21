@@ -16,8 +16,8 @@ const modalOrdBtn = document.querySelector('.modal-order-btn');
 
 
 
-openOrderBtn.addEventListener('click', openOrderModal);
 openOrderBusket.addEventListener('click', openOrderModal);
+openOrderBtn.addEventListener('click', openOrderModal);
 
 
 function closeOrderModal(e) {
