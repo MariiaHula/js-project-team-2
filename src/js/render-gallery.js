@@ -5,20 +5,14 @@ export function markupGalleryCard(arr) {
   if (!Array.isArray(arr)) {
     return '';
   }
-
-
   const markup = arr.map(cardEl => {
-
     let ratingStars = '';
-    for (let i = 1; i <= Math.ceil(cardEl.rating); i++) {
-
-
+    for (let i = 1; i <= Math.round(cardEl.rating * 2) / 2; i++) {
       ratingStars += `
         <svg  class="svg-star-gallery" >
         <use href="${iconSvg}#icon-star" ></use>
         </svg>`
     }
-
     return `
       <li class="gallery-item" data-category="${cardEl.category}" id="${cardEl._id}">
         <label class="label" >
@@ -43,9 +37,7 @@ export function markupGalleryCard(arr) {
           <h2 class="gallery-card-title">${cardEl.title}</h2>
           <h3 class="gallery-card-subtitle">${cardEl.description}</h3>
           <form class="gallery-form-rating">
-
            <label class="gallery-average-rating">${cardEl.rating}</label>
-
             <div class="rate">
               ${ratingStars}
             </div>
