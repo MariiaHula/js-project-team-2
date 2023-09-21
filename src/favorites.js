@@ -3,6 +3,7 @@ import './js/header';
 import localStorage from './js/localStorage';
 import { goitGlobalAPI } from './js/axios_api';
 import { markupGalleryCard, checkFavorites } from './js/render-gallery';
+import { openModalGaleryRecipesPre } from './js/modal-recipes';
 import Pagination from 'tui-pagination';
 import '../node_modules/tui-pagination/dist/tui-pagination.css';  
 
@@ -106,6 +107,7 @@ const favoritesWrapper = document.querySelector('.js-favorites-wrapper');
 const blokedWrapper = document.querySelector('.js-bloked');
 
 let favoritesGalleryAPI = new goitGlobalAPI(288);
+let gallery_btn;
 
 async function renderFavoritesCard() {
     
@@ -184,6 +186,9 @@ async function renderFavoritesCard() {
   } catch (err) {
     console.log(err);
   }
+
+  gallery_btn = document.querySelector(".favorites-list");
+  gallery_btn.addEventListener("click", openModalGaleryRecipesPre);
 }
 renderFavoritesCard();
 

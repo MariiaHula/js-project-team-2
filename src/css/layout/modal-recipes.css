@@ -17,6 +17,7 @@ body .modal {
 }
 
 .recipes-modal-container.active {
+  z-index: 50;
   opacity: 1;
   visibility: visible;
 }
