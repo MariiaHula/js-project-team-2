@@ -50,11 +50,9 @@ async function onGalleryInputElInput(event) {
     }
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-<<<<<<< Updated upstream
-  checkFavorites()
-=======
 
->>>>>>> Stashed changes
+  checkFavorites()
+
     const options = {
       totalItems: response.results.length * response.totalPages,
       itemsPerPage: searchInputApi.perPage,
@@ -114,7 +112,7 @@ async function onGalleryDivSelectOptions(event) {
         itemsPerPage: searchInputApi.perPage,
         visiblePages: 3,
         page: searchInputApi.page,
-<<<<<<< Updated upstream
+
     }
 
     const pagination = new Pagination('pagination', options);
@@ -127,20 +125,18 @@ async function onGalleryDivSelectOptions(event) {
         checkFavorites()
       } catch (err) {
         console.log(err);
-=======
->>>>>>> Stashed changes
       }
 
-      const pagination = new Pagination('pagination', options);
+//       const pagination = new Pagination('pagination', options);
 
-      pagination.on('afterMove', async event => {
-        searchInputApi.page = event.page;
-        try {
-          const response = await searchInputApi.getRecipes();
-          refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-        } catch (err) {
-          console.log(err);
-        }
+//       pagination.on('afterMove', async event => {
+//         searchInputApi.page = event.page;
+//         try {
+//           const response = await searchInputApi.getRecipes();
+//           refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+//         } catch (err) {
+//           console.log(err);
+//         }
       });
     }
   } catch (err) {

@@ -59,8 +59,6 @@ export function markupGalleryCard(arr) {
 
   return markup;
 
-
-
 }
 
 export function checkFavorites() {
@@ -73,7 +71,6 @@ export function checkFavorites() {
 
     if (localStorageArr !== undefined) {
 
-<<<<<<< Updated upstream
          if (localStorageArr.includes(String(heart.dataset['id']))) {
             heart.checked = true;
           } 
@@ -92,50 +89,5 @@ export function checkFavorites() {
         localStorage.remove('favorites-recipes', String(event.target.dataset['id']));
       }
     });
-=======
-
-function onrecipeCartClick() {
-  let recipeArray = [];
-
-  if (!recipeCart.checked) {
-
-    //delite
->>>>>>> Stashed changes
-  }
-
-<<<<<<< Updated upstream
-=======
-    const fevRes = document.querySelector('.gallery-item').getAttribute('data-id');
-
-  }
-  console.log(33);
->>>>>>> Stashed changes
-}
-
-<<<<<<< Updated upstream
-=======
-
-setTimeout(() => {
-  const recipeCart = document.querySelector('.checkbox-favorite');
-  const favoritesList = document.querySelector('.gallery-item');
-  recipeCart.addEventListener('click', onrecipeCartClick);
-
-}, 2);
 
 
-
-
-
-  //               <input type="radio" id="star5" name="rate" value="5" />
-  //               <label for="star5" title="text">5 stars </label>
-  //               <input type="radio" id="star4" name="rate" value="4" />
-  //               <label for="star4" title="text">4 stars</label>
-  //               <input type="radio" id="star3" name="rate" value="3" />
-  //               <label for="star3" title="text">3 stars</label>
-  //               <input type="radio" id="star2" name="rate" value="2" />
-  //               <label for="star2" title="text">2 stars</label>
-  //               <input type="radio" id="star1" name="rate" value="1" />
-  //               <label for="star1" title="text">1 star</label>
-
-
->>>>>>> Stashed changes
