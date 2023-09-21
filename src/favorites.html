@@ -55,19 +55,21 @@
 
           <!-- /////////////////////////////////////////////////// -->
           <div>
-            <svg class="favorites-icon" width="68" height="58">
-              <use href="./images/icon.svg#icon-cheef-head"></use>
-            </svg>
-            <p class="favorites-error-text">
-              It appears that you haven't added any recipes to your favorites
-              yet. To get started, you can add recipes that you like to your
-              favorites for easier access in the future.
-            </p>
-
-            <div>
-              <button type="button" class="favorites-btn"></button>
+            <div class="js-bloked">
+              <svg class="favorites-icon" width="68" height="58">
+                <use href="./images/icon.svg#icon-cheef-head"></use>
+              </svg>
+              <p class="favorites-error-text">
+                It appears that you haven't added any recipes to your favorites
+                yet. To get started, you can add recipes that you like to your
+                favorites for easier access in the future.
+              </p>
             </div>
-            <ul class="gallery-list list">
+
+            <div class="js-favorites-wrapper">
+              <!-- <button type="button" class="favorites-btn"></button> -->
+            </div>
+            <ul class="favorites-list list">
               <!-- ul to render cards -->
             </ul>
             <div id="pagination" class="tui-pagination"></div>

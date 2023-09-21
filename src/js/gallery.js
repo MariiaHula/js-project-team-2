@@ -3,7 +3,7 @@ import locale from './localStorage';
 import { goitGlobalAPI } from './axios_api';
 import { markupGalleryCard } from './render-gallery';
 import Notiflix from 'notiflix';
-import { renderAllRecipes } from './categories';
+import { renderAllRecipes, checkFavorites } from './categories';
 import Pagination from 'tui-pagination';
 import '../../node_modules/tui-pagination/dist/tui-pagination.css';
 
@@ -44,7 +44,7 @@ async function onGalleryInputElInput(event) {
     }
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-
+    checkFavorites('.gallery-list');
     const options = {
       totalItems: response.results.length * response.totalPages,
       itemsPerPage: searchInputApi.perPage,
@@ -59,6 +59,7 @@ async function onGalleryInputElInput(event) {
       try {
         const response = await searchInputApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites('.gallery-list');
       } catch (err) {
         console.log(err);
       }
@@ -94,7 +95,7 @@ async function onGalleryDivSelectOptions(event) {
       return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-
+checkFavorites('.gallery-list');
       const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: searchInputApi.perPage,
@@ -109,6 +110,7 @@ async function onGalleryDivSelectOptions(event) {
         try {
           const response = await searchInputApi.getRecipes();
           refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+          checkFavorites('.gallery-list');
         } catch (err) {
           console.log(err);
         }

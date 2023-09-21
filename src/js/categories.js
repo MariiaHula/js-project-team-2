@@ -1,6 +1,6 @@
 import { data, event } from 'jquery';
 import { goitGlobalAPI } from './axios_api';
-import { markupGalleryCard } from './render-gallery';
+import { markupGalleryCard, checkFavorites } from './render-gallery';
 import Pagination from 'tui-pagination';
 import '../../node_modules/tui-pagination/dist/tui-pagination.css';
 
@@ -46,7 +46,7 @@ export const renderAllRecipes = async event => {
     const response = await goitGlobalApi.getRecipes();
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-
+checkFavorites('.gallery-list');
     const options = {
       totalItems: response.results.length * response.totalPages,
       itemsPerPage: goitGlobalApi.perPage,
@@ -61,6 +61,7 @@ export const renderAllRecipes = async event => {
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites('.gallery-list');
       } catch (err) {
         console.log(err);
       }
@@ -78,7 +79,7 @@ export const onAllCategoriesBtnElClick = async event => {
     const response = await goitGlobalApi.getRecipes();
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-
+    checkFavorites('.gallery-list');
     const options = {
       totalItems: response.results.length * response.totalPages,
       itemsPerPage: goitGlobalApi.perPage,
@@ -93,6 +94,7 @@ export const onAllCategoriesBtnElClick = async event => {
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites('.gallery-list');
       } catch (err) {
         console.log(err);
       }
@@ -132,6 +134,7 @@ const onCategoryElClick = async event => {
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites('.gallery-list');
       } catch (err) {
         console.log(err);
       }
