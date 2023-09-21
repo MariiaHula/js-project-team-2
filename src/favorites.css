@@ -9,11 +9,7 @@
 @import './css/layout/modal-recipes.css';
 @import './css/layout/modal-rating.css';
 @import './css/layout/modal-order.css';
-
-.favorites-section {
-  padding-top: 50px;
-  padding-bottom: 80px;
-}
+@import './css/layout/tui.css';
 
 .favorites-bg {
   margin-bottom: 64px;

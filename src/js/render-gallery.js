@@ -67,7 +67,7 @@ export function checkFavorites() {
     const element = recipesAll[i];
     const heart = element.firstElementChild.firstElementChild;
 
-    if (localStorageArr !== undefined) {
+    if (Array.isArray(localStorageArr)) {
 
          if (localStorageArr.includes(String(heart.dataset['id']))) {
             heart.checked = true;
@@ -76,7 +76,7 @@ export function checkFavorites() {
 
     heart.addEventListener('click', event => {
       let localStorageArr = localStorage.load('favorites-recipes');
-      if (localStorageArr === undefined) {
+      if (!Array.isArray(localStorageArr)) {
         localStorageArr = [];
       }
       if (event.target.checked) {

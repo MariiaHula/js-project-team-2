@@ -70,6 +70,7 @@ export class goitGlobalAPI {
 
          return axios.post('/orders/add', orderData).then(res => res.data);
     }
-}
+
+ }
 
 
