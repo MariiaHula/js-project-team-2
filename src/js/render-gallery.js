@@ -59,9 +59,9 @@ export function markupGalleryCard(arr) {
 }
 
 
-export function checkFavorites() {
+export function checkFavorites(listClass) {
   let localStorageArr = localStorage.load('favorites-recipes');
-  const recipesAll = document.querySelector('.gallery-list').children;
+  const recipesAll = document.querySelector(listClass).children;
 
   for (let i = 0; i < recipesAll.length; i++) {
     const element = recipesAll[i];
