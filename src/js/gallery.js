@@ -4,7 +4,8 @@ import { markupGalleryCard, checkFavorites } from "./render-gallery";
 import Notiflix from "notiflix";
 import { renderAllRecipes } from "./categories";
 import Pagination from 'tui-pagination';
-import '../../node_modules/tui-pagination/dist/tui-pagination.css';  
+import '../../node_modules/tui-pagination/dist/tui-pagination.css';
+
 
 
 const refs = {
@@ -16,7 +17,9 @@ const refs = {
   resetFilterEl: document.querySelector('.gallery-reset-btn'),
   gallerySelectEl: document.querySelector('.gallery-div-select'),
   galleryInputEl: document.querySelector('.search-igredient'),
-  galleryCheckboxFavorite: document.querySelector('.checkbox-favorite')
+  galleryCheckboxFavorite: document.querySelector('.checkbox-favorite'),
+  heartSvgEl: document.querySelector('.gallery-icon-checkbox'),
+
 };
 
 
@@ -47,18 +50,20 @@ async function onGalleryInputElInput(event) {
     }
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+
   checkFavorites()
+
     const options = {
-        totalItems: response.results.length * response.totalPages,
-        itemsPerPage: searchInputApi.perPage,
-        visiblePages: 3,
-        page: searchInputApi.page,
+      totalItems: response.results.length * response.totalPages,
+      itemsPerPage: searchInputApi.perPage,
+      visiblePages: 3,
+      page: searchInputApi.page,
     }
 
     const pagination = new Pagination('pagination', options);
-        
+
     pagination.on('afterMove', async event => {
-       searchInputApi.page = event.page;
+      searchInputApi.page = event.page;
       try {
         const response = await searchInputApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
@@ -102,11 +107,12 @@ async function onGalleryDivSelectOptions(event) {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
       checkFavorites()
 
-    const options = {
+      const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: searchInputApi.perPage,
         visiblePages: 3,
         page: searchInputApi.page,
+
     }
 
     const pagination = new Pagination('pagination', options);
@@ -120,7 +126,18 @@ async function onGalleryDivSelectOptions(event) {
       } catch (err) {
         console.log(err);
       }
-    });
+
+//       const pagination = new Pagination('pagination', options);
+
+//       pagination.on('afterMove', async event => {
+//         searchInputApi.page = event.page;
+//         try {
+//           const response = await searchInputApi.getRecipes();
+//           refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+//         } catch (err) {
+//           console.log(err);
+//         }
+      });
     }
   } catch (err) {
     console.log(err);
@@ -178,7 +195,7 @@ markupTime();
 function markupArea(arr) {
   const markup = arr.map(areaEl => {
     return `
-      <option value="${areaEl.name}">${areaEl.name}</option>        
+      <option value="${areaEl.name}">${areaEl.name}</option>
     `
   }).join('');
   return markup
@@ -200,7 +217,7 @@ renderArea();
 function markupIngredients(arr) {
   const markup = arr.map(ingredientEl => {
     return `
-      <option value="${ingredientEl.name}" data-id="${ingredientEl._id}">${ingredientEl.name}</option>        
+      <option value="${ingredientEl.name}" data-id="${ingredientEl._id}">${ingredientEl.name}</option>
     `
   }).join('');
   return markup
