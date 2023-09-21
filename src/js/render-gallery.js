@@ -1,5 +1,6 @@
 import iconSvg from '../images/icon.svg';
 import localStorage from './localStorage';
+
 export function markupGalleryCard(arr) {
   if (!Array.isArray(arr)) {
     return '';
@@ -15,8 +16,8 @@ export function markupGalleryCard(arr) {
       ratingStars += `
         <svg  class="svg-star-gallery" >
         <use href="${iconSvg}#icon-star" ></use>
-        </svg>
-
+        </svg>`
+    }
 
     return `
       <li class="gallery-item" data-category="${cardEl.category}" data-id="${cardEl._id}">

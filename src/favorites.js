@@ -8,75 +8,6 @@ import { markupGalleryCard, checkFavorites } from './js/render-gallery';
 import Pagination from 'tui-pagination';
 import '../node_modules/tui-pagination/dist/tui-pagination.css';  
 
-const favoriteList = document.querySelector('.gallery-list');
-
-let favoritesGalleryAPI = new goitGlobalAPI(288);
-
-// if (window.innerWidth < 768) {
-//   favoritesGalleryAPI = new goitGlobalAPI(6);
-// } else if (window.innerWidth > 768 && window.innerWidth < 1280) {
-//   favoritesGalleryAPI = new goitGlobalAPI(8);
-// } else {
-//   favoritesGalleryAPI = new goitGlobalAPI(9);
-// }
-async function renderFavoritesCard() {
-    
-    try {
-        const response = await favoritesGalleryAPI.getRecipes();
-
-        let arrFav = localStorage.load('favorites-recipes');
-        let arrResult = response.results;
-
-        if (Array.isArray(arrFav)) {
-            arrResult = arrResult.filter(element => {
-                return arrFav.includes(String(element._id)); 
-            })
-        } else {
-            arrResult = [];
-        }
-
-
-        favoriteList.innerHTML = markupGalleryCard(arrResult);
-        
-        checkFavorites()
-        
-    const options = {
-        totalItems: response.results.length * response.totalPages,
-        itemsPerPage: favoritesGalleryAPI.perPage,
-        visiblePages: 3,
-        page: favoritesGalleryAPI.page,
-    }
-
-    const pagination = new Pagination('pagination', options);
-        
-    pagination.on('afterMove', async event => {
-       favoritesGalleryAPI.page = event.page;
-      try {
-          const response = await favoritesGalleryAPI.getRecipes();
-        let arrFav = localStorage.load('favorites-recipes');
-        let arrResult = response.results;
-       
-        if (Array.isArray(arrFav)) {
-            arrResult = arrResult.filter(element => {
-                return arrFav.includes(String(element._id)); 
-            })
-        }
-        favoriteList.innerHTML = markupGalleryCard(arrResult);
-        checkFavorites()
-      } catch (err) {
-        console.log(err);
-      }
-    });
-  } catch (err) {
-    console.log(err);
-  }
-
-}
-
-renderFavoritesCard();
-
-
-
     import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const closeIconOrderModal = document.querySelector('.modal-order-close');
@@ -169,4 +100,106 @@ function sendOrderForm(e) {
                 windowOrderModal.classList.remove('modal-order-backdrop-active');
             }
     
-        } 
+} 
+//===========RENDER from LOCALSTORAGE====================================
+
+const favoriteList = document.querySelector('.favorites-list');
+const favoritesWrapper = document.querySelector('.js-favorites-wrapper');
+const blokedWrapper = document.querySelector('.js-bloked');
+
+let favoritesGalleryAPI = new goitGlobalAPI(288);
+
+async function renderFavoritesCard() {
+    
+    try {
+        const response = await favoritesGalleryAPI.getRecipes();
+
+        let arrFav = localStorage.load('favorites-recipes');
+        let arrResult = response.results;
+
+        if (Array.isArray(arrFav)) {
+            arrResult = arrResult.filter(element => {
+                return arrFav.includes(String(element._id)); 
+            })
+        } else {
+          arrResult = [];
+          blokedWrapper.classList.remove('is-hidden');
+        }
+
+      const categories = faveritesCategory(arrResult);
+      favoritesWrapper.innerHTML = categories;
+      favoriteList.innerHTML = markupGalleryCard(arrResult);
+      if (categories === '') {
+        return;
+      }
+      blokedWrapper.classList.add('is-hidden');
+      checkFavorites('.favorites-list');
+       
+      // const button = document.querySelector('.favorites-category-btn');
+      
+      // button.addEventListener('click', () => { 
+        
+
+      // })
+
+
+    const options = {
+        totalItems: response.results.length * response.totalPages,
+        itemsPerPage: favoritesGalleryAPI.perPage,
+        visiblePages: 3,
+        page: favoritesGalleryAPI.page,
+    }
+
+    const pagination = new Pagination('pagination', options);
+        
+    pagination.on('afterMove', async event => {
+       favoritesGalleryAPI.page = event.page;
+      try {
+          const response = await favoritesGalleryAPI.getRecipes();
+        let arrFav = localStorage.load('favorites-recipes');
+        let arrResult = response.results;
+       
+        if (Array.isArray(arrFav)) {
+            arrResult = arrResult.filter(element => {
+                return arrFav.includes(String(element._id)); 
+            })
+        }
+        favoriteList.innerHTML = markupGalleryCard(arrResult);
+
+           checkFavorites('.favorites-list');
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+
+}
+
+renderFavoritesCard();
+
+
+function faveritesCategory(arr) {
+
+  let categories = ['All categories'];
+
+  if (Array.isArray(arr) && arr.length > 0) {
+      categories = categories.concat(
+      arr.map(element => element.category).filter((elem, ind, arr) => { return arr.indexOf(elem) === ind })
+    );
+  } else {
+    return '';
+  }
+
+  const markup = categories.map(el => {
+    return `
+        <li>
+        <button class="favorites-category-btn" type="button" data-category-name="${el}">${el}</button>
+        </li>`;
+  })
+    .join('');
+  return markup;
+}
+
+
