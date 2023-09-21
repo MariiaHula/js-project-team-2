@@ -98,7 +98,7 @@ function addToFavorite(event) {
   if (refs.modal_add_favorite.textContent === "Add to favorite") {
     localStorageArr.push(String(idRecipes));
     localStorage.save('favorites-recipes', localStorageArr);
-    refs.modal_add_favorite.textContent = "Remove from favorite";
+    refs.modal_add_favorite.textContent = "Remove";
   } else {
     localStorage.remove('favorites-recipes', String(idRecipes));
     refs.modal_add_favorite.textContent = "Add to favorite";
