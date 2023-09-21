@@ -3,7 +3,6 @@ import './js/header';
 import localStorage from './js/localStorage';
 import { goitGlobalAPI } from './js/axios_api';
 import { checkFavorites } from './js/render-gallery';
-import { renderAllRecipes } from './js/categories';
 import Pagination from 'tui-pagination';
 import '../node_modules/tui-pagination/dist/tui-pagination.css';  
 
