@@ -93,7 +93,7 @@ if (clickHeart !== undefined) {
     }
   });
 }
-//
+
     // const options = {
     //   totalItems: response.results.length * response.totalPages,
     //   itemsPerPage: favoritRenderAPI.perPage,
