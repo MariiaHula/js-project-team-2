@@ -3,6 +3,7 @@ body {
 }
 
 .hero-section {
+  /* overflow: hidden; */
   position: relative;
   padding-top: 90px;
   padding-bottom: 80px;
@@ -80,7 +81,7 @@ body {
 
   border-radius: 15px;
 
-  background: var(--dark-text);
+  background: var(--hero-bg-slide);
 }
 
 .slide img {
