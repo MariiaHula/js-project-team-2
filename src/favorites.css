@@ -11,7 +11,11 @@
 @import './css/layout/modal-order.css';
 @import './css/layout/tui.css';
 
+.favorites-section {
+  overflow: hidden;
+}
 .favorites-bg {
+  display: none;
   margin-bottom: 64px;
 }
 
@@ -60,6 +64,10 @@
 @media screen and (min-width: 768px) {
   .favorites-section {
     padding-bottom: 100px;
+  }
+
+  .favorites-bg {
+    display: block;
   }
   .favorites-icon {
     margin-bottom: 32px;
