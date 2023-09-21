@@ -84,6 +84,10 @@
         line-height: normal;
     }
 
+    .modal-header-nav-menu-item {
+        margin-bottom: 16px;
+    }
+
     .modal-header-nav-Favorites {
         color: var(--theme-light);
     }
