@@ -18,8 +18,9 @@
   --modal-name-ingradient: rgba(5, 5, 5, 0.1);
   --modal-hashtag-item: rgba(5, 5, 5, 0.2);
   --modal-recipe-instruction: rgba(5, 5, 5, 0.8);
-  --gal-form-col: rgba(5, 5, 5, 0.5);
+  --gal-text-col: rgba(5, 5, 5, 0.50);
   --gal-form-border-col: rgba(5, 5, 5, 0.2);
+  --input-gall-search: rgba(255, 255, 255, 0.20);
   --btn-all-categories: rgba(5, 5, 5, 0.5);
   --text-category: rgba(5, 5, 5, 0.18);
   --hero-bg-slide: #050505;

@@ -29,7 +29,7 @@ function renderSlider(arr) {
     .map(el => {
       return `
   <div class="slide-wrapper">
-     <div class="slide one"><img src="${el.cook.imgUrl}"  alt="" /></div>
+     <div class="slide one"><img src="${el.cook.imgUrl}" clip-path: inset(1px 1px 1px 2px); alt="" /></div>
 
       <div class="slide two">
          <img class="" src="${el.topic.previewUrl}" alt=""/>
