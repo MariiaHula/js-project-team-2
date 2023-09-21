@@ -1,6 +1,6 @@
 import debounce from "lodash.debounce";
 import { goitGlobalAPI } from "./axios_api";
-import { markupGalleryCard } from "./render-gallery";
+import { markupGalleryCard, checkFavorites } from "./render-gallery";
 import Notiflix from "notiflix";
 import { renderAllRecipes } from "./categories";
 import Pagination from 'tui-pagination';
@@ -47,7 +47,7 @@ async function onGalleryInputElInput(event) {
     }
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-  
+  checkFavorites()
     const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: searchInputApi.perPage,
@@ -62,6 +62,7 @@ async function onGalleryInputElInput(event) {
       try {
         const response = await searchInputApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites()
       } catch (err) {
         console.log(err);
       }
@@ -99,6 +100,7 @@ async function onGalleryDivSelectOptions(event) {
       return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+      checkFavorites()
 
     const options = {
         totalItems: response.results.length * response.totalPages,
@@ -114,6 +116,7 @@ async function onGalleryDivSelectOptions(event) {
       try {
         const response = await searchInputApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites()
       } catch (err) {
         console.log(err);
       }
@@ -216,49 +219,3 @@ async function renderIngredients() {
 renderIngredients();
 
 
-
-// 1  Если посетитель начал выбирать сперва select,
-// тогда ему уведомление, что сначала надо ввести инпут или моргает сам инпут
-
-// 2 Если посетитель ввел ключевое слово и нажал энтер, тогда ему рендер всех карточек
-
-// 3 Посетитель ввел ключевое слово и выбирает одну опцию, после чего нажимает энтер и
-//  ему рендерятся карточку по его слову + выбранной опции
-
-// 4 Посетитель ввел ключевое слово и выбирает две опцию, после чего нажимает энтер и
-//  ему рендерятся карточку по его слову + две опции
-
-// 5 Посетитель ввел ключевое слово и выбирает все опцию, после чего нажимает энтер и
-//  ему рендерятся карточку по его слову + все опции
-
-// =========================INPUT===========================
-// const queryOption = document.querySelector('.query-option');
-// console.log(queryOption)
-// refs.galleryFormFilterEl.addEventListener('submit', onFormElSubmit);
-// const searchInputApi = new goitGlobalAPI();
-
-// function onFormElSubmit(event) {
-//   event.preventDefault()
-//   searchInputApi.title = event.target.elements.query.value.trim().toLowerCase();
-//   searchInputApi.area = refs.selectAreaEl.value;
-//   console.log(refs.selectAreaEl.value)
-
-//   searchInputApi.getRecipes(6).then(response => {
-
-//     const generatedMarkup = markupGalleryCard(response.results);
-
-//     refs.galleryListEl.innerHTML = generatedMarkup;
-//     // console.log(response.results)
-//   }).catch(err => {
-//     console.log(err)
-//   })
-
-// }
-//==============
-// refs.selectAreaEl.addEventListener('click', elArea => {
-//   const valueArea = elArea.target.value;
-//   console.log(valueArea);
-//   renderArea();
-// })
-
-// ============================*******************
