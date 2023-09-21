@@ -274,7 +274,9 @@ body .modal {
     gap: 16px;
   }
 }
-
+.modal-add-favorite.active {
+  background-color: var(--modal-hashtag-item);
+}
 .modal-add-favorite {
   padding: 12px 24px;
   justify-content: center;
