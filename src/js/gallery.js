@@ -96,7 +96,7 @@ async function onGalleryDivSelectOptions(event) {
       return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-checkFavorites('.gallery-list');
+      checkFavorites('.gallery-list');
       const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: searchInputApi.perPage,
