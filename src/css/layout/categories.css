@@ -13,9 +13,9 @@
   cursor: pointer;
   padding: 14px 28px;
   border-radius: 15px;
-  border: 1px solid rgba(5, 5, 5, 0.5);
+  border: 1px solid var(--btn-all-categories);
   background-color: transparent;
-  color: rgba(5, 5, 5, 0.5);
+  color: var(--btn-all-categories);
 }
 
 .btn-all-categories:hover,
@@ -37,7 +37,7 @@
 }
 
 .categories-list::-webkit-scrollbar-thumb {
-  background-color: rgba(5, 5, 5, 0.18);
+  background-color: var(--text-category);
   border-radius: 12px;
 }
 
@@ -51,7 +51,7 @@
   margin-bottom: 18px;
   border: none;
   background-color: transparent;
-  color: var(--input-color-theme-light);
+  color: var(--text-category);
 }
 
 .btn-categories-item:hover,
@@ -66,6 +66,7 @@
 @media screen and (min-width: 768px) {
   .btn-all-categories {
     margin-bottom: 30px;
+    margin-top: 20px;
   }
 
   .btn-categories-item {
@@ -85,5 +86,9 @@
 @media screen and (min-width: 1280px) {
   .btn-all-categories {
     margin-bottom: 42px;
+    margin-top: 25px;
+  }
+  .categories-list {
+    width: 235px;
   }
 }

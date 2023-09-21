@@ -18,9 +18,16 @@ const load = key => {
   }
 };
 
-const remove = key => {
-  try {
-    localStorage.removeItem(key);
+const remove = (key, value) => {
+      try {
+        const serializedState = localStorage.getItem(key);
+        if (serializedState !== null) {
+          let array = JSON.parse(serializedState);
+          array = array.filter(element => {
+            return element !== value;
+          });
+          localStorage.setItem(key, JSON.stringify(array));
+    }
   } catch (error) {
     console.log('Remove item error: ', error.message);
   }

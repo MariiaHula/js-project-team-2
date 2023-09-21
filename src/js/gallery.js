@@ -1,11 +1,12 @@
-import debounce from "lodash.debounce";
-import { goitGlobalAPI } from "./axios_api";
-import { markupGalleryCard } from "./render-gallery";
-import Notiflix from "notiflix";
+import debounce from 'lodash.debounce';
+import locale from './localStorage';
+import { goitGlobalAPI } from './axios_api';
+import { markupGalleryCard } from './render-gallery';
+import Notiflix from 'notiflix';
+import { renderAllRecipes } from './categories';
 import Pagination from 'tui-pagination';
 import '../../node_modules/tui-pagination/dist/tui-pagination.css';
-import { onAllCategoriesBtnElClick } from "./categories";
-  
+
 const refs = {
   galleryFormFilterEl: document.querySelector('.gallery-form-filter'),
   galleryListEl: document.querySelector('.gallery-list'),
@@ -15,11 +16,9 @@ const refs = {
   resetFilterEl: document.querySelector('.gallery-reset-btn'),
   gallerySelectEl: document.querySelector('.gallery-div-select'),
   galleryInputEl: document.querySelector('.search-igredient'),
-  galleryCheckboxFavorite: document.querySelector('.checkbox-favorite')
+  galleryCheckboxFavorite: document.querySelector('.checkbox-favorite'),
 };
 
-
-console.log(1);
 let searchInputApi;
 
 if (window.innerWidth < 768) {
@@ -33,7 +32,6 @@ if (window.innerWidth < 768) {
 //================INPUT=====================================
 
 async function onGalleryInputElInput(event) {
-
   searchInputApi.page = 1;
   searchInputApi.title = event.target.value.trim().toLowerCase();
   try {
@@ -47,24 +45,38 @@ async function onGalleryInputElInput(event) {
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
 
+    const options = {
+      totalItems: response.results.length * response.totalPages,
+      itemsPerPage: searchInputApi.perPage,
+      visiblePages: 3,
+      page: searchInputApi.page,
+    };
+
+    const pagination = new Pagination('pagination', options);
+
+    pagination.on('afterMove', async event => {
+      searchInputApi.page = event.page;
+      try {
+        const response = await searchInputApi.getRecipes();
+        refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+      } catch (err) {
+        console.log(err);
+      }
+    });
   } catch (err) {
     console.log(err);
   }
 }
 
 async function onGalleryDivSelectOptions(event) {
-
   searchInputApi.page = 1;
 
   const { name, value } = event.target;
   if (name === 'time') {
     searchInputApi.time = value;
-
   } else if (name === 'area') {
     searchInputApi.area = value;
-
   } else if (name === 'ingredients') {
-
     const ingId = event.target.selectedOptions[0].getAttribute('data-id');
     if (ingId === null || ingId === '') {
       searchInputApi.ingredient = '';
@@ -76,13 +88,35 @@ async function onGalleryDivSelectOptions(event) {
   try {
     const response = await searchInputApi.getRecipes();
     if (response.totalPages === 0) {
-      Notiflix.Notify.failure('Sorry, no recipe was found with these parameters');
+      Notiflix.Notify.failure(
+        'Sorry, no recipe was found with these parameters'
+      );
+      return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+
+      const options = {
+        totalItems: response.results.length * response.totalPages,
+        itemsPerPage: searchInputApi.perPage,
+        visiblePages: 3,
+        page: searchInputApi.page,
+      };
+
+      const pagination = new Pagination('pagination', options);
+
+      pagination.on('afterMove', async event => {
+        searchInputApi.page = event.page;
+        try {
+          const response = await searchInputApi.getRecipes();
+          refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        } catch (err) {
+          console.log(err);
+        }
+      });
     }
   } catch (err) {
     console.log(err);
-  };
+  }
 }
 
 function onResetFilterElClick(event) {
@@ -94,36 +128,42 @@ function onResetFilterElClick(event) {
     searchInputApi.area = '';
     searchInputApi.time = '';
     searchInputApi.ingredient = '';
-    galleryListEl.innerHTML = '';
+    refs.galleryListEl.innerHTML = '';
+    renderAllRecipes();
   }
-
 }
 
 function ongalleryFormFilterElSubmit(event) {
   event.preventDefault();
 }
 
-refs.galleryInputEl.addEventListener('input', debounce(onGalleryInputElInput, 300));
+refs.galleryInputEl.addEventListener(
+  'input',
+  debounce(onGalleryInputElInput, 300)
+);
 refs.selectTimeEl.addEventListener('change', onGalleryDivSelectOptions);
 refs.selectAreaEl.addEventListener('change', onGalleryDivSelectOptions);
 refs.selectIgredientEl.addEventListener('change', onGalleryDivSelectOptions);
 refs.resetFilterEl.addEventListener('click', onResetFilterElClick);
-refs.galleryFormFilterEl.addEventListener('submit', ongalleryFormFilterElSubmit);
+refs.galleryFormFilterEl.addEventListener(
+  'submit',
+  ongalleryFormFilterElSubmit
+);
 
 // =========================selectTIME=======================
 function markupTime() {
-
   const time = [];
 
   for (let i = 1; i < 160; i++) {
     time.push(i);
   }
 
-  const markup = time.map((elem) => {
-    return `
+  const markup = time
+    .map(elem => {
+      return `
       <option class="options" value="${elem}">${elem} min</option>
     `;
-  })
+    })
     .join('');
 
   refs.selectTimeEl.insertAdjacentHTML('beforeend', markup);
@@ -133,13 +173,14 @@ markupTime();
 // =========================selectAREA=======================
 
 function markupArea(arr) {
-  const markup = arr.map(areaEl => {
-    return `
+  const markup = arr
+    .map(areaEl => {
+      return `
       <option value="${areaEl.name}">${areaEl.name}</option>        
-    `
-  }).join('');
-  return markup
-
+    `;
+    })
+    .join('');
+  return markup;
 }
 
 async function renderArea() {
@@ -155,12 +196,14 @@ renderArea();
 
 // =========================selectINGREDIENTS=======================
 function markupIngredients(arr) {
-  const markup = arr.map(ingredientEl => {
-    return `
+  const markup = arr
+    .map(ingredientEl => {
+      return `
       <option value="${ingredientEl.name}" data-id="${ingredientEl._id}">${ingredientEl.name}</option>        
-    `
-  }).join('');
-  return markup
+    `;
+    })
+    .join('');
+  return markup;
 }
 
 async function renderIngredients() {
@@ -168,57 +211,56 @@ async function renderIngredients() {
 
   try {
     const response = await selectIngredient.getIngredients();
-    refs.selectIgredientEl.insertAdjacentHTML('beforeend', markupIngredients(response));
+    refs.selectIgredientEl.insertAdjacentHTML(
+      'beforeend',
+      markupIngredients(response)
+    );
   } catch (err) {
     console.log(err);
   }
 }
 renderIngredients();
 
+const clickHeart = document.querySelector('.gallery-list');
+console.log(clickHeart);
 
+let arrGalleryItem = [];
 
-// 1  Если посетитель начал выбирать сперва select,
-// тогда ему уведомление, что сначала надо ввести инпут или моргает сам инпут
+if ('galleryItem' in window.localStorage) {
+  arrGalleryItem = locale.load('galleryItem');
+}
 
-// 2 Если посетитель ввел ключевое слово и нажал энтер, тогда ему рендер всех карточек
+window.addEventListener('load', () => {
+  let arrGalleryItemCart = document.querySelectorAll('.checkbox-favorite');
 
-// 3 Посетитель ввел ключевое слово и выбирает одну опцию, после чего нажимает энтер и
-//  ему рендерятся карточку по его слову + выбранной опции
+  for (let i of arrGalleryItem) {
+    for (let j of arrGalleryItemCart) {
+      if (i === j.dataset.id) {
+        j.checked = true;
+      }
+    }
+  }
+});
 
-// 4 Посетитель ввел ключевое слово и выбирает две опцию, после чего нажимает энтер и
-//  ему рендерятся карточку по его слову + две опции
+if (clickHeart !== undefined) {
+  clickHeart.addEventListener('click', ev => {
+    let numberIndex = arrGalleryItem.indexOf(`${ev.target.dataset.id}`);
+    if (numberIndex == -1) {
+      numberIndex = 0;
+    }
 
-// 5 Посетитель ввел ключевое слово и выбирает все опцию, после чего нажимает энтер и
-//  ему рендерятся карточку по его слову + все опции
+    if (ev.target.nodeName === 'INPUT') {
+      console.log(ev.target.dataset.id);
+      if (!ev.target.checked) {
+        arrGalleryItem.splice(
+          arrGalleryItem.indexOf(`${ev.target.dataset.id}`),
+          1
+        );
+      } else {
+        arrGalleryItem.push(`${ev.target.dataset.id}`);
+      }
 
-// =========================INPUT===========================
-// const queryOption = document.querySelector('.query-option');
-// console.log(queryOption)
-// refs.galleryFormFilterEl.addEventListener('submit', onFormElSubmit);
-// const searchInputApi = new goitGlobalAPI();
-
-// function onFormElSubmit(event) {
-//   event.preventDefault()
-//   searchInputApi.title = event.target.elements.query.value.trim().toLowerCase();
-//   searchInputApi.area = refs.selectAreaEl.value;
-//   console.log(refs.selectAreaEl.value)
-
-//   searchInputApi.getRecipes(6).then(response => {
-
-//     const generatedMarkup = markupGalleryCard(response.results);
-
-//     refs.galleryListEl.innerHTML = generatedMarkup;
-//     // console.log(response.results)
-//   }).catch(err => {
-//     console.log(err)
-//   })
-
-// }
-//==============
-// refs.selectAreaEl.addEventListener('click', elArea => {
-//   const valueArea = elArea.target.value;
-//   console.log(valueArea);
-//   renderArea();
-// })
-
-// ============================*******************
+      return locale.save('galleryItem', arrGalleryItem);
+    }
+  });
+}

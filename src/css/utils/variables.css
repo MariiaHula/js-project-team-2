@@ -18,4 +18,8 @@
   --modal-name-ingradient: rgba(5, 5, 5, 0.1);
   --modal-hashtag-item: rgba(5, 5, 5, 0.2);
   --modal-recipe-instruction: rgba(5, 5, 5, 0.8);
+  --gal-form-col: rgba(5, 5, 5, 0.50);
+  --gal-form-border-col: rgba(5, 5, 5, 0.20);
+  --btn-all-categories: rgba(5, 5, 5, 0.5);
+  --text-category: rgba(5, 5, 5, 0.18);
 }
