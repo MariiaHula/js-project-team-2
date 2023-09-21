@@ -3,9 +3,10 @@
 }
 
 .rate {
-  float: left;
-  height: 46px;
-  padding: 0 10px;
+  height: 42px;
+  align-items: center;
+  display: flex;
+
 }
 
 .rate:not(:checked)>input {
@@ -18,9 +19,9 @@
   width: 1em;
   overflow: hidden;
   white-space: nowrap;
-  cursor: pointer;
+
   font-size: 18px;
-  color: #ccc;
+  color: #EEA10C;
 }
 
 .rate:not(:checked)>label:before {
@@ -28,21 +29,21 @@
 }
 
 .rate>input:checked~label {
-  color: #ffc700;
+  color: rgba(255, 255, 255, 0.10);
 }
 
-.rate:not(:checked)>label:hover,
+/* .rate:not(:checked)>label:hover,
 .rate:not(:checked)>label:hover~label {
   color: #deb217;
-}
+} */
 
-.rate>input:checked+label:hover,
+/* .rate>input:checked+label:hover,
 .rate>input:checked+label:hover~label,
 .rate>input:checked~label:hover,
 .rate>input:checked~label:hover~label,
 .rate>label:hover~input:checked~label {
   color: #c59b08;
-}
+} */
 
 
 /* ================================================mobile */
@@ -69,11 +70,9 @@
 }
 
 .gallery-item {
-  background-image: linear-gradient(
-    1deg,
-    rgba(5, 5, 5, 0.6) 4.82%,
-    rgba(5, 5, 5, 0) 108.72%
-  );
+  background-image: linear-gradient(1deg,
+      rgba(5, 5, 5, 0.6) 4.82%,
+      rgba(5, 5, 5, 0) 108.72%);
 }
 
 .wrap-time-area {
@@ -177,9 +176,10 @@
   column-gap: 4px;
   display: flex;
   align-items: center;
+  margin-right: 4px;
 }
 
-.gallery-star-ckeckbox:checked + .galerry-checkbox-icon {
+.gallery-star-ckeckbox:checked+.galerry-checkbox-icon {
   background-color: tomato;
 }
 
@@ -207,7 +207,17 @@
   cursor: pointer;
 }
 
-.checkbox-favorite:checked + .gallery-icon-checkbox {
+.gallery-icon-checkbox:hover {
+  stroke: #fff;
+}
+
+
+
+
+
+
+
+.checkbox-favorite:checked+.gallery-icon-checkbox {
   stroke: #fff;
   fill: #fff;
 }
@@ -286,7 +296,7 @@
 .gallery-btn {
   background-color: var(--accent-color);
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -299,7 +309,7 @@
 .gallery-average-rating {
   color: var(--theme-light);
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-style: normal;
   font-weight: 500;
   line-height: 1.16;
@@ -327,6 +337,7 @@
     padding-left: 32px;
 
   }
+
   .wrap-input-search {
     gap: 16px;
   }
@@ -406,6 +417,7 @@
   .container-gallery {
     padding-left: 50px;
   }
+
   .gallery-image {
     width: 250px;
     height: 287px;
