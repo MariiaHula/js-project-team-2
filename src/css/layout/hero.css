@@ -293,3 +293,19 @@ body {
     height: 700;
   }
 }
+
+.hero-image {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-light {
+  width: 350px;
+    height: 350px;
+    transform: rotate(-45.669deg);
+    flex-shrink: 0;
+    fill: #9BB537;
+  filter: blur(41px);
+      position: absolute;
+      z-index: 1;
+}
