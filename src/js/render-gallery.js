@@ -7,6 +7,7 @@ export function markupGalleryCard(arr) {
 
 
   const markup = arr.map(cardEl => {
+
     let ratingStars = '';
     for (let i = 1; i <= Math.ceil(cardEl.rating); i++) {
 
@@ -15,8 +16,7 @@ export function markupGalleryCard(arr) {
         <svg  class="svg-star-gallery" >
         <use href="${iconSvg}#icon-star" ></use>
         </svg>
-      `;
-    }
+
 
     return `
       <li class="gallery-item" data-category="${cardEl.category}" data-id="${cardEl._id}">
@@ -42,17 +42,18 @@ export function markupGalleryCard(arr) {
           <h2 class="gallery-card-title">${cardEl.title}</h2>
           <h3 class="gallery-card-subtitle">${cardEl.description}</h3>
           <form class="gallery-form-rating">
-          <label class="gallery-average-rating">${cardEl.rating}</label>
+
+           <label class="gallery-average-rating">${cardEl.rating}</label>
+
             <div class="rate">
               ${ratingStars}
             </div>
-            <button type="button" class="gallery-btn" data-id="${cardEl._id}">See recipe</button>
+            <button type="button" class="gallery-btn" id="${cardEl._id}">See recipe</button>
           </form>
         </div>
       </li>
     `;
   }).join('');
-
   return markup;
 }
 
@@ -88,4 +89,5 @@ export function checkFavorites() {
   }
 
 }
+
 

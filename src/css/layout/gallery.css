@@ -3,7 +3,6 @@
   align-items: center;
   display: flex;
 
-}
 
 
 /* ================================================mobile */
@@ -173,7 +172,6 @@
 .gallery-icon-checkbox:hover {
   stroke: #fff;
 }
-
 
 .checkbox-favorite:checked+.gallery-icon-checkbox {
   stroke: #fff;
