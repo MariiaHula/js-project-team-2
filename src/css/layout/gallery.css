@@ -174,7 +174,7 @@
 }
 
 .gallery-icon-checkbox:hover {
-  stroke: #fff;
+  fill: #fff;
 }
 
 .checkbox-favorite:checked+.gallery-icon-checkbox {
@@ -265,6 +265,7 @@
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
+  cursor: pointer;
 }
 
 .gallery-average-rating {
