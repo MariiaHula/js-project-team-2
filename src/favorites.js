@@ -187,3 +187,25 @@ async function renderFavoritesCard() {
 }
 renderFavoritesCard();
 
+function faveritesCategory(arr) {
+
+  let categories = ['All categories'];
+
+  if (Array.isArray(arr) && arr.length > 0) {
+      categories = categories.concat(
+      arr.map(element => element.category).filter((elem, ind, arr) => { return arr.indexOf(elem) === ind })
+    );
+  } else {
+    return '';
+  }
+  const markup = categories.map(el => {
+    return `
+        <li>
+        <button class="favorites-category-btn" type="button" data-category="${el}">${el}</button>
+        </li>`;
+  })
+    .join('');
+  return markup;
+}
+
+
