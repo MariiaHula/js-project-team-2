@@ -305,38 +305,6 @@
 
 
 
-@media screen and (min-width: 768px) {
-
-.modal-order-wrap {
-        width: 440px;
-        height: 632px;
-        padding: 40px;
-    }
-
-    .modal-order-icon {
-        width: 24px;
-        height: 24px;
-    }
-
-    .modal-order-input {
-        width: 360px;
-        height: 48px;
-    }
-
-    .user-message {
-        height: 100px;
-    }
-
-    .modal-order-title {
-        margin-bottom: 40px;
-    }
-
-    .modal-order-btn {
-        width: 360px;
-    }
-
-}
-
 .anima-wrap {
     position: relative;
 }
@@ -344,8 +312,8 @@
 
 .card-modal-order {
     position: absolute;
-width: 440px;
-    height: 632px;
+width: 335px;
+    height: 582px;
     color: #fff;
     background: transparent;
     overflow: hidden;
@@ -360,8 +328,8 @@ width: 440px;
     justify-content: space-around;
     align-items: center;
     padding: 1em;
-bottom: -43px;
-right: -40px;
+bottom: -23px;
+right: -20px;
 z-index: -1;
     
 }
@@ -515,4 +483,42 @@ z-index: -1;
 
 .modal-order-backdrop-active {
     z-index: 2;
+}
+
+@media screen and (min-width: 768px) {
+.card-modal-order {
+        width: 440px;
+        height: 632px;
+        bottom: -43px;
+            right: -40px;
+}
+
+    .modal-order-wrap {
+        width: 440px;
+        height: 632px;
+        padding: 40px;
+    }
+
+    .modal-order-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .modal-order-input {
+        width: 360px;
+        height: 48px;
+    }
+
+    .user-message {
+        height: 100px;
+    }
+
+    .modal-order-title {
+        margin-bottom: 40px;
+    }
+
+    .modal-order-btn {
+        width: 360px;
+    }
+
 }

@@ -60,7 +60,7 @@ function sendOrderForm(e) {
             "name": orderName.value,
   "phone": formPhone.value,
   "email": formEmail.value,
-  "comment": formComment.value,
+            "comment": formComment.value,
     }
 
 
@@ -86,8 +86,7 @@ function sendOrderForm(e) {
         
             }
             catch (err) {
-                console.log(`Error`, err);
-                Notify.failure('Oops, something wrong');
+                Notify.failure(`Oops, something wrong, ${err.response.data.message}`);
                 formOreder.reset();
                 windowOrderModal.classList.remove('modal-order-backdrop-active');
             }
