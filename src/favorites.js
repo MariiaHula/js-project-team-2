@@ -1,6 +1,4 @@
 import './js/axios_api';
-// import './js/categories';
-// import './js/gallery';
 import './js/header';
 import localStorage from './js/localStorage';
 import { goitGlobalAPI } from './js/axios_api';
