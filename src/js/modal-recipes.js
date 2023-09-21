@@ -45,6 +45,21 @@ function openModalGaleryRecipes(e) {
   idRecipes = recipeId;
   openModalRecipes();
   catchRecipes(recipeId);
+
+  let localStorageArr = localStorage.load('favorites-recipes');
+      if (!Array.isArray(localStorageArr)) {
+        localStorageArr = [];
+      }
+  var isElementPresent = localStorageArr.includes(idRecipes);
+
+  if (isElementPresent) {
+    refs.modal_add_favorite.textContent = "Remove";
+    refs.modal_add_favorite.classList.add("active");
+  } else {
+      refs.modal_add_favorite.classList.remove("active");
+      refs.modal_add_favorite.textContent = "Add to favorite";
+  }
+
   setTimeout(() => {
     refs.skelet.classList.add("is-hidden");
     refs.card_markup_modal.classList.remove("is-hidden");
@@ -134,8 +149,6 @@ function closeModalRecipesOnEsc(e) {
 }
 
 
-
-
 async function catchRecipes(recipeId) {
     
   try {
@@ -186,19 +199,6 @@ function createVideoAndTitle(recipesArr) {
 }
 
 
-// function markupStar(recipesArr) {
-//   return ` <div class="modal-general-info">
-       
-//         <div class="card-star-modal">
-//         <div class="recipe-star-modal">
-//             <div class="modal-recipe-rating">${recipesArr.rating}</div>
-//             <div class="modal-recipe-active"></div>
-//             <div class="modal-recipe-time">${recipesArr.time} min</div>
-//         </div>
-//         </div>
-//        `;
-  
-// }
 function markupStar(recipesArr) {
   return ` <div class="modal-general-info">
        
@@ -230,8 +230,6 @@ function markupStar(recipesArr) {
 }
 
 
-
-
 function starRend(recipesArr) {
   const starInt = Math.round(recipesArr.rating); 
 
@@ -240,32 +238,7 @@ function starRend(recipesArr) {
     star.classList.add("activeStar");
 
   }
-
-  // const starsRecipeModal = document.querySelector('.modal-recipe-active'); 
-  // const ratingActiveWidth = recipesArr.rating / 0.05;  
-  // starsRecipeModal.style.width = `${ratingActiveWidth}%`;
 }
-
-
-
-
-
-  // function initRatingVars(rating) {
-  //       ratingActive = rating.querySelector('.modal-rating-active');
-  //       ratingValue = rating.querySelector('.modal-rating-value');
-  //   }
-
-  //   function setRatingActiveWidth(index = ratingValue.innerHTML) {
-  //       const ratingActiveWidth = index / 0.05;
-  //       ratingActive.style.width = `${ratingActiveWidth}%`;
-  //   }
-
-
-
-
-
-
-
 
 
 
