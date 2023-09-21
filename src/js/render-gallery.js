@@ -1,4 +1,5 @@
 import iconSvg from '../images/icon.svg';
+import localStorage from './localStorage';
 export function markupGalleryCard(arr) {
 
   if (!Array.isArray(arr)) {
@@ -9,7 +10,7 @@ export function markupGalleryCard(arr) {
     return `
        <li class="gallery-item" data-category="${cardEl.category}" >
           <label class="label" >
-           <input type="checkbox" name="favorite" class="checkbox-favorite" data-id-name="${cardEl._id}">
+           <input type="checkbox" name="favorite" class="checkbox-favorite" data-id="${cardEl._id}">
           <svg class='gallery-icon-checkbox  '>
             <use href="${iconSvg}#icon-heart" class="icon-svg-heart"> </use>
           </svg>
@@ -57,3 +58,36 @@ export function markupGalleryCard(arr) {
   return markup;
 
 }
+
+export function checkFavorites() {
+  let localStorageArr = localStorage.load('favorites-recipes');
+  const recipesAll = document.querySelector('.gallery-list').children;
+  
+  for (let i = 0; i < recipesAll.length; i++) {
+    const element = recipesAll[i];
+    const heart = element.firstElementChild.firstElementChild;
+
+    if (localStorageArr !== undefined) {
+
+         if (localStorageArr.includes(String(heart.dataset['id']))) {
+            heart.checked = true;
+          } 
+    }
+
+    heart.addEventListener('click', event => {
+      let localStorageArr = localStorage.load('favorites-recipes');
+      if (localStorageArr === undefined) {
+        localStorageArr = [];
+      }
+      if (event.target.checked) {
+        localStorageArr.push(String(event.target.dataset['id']))
+        localStorage.save('favorites-recipes', localStorageArr);
+      } else {
+        console.log(event.target.dataset['id'])
+        localStorage.remove('favorites-recipes', String(event.target.dataset['id']));
+      }
+    });
+  }
+
+}
+
