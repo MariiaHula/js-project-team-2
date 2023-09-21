@@ -3,6 +3,7 @@ import locale from './localStorage';
 import { goitGlobalAPI } from './axios_api';
 import { markupGalleryCard } from './render-gallery';
 import Notiflix from 'notiflix';
+import { checkFavorites } from './render-gallery';
 import { renderAllRecipes } from './categories';
 import Pagination from 'tui-pagination';
 import '../../node_modules/tui-pagination/dist/tui-pagination.css';
@@ -44,7 +45,7 @@ async function onGalleryInputElInput(event) {
     }
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-
+    checkFavorites('.gallery-list');
     const options = {
       totalItems: response.results.length * response.totalPages,
       itemsPerPage: searchInputApi.perPage,
@@ -59,6 +60,7 @@ async function onGalleryInputElInput(event) {
       try {
         const response = await searchInputApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites('.gallery-list');
       } catch (err) {
         console.log(err);
       }
@@ -94,7 +96,7 @@ async function onGalleryDivSelectOptions(event) {
       return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-
+checkFavorites('.gallery-list');
       const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: searchInputApi.perPage,
@@ -109,6 +111,7 @@ async function onGalleryDivSelectOptions(event) {
         try {
           const response = await searchInputApi.getRecipes();
           refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+          checkFavorites('.gallery-list');
         } catch (err) {
           console.log(err);
         }
@@ -220,47 +223,3 @@ async function renderIngredients() {
   }
 }
 renderIngredients();
-
-const clickHeart = document.querySelector('.gallery-list');
-console.log(clickHeart);
-
-let arrGalleryItem = [];
-
-if ('galleryItem' in window.localStorage) {
-  arrGalleryItem = locale.load('galleryItem');
-}
-
-window.addEventListener('load', () => {
-  let arrGalleryItemCart = document.querySelectorAll('.checkbox-favorite');
-
-  for (let i of arrGalleryItem) {
-    for (let j of arrGalleryItemCart) {
-      if (i === j.dataset.id) {
-        j.checked = true;
-      }
-    }
-  }
-});
-
-if (clickHeart !== undefined) {
-  clickHeart.addEventListener('click', ev => {
-    let numberIndex = arrGalleryItem.indexOf(`${ev.target.dataset.id}`);
-    if (numberIndex == -1) {
-      numberIndex = 0;
-    }
-
-    if (ev.target.nodeName === 'INPUT') {
-      console.log(ev.target.dataset.id);
-      if (!ev.target.checked) {
-        arrGalleryItem.splice(
-          arrGalleryItem.indexOf(`${ev.target.dataset.id}`),
-          1
-        );
-      } else {
-        arrGalleryItem.push(`${ev.target.dataset.id}`);
-      }
-
-      return locale.save('galleryItem', arrGalleryItem);
-    }
-  });
-}

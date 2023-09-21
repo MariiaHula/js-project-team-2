@@ -22,6 +22,7 @@ body .modal {
 }
 
 .modal-recipes-wrap {
+  z-index: 50;
   opacity: 0;
   visibility: hidden;
   max-width: 335px;
@@ -44,6 +45,7 @@ body .modal {
 }
 
 .modal-recipes-wrap.active {
+  z-index: 50;
   opacity: 1;
   visibility: visible;
 }
@@ -556,32 +558,28 @@ position: absolute;
   animation-delay: 0.06s;
 }
 
-
 @media screen and (min-width: 768px) {
+  .recipe-star-modal {
+    position: absolute;
+    top: 353px;
+    left: 295px;
+    align-content: center;
+    align-items: center;
+  }
 
-.recipe-star-modal {
-      
-      position: absolute;
-        top: 353px;
-        left: 295px;
-        align-content: center;
-        align-items: center;
-}
-  
-.modal-hashtag-list {
-  justify-content: flex-start;
+  .modal-hashtag-list {
+    justify-content: flex-start;
     position: relative;
     padding-top: 8px;
     gap: 3px;
     margin-bottom: 32px;
-}
+  }
 
-.modal-recipe-time {
-  padding-left: 5px;
-}
+  .modal-recipe-time {
+    padding-left: 5px;
+  }
 
-.card-star-modal {
-  margin-bottom: 0px;
-}
-
+  .card-star-modal {
+    margin-bottom: 0px;
+  }
 }

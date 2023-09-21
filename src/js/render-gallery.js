@@ -14,7 +14,7 @@ export function markupGalleryCard(arr) {
         </svg>`
     }
     return `
-      <li class="gallery-item" data-category="${cardEl.category}" data-id="${cardEl._id}">
+      <li class="gallery-item" data-category="${cardEl.category}" id="${cardEl._id}">
         <label class="label" >
            <input type="checkbox" name="favorite" class="checkbox-favorite" data-id="${cardEl._id}">
           <svg class='gallery-icon-checkbox  '>
@@ -51,9 +51,9 @@ export function markupGalleryCard(arr) {
 }
 
 
-export function checkFavorites() {
+export function checkFavorites(listClass) {
   let localStorageArr = localStorage.load('favorites-recipes');
-  const recipesAll = document.querySelector('.gallery-list').children;
+  const recipesAll = document.querySelector(listClass).children;
 
   for (let i = 0; i < recipesAll.length; i++) {
     const element = recipesAll[i];

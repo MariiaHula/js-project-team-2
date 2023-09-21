@@ -1,6 +1,4 @@
 import './js/axios_api';
-// import './js/categories';
-// import './js/gallery';
 import './js/header';
 import localStorage from './js/localStorage';
 import { goitGlobalAPI } from './js/axios_api';
@@ -130,17 +128,29 @@ async function renderFavoritesCard() {
       favoritesWrapper.innerHTML = categories;
       favoriteList.innerHTML = markupGalleryCard(arrResult);
       if (categories === '') {
+         Notify.failure('There is no such recipe in the favorites');
         return;
       }
       blokedWrapper.classList.add('is-hidden');
       checkFavorites('.favorites-list');
        
-      // const button = document.querySelector('.favorites-category-btn');
-      
-      // button.addEventListener('click', () => { 
-        
+      const buttons = favoritesWrapper.children;
+      for (li of buttons) {
+        let button = li.children[0];
+        button.addEventListener('click', event => {
+          let element = event.target;
 
-      // })
+          if (element.dataset['category'] !== 'All categories') {
+            let recipesFiltered = arrResult.filter(el => {
+              return el.category === element.dataset['category']
+            });
+            favoriteList.innerHTML = markupGalleryCard(recipesFiltered);
+          } else {
+            favoriteList.innerHTML = markupGalleryCard(arrResult);
+          }
+          checkFavorites('.favorites-list');
+        })
+      }
 
 
     const options = {
@@ -174,11 +184,8 @@ async function renderFavoritesCard() {
   } catch (err) {
     console.log(err);
   }
-
 }
-
 renderFavoritesCard();
-
 
 function faveritesCategory(arr) {
 
@@ -191,11 +198,10 @@ function faveritesCategory(arr) {
   } else {
     return '';
   }
-
   const markup = categories.map(el => {
     return `
         <li>
-        <button class="favorites-category-btn" type="button" data-category-name="${el}">${el}</button>
+        <button class="favorites-btn" type="button" data-category="${el}">${el}</button>
         </li>`;
   })
     .join('');
