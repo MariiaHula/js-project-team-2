@@ -173,7 +173,29 @@ body {
   line-height: 1.16;
 }
 
+.hero-image {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-light {
+  width: 150px;
+  height: 150px;
+  transform: rotate(-45.669deg);
+  flex-shrink: 0;
+  fill: #9BB537;
+  filter: blur(41px);
+  position: absolute;
+  z-index: 1;
+}
+
 @media screen and (min-width: 768px) {
+
+.hero-light {
+    width: 300px;
+    height: 300px;
+}
+
   .hero-section {
     padding-left: 32px;
   }
@@ -242,6 +264,12 @@ body {
 }
 
 @media screen and (min-width: 1280px) {
+
+  .hero-light {
+      width: 350px;
+      height: 350px;
+    }
+
   .hero-section {
     padding-top: 100px;
     padding-bottom: 100px;
@@ -294,18 +322,3 @@ body {
   }
 }
 
-.hero-image {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-light {
-  width: 350px;
-    height: 350px;
-    transform: rotate(-45.669deg);
-    flex-shrink: 0;
-    fill: #9BB537;
-  filter: blur(41px);
-      position: absolute;
-      z-index: 1;
-}
