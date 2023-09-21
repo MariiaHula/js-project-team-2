@@ -22,10 +22,9 @@ if (window.innerWidth < 768) {
   goitGlobalApi = new goitGlobalAPI(9);
 }
 
-
 const renderCategories = async event => {
-    
-        const response = await goitGlobalApi.getCategories();
+  try {
+    const response = await goitGlobalApi.getCategories();
         
         const markup = response.map(el => {
             return `
@@ -34,17 +33,20 @@ const renderCategories = async event => {
         </li>`
         }).join('');
 
-        refs.categoryEl.innerHTML = markup;   
+        refs.categoryEl.innerHTML = markup;
+  } catch (err) {
+    console.log(err);
+  };           
     
 };
 renderCategories();
 
-
 export const renderAllRecipes = async event => {
-    
-    const response = await goitGlobalApi.getRecipes();
+    try {
+      const response = await goitGlobalApi.getRecipes();
 
-    refs.galleryListEl.innerHTML = markupGalleryCard(response.results); 
+    refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+     
         checkFavorites()
         const options = {
         totalItems: response.results.length * response.totalPages,
@@ -65,18 +67,21 @@ export const renderAllRecipes = async event => {
         console.log(err);
       }
     });
-}
+    } catch (err) {
+      console.log(err);
+    }
     
+}    
 renderAllRecipes();
 
-
 export const onAllCategoriesBtnElClick = async event => {
-    goitGlobalApi.page = 1;
-    goitGlobalApi.category = '';
+  goitGlobalApi.page = 1;
+  goitGlobalApi.category = '';
+  try {
     const response = await goitGlobalApi.getRecipes();
     
-  refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-  checkFavorites()
+    refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+    checkFavorites()
         const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: goitGlobalApi.perPage,
@@ -96,7 +101,9 @@ export const onAllCategoriesBtnElClick = async event => {
         console.log(err);
       }
     });
- 
+  } catch (err) {
+    console.log(err);
+  } 
 };
 
 refs.allCategoriesBtnEl.addEventListener('click', onAllCategoriesBtnElClick);
@@ -107,15 +114,13 @@ const onCategoryElClick = async event => {
     if (event.target.classList.contains('active')) {
         return;
     }
-    
-    let value = event.target.textContent; 
-
-    const response = await goitGlobalApi.getRecipes();
-            
+    try {
+      const response = await goitGlobalApi.getRecipes();
+    let value = event.target.textContent;         
     const recipesCategory = response.results.filter(results => results.category === value);
         
     refs.galleryListEl.innerHTML = markupGalleryCard(recipesCategory);
-checkFavorites()
+    checkFavorites()
     const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: goitGlobalApi.perPage,
@@ -135,6 +140,9 @@ checkFavorites()
         console.log(err);
       }
     });
+    } catch (err) {
+      console.log(err);
+  };    
 
 };
 refs.categoryEl.addEventListener('click', onCategoryElClick)
