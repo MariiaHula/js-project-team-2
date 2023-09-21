@@ -111,8 +111,7 @@ function sendForm(e) {
         
             }
             catch (err) {
-                console.log(`Error: ${err}`);
-                Notify.failure('Oops, probably wrong email. Try another email, please');
+                Notify.failure(`Oops, something wrong, ${err.response.data.message}`);
                 formEl.reset();
                 windowRatingModal.classList.remove('modal-rating-backdrop-active');
             }
