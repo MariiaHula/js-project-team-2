@@ -2,7 +2,8 @@ import './js/axios_api';
 import './js/header';
 import localStorage from './js/localStorage';
 import { goitGlobalAPI } from './js/axios_api';
-import { markupGalleryCard, checkFavorites } from './js/render-gallery';
+import { checkFavorites } from './render-gallery';
+import { renderAllRecipes } from './categories';
 import Pagination from 'tui-pagination';
 import '../node_modules/tui-pagination/dist/tui-pagination.css';  
 
