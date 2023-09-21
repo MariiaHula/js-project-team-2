@@ -102,7 +102,7 @@ margin-bottom: 24px;
         background-image: linear-gradient(to right, #9BB537 0%, #37b557 51%, #91db97 100%);
         border: none;
 
-    color: --dark-text-title;
+    color: var(--dark-text-title);
             font-family: Inter;
             font-size: 14px;
             font-style: normal;
