@@ -1,6 +1,6 @@
 import { data, event } from "jquery";
 import { goitGlobalAPI } from "./axios_api";
-import { markupGalleryCard } from "./render-gallery";
+import { markupGalleryCard, checkFavorites} from "./render-gallery";
 import Pagination from 'tui-pagination';
 import '../../node_modules/tui-pagination/dist/tui-pagination.css';  
 
@@ -45,7 +45,7 @@ export const renderAllRecipes = async event => {
     const response = await goitGlobalApi.getRecipes();
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results); 
-
+        checkFavorites()
         const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: goitGlobalApi.perPage,
@@ -60,6 +60,7 @@ export const renderAllRecipes = async event => {
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites()
       } catch (err) {
         console.log(err);
       }
@@ -74,7 +75,8 @@ export const onAllCategoriesBtnElClick = async event => {
     goitGlobalApi.category = '';
     const response = await goitGlobalApi.getRecipes();
     
-    refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+  refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+  checkFavorites()
         const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: goitGlobalApi.perPage,
@@ -89,6 +91,7 @@ export const onAllCategoriesBtnElClick = async event => {
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites()
       } catch (err) {
         console.log(err);
       }
@@ -112,7 +115,7 @@ const onCategoryElClick = async event => {
     const recipesCategory = response.results.filter(results => results.category === value);
         
     refs.galleryListEl.innerHTML = markupGalleryCard(recipesCategory);
-
+checkFavorites()
     const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: goitGlobalApi.perPage,
@@ -127,6 +130,7 @@ const onCategoryElClick = async event => {
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        checkFavorites()
       } catch (err) {
         console.log(err);
       }
