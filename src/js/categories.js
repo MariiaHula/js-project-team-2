@@ -23,10 +23,6 @@ if (window.innerWidth < 768) {
 }
 
 
-let recipes = [];
-// const goitGlobalApi = new goitGlobalAPI();
-
-
 const renderCategories = async event => {
     
         const response = await goitGlobalApi.getCategories();
@@ -74,10 +70,11 @@ renderAllRecipes();
 
 
 export const onAllCategoriesBtnElClick = async event => {
-
-    let data = await dataArray();
-
-    refs.galleryListEl.innerHTML = markupGalleryCard(data);
+    goitGlobalApi.page = 1;
+    goitGlobalApi.category = '';
+    const response = await goitGlobalApi.getRecipes();
+    
+    refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
         const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: goitGlobalApi.perPage,
@@ -102,19 +99,20 @@ export const onAllCategoriesBtnElClick = async event => {
 refs.allCategoriesBtnEl.addEventListener('click', onAllCategoriesBtnElClick);
 
 const onCategoryElClick = async event => {
-
-    // goitGlobalApi.page = 32;
+    
+    goitGlobalApi.category = event.target.textContent;
     if (event.target.classList.contains('active')) {
         return;
     }
-    let data = await dataArray();
-    // goitGlobalApi.perPage = 9;
-    const value = event.target.textContent;   
-
     
-    const recipesCategory = data.filter(results => results.category === value);
-    console.log(recipesCategory);
+    let value = event.target.textContent; 
+
+    const response = await goitGlobalApi.getRecipes();
+            
+    const recipesCategory = response.results.filter(results => results.category === value);
+        
     refs.galleryListEl.innerHTML = markupGalleryCard(recipesCategory);
+
     const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: goitGlobalApi.perPage,
@@ -135,18 +133,8 @@ const onCategoryElClick = async event => {
     });
 
 };
-console.log(onCategoryElClick);
 refs.categoryEl.addEventListener('click', onCategoryElClick)
 
 
-const dataArray = async event => {    
-    let data = [];
-    if (recipes[0]) {data = [];
-    } else {
-        let response = await goitGlobalApi.getRecipes();
-        data = response.results;        
-    }
-    return data;    
-};
 
 
