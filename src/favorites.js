@@ -128,6 +128,7 @@ async function renderFavoritesCard() {
       favoritesWrapper.innerHTML = categories;
       favoriteList.innerHTML = markupGalleryCard(arrResult);
       if (categories === '') {
+         Notify.failure('There is no such recipe in the favorites');
         return;
       }
       blokedWrapper.classList.add('is-hidden');
@@ -200,7 +201,7 @@ function faveritesCategory(arr) {
   const markup = categories.map(el => {
     return `
         <li>
-        <button class="favorites-category-btn" type="button" data-category="${el}">${el}</button>
+        <button class="favorites-btn" type="button" data-category="${el}">${el}</button>
         </li>`;
   })
     .join('');
