@@ -47,6 +47,7 @@ export function markupGalleryCard(arr) {
       </li>
     `;
   }).join('');
+  
   return markup;
 }
 
