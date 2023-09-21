@@ -174,9 +174,6 @@ function markupStar(recipesArr) {
   
 }
 
-
-
-
 function starRend(recipesArr) {
   const starInt = Math.round(recipesArr.rating); 
 
@@ -249,4 +246,3 @@ function markupInstructions(recipesArr) {
         </p>
       </div>`
 }
-                 
