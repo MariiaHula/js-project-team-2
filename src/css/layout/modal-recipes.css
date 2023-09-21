@@ -45,6 +45,7 @@ body .modal {
 }
 
 .modal-recipes-wrap.active {
+  z-index: 50;
   opacity: 1;
   visibility: visible;
 }
