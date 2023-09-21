@@ -1,7 +1,6 @@
 import './js/axios_api';
 import { goitGlobalAPI } from './js/axios_api';
 import './js/categories';
-// import './favorites';
 import './js/gallery';
 import './js/header';
 import './js/hero';
