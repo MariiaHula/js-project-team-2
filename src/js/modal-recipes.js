@@ -1,8 +1,7 @@
 import { goitGlobalAPI } from "./axios_api"
 
-
 const refs = {
-    gallery_btn: document.querySelector(".gallery-btn"),
+    gallery_btn: document.querySelector(".gallery-list"),
     recipes_container: document.querySelector(".recipes-modal-container"),
     recipes_wrap: document.querySelector(".modal-recipes-wrap"),
     close_btn: document.querySelector(".close-recipes-btn"),
@@ -17,8 +16,26 @@ const refs = {
 const modalRecipesApi = new goitGlobalAPI();
 
 
-// refs.gallery_btn.addEventListener("click", openModalRecipes);
+refs.gallery_btn.addEventListener("click", openModalGaleryRecipes);
 refs.popular_recipes.addEventListener("click", openModalPopularRecipes);
+
+
+function openModalGaleryRecipes(e) {
+ if (!e.target.closest('.gallery-item')) {
+    return;
+  }
+  const clickedRecipe = e.target.closest('.gallery-item');
+  if (!clickedRecipe) return;
+  const recipeId = clickedRecipe.id;
+  console.log(clickedRecipe);
+  openModalRecipes();
+  catchRecipes(recipeId);
+  setTimeout(() => {
+    refs.skelet.classList.add("is-hidden");
+    refs.card_markup_modal.classList.remove("is-hidden");
+    refs.extra_modal_button.classList.remove("is-hidden");
+    }, 1500);
+  }
 
 function openModalPopularRecipes(e) {
  if (!e.target.closest('.popular-recipes-link')) {
