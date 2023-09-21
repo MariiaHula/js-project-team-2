@@ -1,4 +1,5 @@
 import debounce from "lodash.debounce";
+import locale from './localStorage';
 import { goitGlobalAPI } from "./axios_api";
 import { markupGalleryCard, checkFavorites } from "./render-gallery";
 import Notiflix from "notiflix";
@@ -217,5 +218,49 @@ async function renderIngredients() {
   }
 }
 renderIngredients();
+
+const clickHeart = document.querySelector('.gallery-list');
+
+
+let arrGalleryItem = [];
+
+if ('galleryItem' in window.localStorage) {
+  arrGalleryItem = locale.load('galleryItem');
+}
+
+window.addEventListener('load', () => {
+  let arrGalleryItemCart = document.querySelectorAll('.checkbox-favorite');
+
+  for (let i of arrGalleryItem) {
+    for (let j of arrGalleryItemCart) {
+      if (i === j.dataset.idName) {
+        j.checked = true;
+      }
+    }
+  }
+});
+
+if (clickHeart !== undefined) {
+  clickHeart.addEventListener('click', ev => {
+    let numberIndex = arrGalleryItem.indexOf(`${ev.target.dataset.idName}`);
+
+    if (numberIndex == -1) {
+      numberIndex = 0;
+    }
+
+    if (ev.target.nodeName === 'INPUT') {
+      if (!ev.target.checked) {
+        arrGalleryItem.splice(
+          arrGalleryItem.indexOf(`${ev.target.dataset.idName}`),
+          1
+        );
+      } else {
+        arrGalleryItem.push(`${ev.target.dataset.idName}`);
+      }
+
+      return locale.save('galleryItem', arrGalleryItem);
+    }
+  });
+}
 
 
