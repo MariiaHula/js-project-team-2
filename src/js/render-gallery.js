@@ -20,7 +20,7 @@ export function markupGalleryCard(arr) {
     }
 
     return `
-      <li class="gallery-item" data-category="${cardEl.category}" data-id="${cardEl._id}">
+      <li class="gallery-item" data-category="${cardEl.category}" id="${cardEl._id}">
         <label class="label" >
            <input type="checkbox" name="favorite" class="checkbox-favorite" data-id="${cardEl._id}">
           <svg class='gallery-icon-checkbox  '>

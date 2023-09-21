@@ -16,14 +16,20 @@ const refs = {
 const modalRecipesApi = new goitGlobalAPI();
 
 
-refs.gallery_btn.addEventListener("click", openModalGaleryRecipes);
+refs.gallery_btn.addEventListener("click", openModalGaleryRecipesPre);
 refs.popular_recipes.addEventListener("click", openModalPopularRecipes);
 
+function openModalGaleryRecipesPre(e) {
+  if (!e.target.closest('.gallery-btn')) {
+    return;
+  };
+  openModalGaleryRecipes(e);
+}
 
 function openModalGaleryRecipes(e) {
  if (!e.target.closest('.gallery-item')) {
     return;
-  }
+  };
   const clickedRecipe = e.target.closest('.gallery-item');
   if (!clickedRecipe) return;
   const recipeId = clickedRecipe.id;
