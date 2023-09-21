@@ -1,50 +1,8 @@
-.gallery {
-  padding-top: 100px;
-}
-
 .rate {
   height: 42px;
   align-items: center;
   display: flex;
-
 }
-
-.rate:not(:checked)>input {
-  position: absolute;
-  top: -9999px;
-}
-
-.rate:not(:checked)>label {
-  float: right;
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
-
-  font-size: 18px;
-  color: #EEA10C;
-}
-
-.rate:not(:checked)>label:before {
-  content: '★ ';
-}
-
-.rate>input:checked~label {
-  color: rgba(255, 255, 255, 0.10);
-}
-
-/* .rate:not(:checked)>label:hover,
-.rate:not(:checked)>label:hover~label {
-  color: #deb217;
-} */
-
-/* .rate>input:checked+label:hover,
-.rate>input:checked+label:hover~label,
-.rate>input:checked~label:hover,
-.rate>input:checked~label:hover~label,
-.rate>label:hover~input:checked~label {
-  color: #c59b08;
-} */
-
 
 /* ================================================mobile */
 
@@ -70,9 +28,11 @@
 }
 
 .gallery-item {
-  background-image: linear-gradient(1deg,
-      rgba(5, 5, 5, 0.6) 4.82%,
-      rgba(5, 5, 5, 0) 108.72%);
+  background-image: linear-gradient(
+    1deg,
+    rgba(5, 5, 5, 0.6) 4.82%,
+    rgba(5, 5, 5, 0) 108.72%
+  );
 }
 
 .wrap-time-area {
@@ -107,7 +67,6 @@
   line-height: 1.28;
   outline-color: var(--gal-form-border-col);
   outline: 1px;
-
 }
 
 .gallery-form-label {
@@ -169,18 +128,18 @@
   z-index: 1;
   width: 20px;
   height: 20px;
-  border: 2px solid tomato;
+}
+
+.svg-star-gallery {
+  fill: #eea10c;
+  width: 14px;
+  height: 13px;
 }
 
 .gallery-average-rating {
   column-gap: 4px;
   display: flex;
   align-items: center;
-  margin-right: 4px;
-}
-
-.gallery-star-ckeckbox:checked+.galerry-checkbox-icon {
-  background-color: tomato;
 }
 
 .checkbox-favorite {
@@ -211,13 +170,7 @@
   stroke: #fff;
 }
 
-
-
-
-
-
-
-.checkbox-favorite:checked+.gallery-icon-checkbox {
+.checkbox-favorite:checked + .gallery-icon-checkbox {
   stroke: #fff;
   fill: #fff;
 }
@@ -232,7 +185,6 @@
 .select-time,
 .select-area {
   width: 160px;
-
 }
 
 /* =========================================================================begin=======CARDS */
@@ -335,7 +287,6 @@
 
   .container-gallery {
     padding-left: 32px;
-
   }
 
   .wrap-input-search {
