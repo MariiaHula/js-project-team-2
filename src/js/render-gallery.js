@@ -1,29 +1,29 @@
 import iconSvg from '../images/icon.svg';
 import localStorage from './localStorage';
 export function markupGalleryCard(arr) {
-
   if (!Array.isArray(arr)) {
-
     return '';
   }
+
+
   const markup = arr.map(cardEl => {
-
-
     let ratingStars = '';
-    console.log(arr)
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= Math.ceil(cardEl.rating); i++) {
+
+
       ratingStars += `
-        <input type="radio" id="star${i}" name="rate" value="${i}" checked />
-        <label for="star${i}" title="${i} star">${i} star</label>
+        <svg  class="svg-star-gallery" >
+        <use href="${iconSvg}#icon-star" ></use>
+        </svg>
       `;
     }
 
     return `
       <li class="gallery-item" data-category="${cardEl.category}" data-id="${cardEl._id}">
-        <label class="label">
-          <input type="checkbox" name="favorite" class="checkbox-favorite">
-          <svg class='gallery-icon-checkbox'>
-            <use href="${iconSvg}#icon-heart" class="icon-svg-heart"></use>
+        <label class="label" >
+           <input type="checkbox" name="favorite" class="checkbox-favorite" data-id="${cardEl._id}">
+          <svg class='gallery-icon-checkbox  '>
+            <use href="${iconSvg}#icon-heart" class="icon-svg-heart"> </use>
           </svg>
         </label>
         <img
@@ -42,7 +42,7 @@ export function markupGalleryCard(arr) {
           <h2 class="gallery-card-title">${cardEl.title}</h2>
           <h3 class="gallery-card-subtitle">${cardEl.description}</h3>
           <form class="gallery-form-rating">
-           <label class="gallery-average-rating">${cardEl.rating}</label>
+          <label class="gallery-average-rating">${cardEl.rating}</label>
             <div class="rate">
               ${ratingStars}
             </div>
@@ -54,8 +54,8 @@ export function markupGalleryCard(arr) {
   }).join('');
 
   return markup;
-
 }
+
 
 export function checkFavorites() {
   let localStorageArr = localStorage.load('favorites-recipes');

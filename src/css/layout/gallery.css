@@ -1,49 +1,9 @@
-.gallery {
-  padding-top: 100px;
-}
-
 .rate {
   height: 42px;
   align-items: center;
   display: flex;
 
 }
-
-.rate:not(:checked)>input {
-  position: absolute;
-  top: -9999px;
-}
-
-.rate:not(:checked)>label {
-  float: right;
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
-
-  font-size: 18px;
-  color: #EEA10C;
-}
-
-.rate:not(:checked)>label:before {
-  content: '★ ';
-}
-
-.rate>input:checked~label {
-  color: rgba(255, 255, 255, 0.10);
-}
-
-/* .rate:not(:checked)>label:hover,
-.rate:not(:checked)>label:hover~label {
-  color: #deb217;
-} */
-
-/* .rate>input:checked+label:hover,
-.rate>input:checked+label:hover~label,
-.rate>input:checked~label:hover,
-.rate>input:checked~label:hover~label,
-.rate>label:hover~input:checked~label {
-  color: #c59b08;
-} */
 
 
 /* ================================================mobile */
@@ -169,19 +129,22 @@
   z-index: 1;
   width: 20px;
   height: 20px;
-  border: 2px solid tomato;
+
+}
+
+.svg-star-gallery {
+  fill: #EEA10C;
+  width: 14px;
+  height: 13px;
 }
 
 .gallery-average-rating {
   column-gap: 4px;
   display: flex;
   align-items: center;
-  margin-right: 4px;
+
 }
 
-.gallery-star-ckeckbox:checked+.galerry-checkbox-icon {
-  background-color: tomato;
-}
 
 .checkbox-favorite {
   -webkit-appearance: none;
@@ -210,11 +173,6 @@
 .gallery-icon-checkbox:hover {
   stroke: #fff;
 }
-
-
-
-
-
 
 
 .checkbox-favorite:checked+.gallery-icon-checkbox {

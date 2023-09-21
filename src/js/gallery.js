@@ -1,12 +1,11 @@
-import debounce from "lodash.debounce";
+import debounce from 'lodash.debounce';
 import locale from './localStorage';
-import { goitGlobalAPI } from "./axios_api";
-import { markupGalleryCard, checkFavorites } from "./render-gallery";
-import Notiflix from "notiflix";
-import { renderAllRecipes } from "./categories";
+import { goitGlobalAPI } from './axios_api';
+import { markupGalleryCard } from './render-gallery';
+import Notiflix from 'notiflix';
+import { renderAllRecipes } from './categories';
 import Pagination from 'tui-pagination';
-import '../../node_modules/tui-pagination/dist/tui-pagination.css';  
-
+import '../../node_modules/tui-pagination/dist/tui-pagination.css';
 
 const refs = {
   galleryFormFilterEl: document.querySelector('.gallery-form-filter'),
@@ -17,10 +16,8 @@ const refs = {
   resetFilterEl: document.querySelector('.gallery-reset-btn'),
   gallerySelectEl: document.querySelector('.gallery-div-select'),
   galleryInputEl: document.querySelector('.search-igredient'),
-  galleryCheckboxFavorite: document.querySelector('.checkbox-favorite')
+  galleryCheckboxFavorite: document.querySelector('.checkbox-favorite'),
 };
-
-
 
 let searchInputApi;
 
@@ -35,7 +32,6 @@ if (window.innerWidth < 768) {
 //================INPUT=====================================
 
 async function onGalleryInputElInput(event) {
-
   searchInputApi.page = 1;
   searchInputApi.title = event.target.value.trim().toLowerCase();
   try {
@@ -48,22 +44,21 @@ async function onGalleryInputElInput(event) {
     }
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-  checkFavorites()
+
     const options = {
-        totalItems: response.results.length * response.totalPages,
-        itemsPerPage: searchInputApi.perPage,
-        visiblePages: 3,
-        page: searchInputApi.page,
-    }
+      totalItems: response.results.length * response.totalPages,
+      itemsPerPage: searchInputApi.perPage,
+      visiblePages: 3,
+      page: searchInputApi.page,
+    };
 
     const pagination = new Pagination('pagination', options);
-        
+
     pagination.on('afterMove', async event => {
-       searchInputApi.page = event.page;
+      searchInputApi.page = event.page;
       try {
         const response = await searchInputApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-        checkFavorites()
       } catch (err) {
         console.log(err);
       }
@@ -74,18 +69,14 @@ async function onGalleryInputElInput(event) {
 }
 
 async function onGalleryDivSelectOptions(event) {
-
   searchInputApi.page = 1;
 
   const { name, value } = event.target;
   if (name === 'time') {
     searchInputApi.time = value;
-
   } else if (name === 'area') {
     searchInputApi.area = value;
-
   } else if (name === 'ingredients') {
-
     const ingId = event.target.selectedOptions[0].getAttribute('data-id');
     if (ingId === null || ingId === '') {
       searchInputApi.ingredient = '';
@@ -97,35 +88,35 @@ async function onGalleryDivSelectOptions(event) {
   try {
     const response = await searchInputApi.getRecipes();
     if (response.totalPages === 0) {
-      Notiflix.Notify.failure('Sorry, no recipe was found with these parameters');
+      Notiflix.Notify.failure(
+        'Sorry, no recipe was found with these parameters'
+      );
       return;
     } else {
       refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-      checkFavorites()
 
-    const options = {
+      const options = {
         totalItems: response.results.length * response.totalPages,
         itemsPerPage: searchInputApi.perPage,
         visiblePages: 3,
         page: searchInputApi.page,
-    }
+      };
 
-    const pagination = new Pagination('pagination', options);
-        
-    pagination.on('afterMove', async event => {
-       searchInputApi.page = event.page;
-      try {
-        const response = await searchInputApi.getRecipes();
-        refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-        checkFavorites()
-      } catch (err) {
-        console.log(err);
-      }
-    });
+      const pagination = new Pagination('pagination', options);
+
+      pagination.on('afterMove', async event => {
+        searchInputApi.page = event.page;
+        try {
+          const response = await searchInputApi.getRecipes();
+          refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
+        } catch (err) {
+          console.log(err);
+        }
+      });
     }
   } catch (err) {
     console.log(err);
-  };
+  }
 }
 
 function onResetFilterElClick(event) {
@@ -140,34 +131,39 @@ function onResetFilterElClick(event) {
     refs.galleryListEl.innerHTML = '';
     renderAllRecipes();
   }
-
 }
 
 function ongalleryFormFilterElSubmit(event) {
   event.preventDefault();
 }
 
-refs.galleryInputEl.addEventListener('input', debounce(onGalleryInputElInput, 300));
+refs.galleryInputEl.addEventListener(
+  'input',
+  debounce(onGalleryInputElInput, 300)
+);
 refs.selectTimeEl.addEventListener('change', onGalleryDivSelectOptions);
 refs.selectAreaEl.addEventListener('change', onGalleryDivSelectOptions);
 refs.selectIgredientEl.addEventListener('change', onGalleryDivSelectOptions);
 refs.resetFilterEl.addEventListener('click', onResetFilterElClick);
-refs.galleryFormFilterEl.addEventListener('submit', ongalleryFormFilterElSubmit);
+refs.galleryFormFilterEl.addEventListener(
+  'submit',
+  ongalleryFormFilterElSubmit
+);
 
 // =========================selectTIME=======================
 function markupTime() {
-
   const time = [];
 
   for (let i = 1; i < 160; i++) {
     time.push(i);
   }
 
-  const markup = time.map((elem) => {
-    return `
+  const markup = time
+    .map(elem => {
+      return `
       <option class="options" value="${elem}">${elem} min</option>
     `;
-  })
+    })
     .join('');
 
   refs.selectTimeEl.insertAdjacentHTML('beforeend', markup);
@@ -177,13 +173,14 @@ markupTime();
 // =========================selectAREA=======================
 
 function markupArea(arr) {
-  const markup = arr.map(areaEl => {
-    return `
+  const markup = arr
+    .map(areaEl => {
+      return `
       <option value="${areaEl.name}">${areaEl.name}</option>        
-    `
-  }).join('');
-  return markup
-
+    `;
+    })
+    .join('');
+  return markup;
 }
 
 async function renderArea() {
@@ -199,12 +196,14 @@ renderArea();
 
 // =========================selectINGREDIENTS=======================
 function markupIngredients(arr) {
-  const markup = arr.map(ingredientEl => {
-    return `
+  const markup = arr
+    .map(ingredientEl => {
+      return `
       <option value="${ingredientEl.name}" data-id="${ingredientEl._id}">${ingredientEl.name}</option>        
-    `
-  }).join('');
-  return markup
+    `;
+    })
+    .join('');
+  return markup;
 }
 
 async function renderIngredients() {
@@ -212,7 +211,10 @@ async function renderIngredients() {
 
   try {
     const response = await selectIngredient.getIngredients();
-    refs.selectIgredientEl.insertAdjacentHTML('beforeend', markupIngredients(response));
+    refs.selectIgredientEl.insertAdjacentHTML(
+      'beforeend',
+      markupIngredients(response)
+    );
   } catch (err) {
     console.log(err);
   }
@@ -220,7 +222,7 @@ async function renderIngredients() {
 renderIngredients();
 
 const clickHeart = document.querySelector('.gallery-list');
-
+console.log(clickHeart);
 
 let arrGalleryItem = [];
 
@@ -233,7 +235,7 @@ window.addEventListener('load', () => {
 
   for (let i of arrGalleryItem) {
     for (let j of arrGalleryItemCart) {
-      if (i === j.dataset.idName) {
+      if (i === j.dataset.id) {
         j.checked = true;
       }
     }
@@ -242,25 +244,23 @@ window.addEventListener('load', () => {
 
 if (clickHeart !== undefined) {
   clickHeart.addEventListener('click', ev => {
-    let numberIndex = arrGalleryItem.indexOf(`${ev.target.dataset.idName}`);
-
+    let numberIndex = arrGalleryItem.indexOf(`${ev.target.dataset.id}`);
     if (numberIndex == -1) {
       numberIndex = 0;
     }
 
     if (ev.target.nodeName === 'INPUT') {
+      console.log(ev.target.dataset.id);
       if (!ev.target.checked) {
         arrGalleryItem.splice(
-          arrGalleryItem.indexOf(`${ev.target.dataset.idName}`),
+          arrGalleryItem.indexOf(`${ev.target.dataset.id}`),
           1
         );
       } else {
-        arrGalleryItem.push(`${ev.target.dataset.idName}`);
+        arrGalleryItem.push(`${ev.target.dataset.id}`);
       }
 
       return locale.save('galleryItem', arrGalleryItem);
     }
   });
 }
-
-

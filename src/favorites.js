@@ -49,6 +49,51 @@ async function cardFavoriteRender() {
 }
 
 cardFavoriteRender()
+
+const clickHeart = document.querySelector('.favorites-list');
+console.log(clickHeart);
+
+let arrGalleryItem = [];
+
+if ('galleryItem' in window.localStorage) {
+  arrGalleryItem = locale.load('galleryItem');
+}
+
+window.addEventListener('load', () => {
+  let arrGalleryItemCart = document.querySelectorAll('.checkbox-favorite');
+
+  for (let i of arrGalleryItem) {
+    for (let j of arrGalleryItemCart) {
+      if (i === j.dataset.id) {
+        j.checked = true;
+      }
+    }
+  }
+});
+
+if (clickHeart !== undefined) {
+  clickHeart.addEventListener('click', ev => {
+    let numberIndex = arrGalleryItem.indexOf(`${ev.target.dataset.id}`);
+    if (numberIndex == -1) {
+      numberIndex = 0;
+    }
+
+    if (ev.target.nodeName === 'INPUT') {
+      console.log(ev.target.dataset.id);
+      if (!ev.target.checked) {
+        arrGalleryItem.splice(
+          arrGalleryItem.indexOf(`${ev.target.dataset.id}`),
+          1
+        );
+      } else {
+        arrGalleryItem.push(`${ev.target.dataset.id}`);
+      }
+
+      return locale.save('galleryItem', arrGalleryItem);
+    }
+  });
+}
+
     // const options = {
     //   totalItems: response.results.length * response.totalPages,
     //   itemsPerPage: favoritRenderAPI.perPage,
