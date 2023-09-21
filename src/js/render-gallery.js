@@ -37,7 +37,7 @@ export function markupGalleryCard(arr) {
           <h2 class="gallery-card-title">${cardEl.title}</h2>
           <h3 class="gallery-card-subtitle">${cardEl.description}</h3>
           <form class="gallery-form-rating">
-           <label class="gallery-average-rating">${cardEl.rating}</label>
+           <label class="gallery-average-rating">${cardEl.rating.toFixed(1)}</label>
             <div class="rate">
               ${ratingStars}
             </div>
