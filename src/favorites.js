@@ -110,8 +110,14 @@ const blokedWrapper = document.querySelector('.js-bloked');
 let favoritesGalleryAPI = new goitGlobalAPI(288);
 let gallery_btn;
 
+const spinnerFav = document.querySelector('.modal-fav-loader');
+
+   
+
+     
+
 async function renderFavoritesCard() {
-    
+  spinnerFav.style.display = 'block';
     try {
         const response = await favoritesGalleryAPI.getRecipes();
 
@@ -119,7 +125,8 @@ async function renderFavoritesCard() {
         let arrResult = response.results;
 
         if (Array.isArray(arrFav)) {
-            arrResult = arrResult.filter(element => {
+          arrResult = arrResult.filter(element => {
+                
                 return arrFav.includes(String(element._id)); 
             })
         } else {
@@ -171,7 +178,6 @@ async function renderFavoritesCard() {
           const response = await favoritesGalleryAPI.getRecipes();
         let arrFav = localStorage.load('favorites-recipes');
         let arrResult = response.results;
-       
         if (Array.isArray(arrFav)) {
             arrResult = arrResult.filter(element => {
                 return arrFav.includes(String(element._id)); 
@@ -190,8 +196,11 @@ async function renderFavoritesCard() {
 
   gallery_btn = document.querySelector(".favorites-list");
   gallery_btn.addEventListener("click", openModalGaleryRecipesPre);
-}
-renderFavoritesCard();
+  spinnerFav.style.display = 'none';
+} 
+   renderFavoritesCard();
+
+
 
 function faveritesCategory(arr) {
 
@@ -212,6 +221,7 @@ function faveritesCategory(arr) {
   })
     .join('');
   return markup;
-}
+       }
+       
 
 
