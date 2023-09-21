@@ -1,16 +1,15 @@
-import { data, event } from "jquery";
-import { goitGlobalAPI } from "./axios_api";
-import { markupGalleryCard, checkFavorites} from "./render-gallery";
+import { data, event } from 'jquery';
+import { goitGlobalAPI } from './axios_api';
+import { markupGalleryCard } from './render-gallery';
 import Pagination from 'tui-pagination';
-import '../../node_modules/tui-pagination/dist/tui-pagination.css';  
+import '../../node_modules/tui-pagination/dist/tui-pagination.css';
 
 const refs = {
-    allCategoriesBtnEl: document.querySelector('.btn-all-categories'),
-    categoryEl: document.querySelector('.categories-list'),
-    btnCategoriesEl: document.querySelector('.btn-categories-item'),
-    galleryListEl: document.querySelector('.gallery-list')
-
-}
+  allCategoriesBtnEl: document.querySelector('.btn-all-categories'),
+  categoryEl: document.querySelector('.categories-list'),
+  btnCategoriesEl: document.querySelector('.btn-categories-item'),
+  galleryListEl: document.querySelector('.gallery-list'),
+};
 
 let goitGlobalApi;
 
@@ -25,53 +24,51 @@ if (window.innerWidth < 768) {
 const renderCategories = async event => {
   try {
     const response = await goitGlobalApi.getCategories();
-        
-        const markup = response.map(el => {
-            return `
+
+    const markup = response
+      .map(el => {
+        return `
         <li>
         <button class="btn-categories-item" type="button" data-categories-id="${el._id}">${el.name}</button>
-        </li>`
-        }).join('');
+        </li>`;
+      })
+      .join('');
 
-        refs.categoryEl.innerHTML = markup;
+    refs.categoryEl.innerHTML = markup;
   } catch (err) {
     console.log(err);
-  };           
-    
+  }
 };
 renderCategories();
 
 export const renderAllRecipes = async event => {
-    try {
-      const response = await goitGlobalApi.getRecipes();
+  try {
+    const response = await goitGlobalApi.getRecipes();
 
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-     
-        checkFavorites()
-        const options = {
-        totalItems: response.results.length * response.totalPages,
-        itemsPerPage: goitGlobalApi.perPage,
-        visiblePages: 3,
-        page: goitGlobalApi.page,
-    }
+
+    const options = {
+      totalItems: response.results.length * response.totalPages,
+      itemsPerPage: goitGlobalApi.perPage,
+      visiblePages: 3,
+      page: goitGlobalApi.page,
+    };
 
     const pagination = new Pagination('pagination', options);
-        
+
     pagination.on('afterMove', async event => {
-       goitGlobalApi.page = event.page;
+      goitGlobalApi.page = event.page;
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-        checkFavorites()
       } catch (err) {
         console.log(err);
       }
     });
-    } catch (err) {
-      console.log(err);
-    }
-    
-}    
+  } catch (err) {
+    console.log(err);
+  }
+};
 renderAllRecipes();
 
 export const onAllCategoriesBtnElClick = async event => {
@@ -79,74 +76,68 @@ export const onAllCategoriesBtnElClick = async event => {
   goitGlobalApi.category = '';
   try {
     const response = await goitGlobalApi.getRecipes();
-    
+
     refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-    checkFavorites()
-        const options = {
-        totalItems: response.results.length * response.totalPages,
-        itemsPerPage: goitGlobalApi.perPage,
-        visiblePages: 3,
-        page: goitGlobalApi.page,
-    }
+
+    const options = {
+      totalItems: response.results.length * response.totalPages,
+      itemsPerPage: goitGlobalApi.perPage,
+      visiblePages: 3,
+      page: goitGlobalApi.page,
+    };
 
     const pagination = new Pagination('pagination', options);
-        
+
     pagination.on('afterMove', async event => {
-       goitGlobalApi.page = event.page;
+      goitGlobalApi.page = event.page;
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-        checkFavorites()
       } catch (err) {
         console.log(err);
       }
     });
   } catch (err) {
     console.log(err);
-  } 
+  }
 };
 
 refs.allCategoriesBtnEl.addEventListener('click', onAllCategoriesBtnElClick);
 
 const onCategoryElClick = async event => {
-    
-    goitGlobalApi.category = event.target.textContent;
-    if (event.target.classList.contains('active')) {
-        return;
-    }
-    try {
-      const response = await goitGlobalApi.getRecipes();
-    let value = event.target.textContent;         
-    const recipesCategory = response.results.filter(results => results.category === value);
-        
+  goitGlobalApi.category = event.target.textContent;
+  if (event.target.classList.contains('active')) {
+    return;
+  }
+  try {
+    const response = await goitGlobalApi.getRecipes();
+    let value = event.target.textContent;
+    const recipesCategory = response.results.filter(
+      results => results.category === value
+    );
+
     refs.galleryListEl.innerHTML = markupGalleryCard(recipesCategory);
-    checkFavorites()
+
     const options = {
-        totalItems: response.results.length * response.totalPages,
-        itemsPerPage: goitGlobalApi.perPage,
-        visiblePages: 3,
-        page: goitGlobalApi.page,
-    }
+      totalItems: response.results.length * response.totalPages,
+      itemsPerPage: goitGlobalApi.perPage,
+      visiblePages: 3,
+      page: goitGlobalApi.page,
+    };
 
     const pagination = new Pagination('pagination', options);
-        
+
     pagination.on('afterMove', async event => {
-       goitGlobalApi.page = event.page;
+      goitGlobalApi.page = event.page;
       try {
         const response = await goitGlobalApi.getRecipes();
         refs.galleryListEl.innerHTML = markupGalleryCard(response.results);
-        checkFavorites()
       } catch (err) {
         console.log(err);
       }
     });
-    } catch (err) {
-      console.log(err);
-  };    
-
+  } catch (err) {
+    console.log(err);
+  }
 };
-refs.categoryEl.addEventListener('click', onCategoryElClick)
-
-
-
-
+refs.categoryEl.addEventListener('click', onCategoryElClick);
