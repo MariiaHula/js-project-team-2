@@ -142,7 +142,7 @@ async function renderFavoritesCard() {
 
           if (element.dataset['category'] !== 'All categories') {
             let recipesFiltered = arrResult.filter(el => {
-              el.category === element.dataset['category']
+              return el.category === element.dataset['category']
             });
             favoriteList.innerHTML = markupGalleryCard(recipesFiltered);
           } else {
