@@ -3,7 +3,7 @@ import locale from './localStorage';
 import { goitGlobalAPI } from './axios_api';
 import { markupGalleryCard } from './render-gallery';
 import Notiflix from 'notiflix';
-import { renderAllRecipes, checkFavorites } from './categories';
+import { renderAllRecipes, checkFavorites } from './render-gallery';
 import Pagination from 'tui-pagination';
 import '../../node_modules/tui-pagination/dist/tui-pagination.css';
 
