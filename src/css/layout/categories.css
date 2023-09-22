@@ -16,6 +16,9 @@
   border: 1px solid var(--btn-all-categories);
   background-color: transparent;
   color: var(--btn-all-categories);
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-all-categories:hover,
@@ -51,6 +54,9 @@
   border: none;
   background-color: transparent;
   color: var(--text-category);
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-categories-item:hover,
