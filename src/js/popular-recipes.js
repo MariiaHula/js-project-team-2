@@ -6,7 +6,7 @@ function markupPopularRecipes(recipesArr) {
     const markup = recipesArr.map(recipe => {
         return `<li class="popular-recipes-item">
         <div class="link popular-recipes-link js-popular" id="${recipe._id}">
-            <img class="popular-img-wrapper" src="${recipe.preview}" alt="${recipe.title}" />
+            <img class="popular-img-wrapper" src="${recipe.preview}" loading="lazy" alt="${recipe.title}" />
             <div class="popular-wrapper-text">
             <h2 class="popular-recipes-head">${recipe.title}</h2>
             <p class="popular-recipes-text">${recipe.description}</p>
