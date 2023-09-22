@@ -32,6 +32,7 @@ export function markupGalleryCard(arr) {
         </label>
         <img
           class="gallery-image"
+          loading="lazy"
           style="
             background:
               linear-gradient(1deg, rgba(5, 5, 5, 0.60) 4.82%, rgba(5, 5, 5, 0.00) 108.72%),

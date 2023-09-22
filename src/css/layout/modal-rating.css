@@ -89,6 +89,7 @@ margin-bottom: 24px;
             border: 1px solid var(--theme-dark);
             margin-bottom: 14px;
             color: var(--dark-text);
+            transition: 250ms;
 }
 
 .modal-rating-btn-submit{
@@ -112,7 +113,7 @@ margin-bottom: 24px;
 
             flex: 1 1 auto;
             
-                transition: 0.5s;
+                transition: 250ms;
                 background-size: 200% auto;
             
                 box-shadow: 0 0 10px var(--dark-text);
@@ -365,6 +366,7 @@ cursor: pointer;
          width: 360px;
          height: 48px;
          margin-bottom: 16px;
+        transition: 250ms;
      }
 
      .user-message {
