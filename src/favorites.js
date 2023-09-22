@@ -122,40 +122,31 @@ async function renderFavoritesCard() {
     blokedWrapper.classList.add('is-hidden');
     checkFavorites('.favorites-list');
 
-    const buttons = favoritesWrapper.children;
-  
-    for (li of buttons) {
-      
-      let button = li.children[0];
+    favoritesWrapper.addEventListener('click', event => {
+      if (event.target.nodeName !== 'BUTTON') {
+        return;
+      }
 
-      favoritesWrapper.addEventListener('click', event => {
-        
-        let element = event.target;
-    
-        if (element !== button) {
-          return;
-        }
-        else if (element.dataset['category'] !== 'All categories') {
-          let recipesFiltered = arrResult.filter(el => {
-            return el.category === element.dataset['category'];
-          });
-          favoriteList.innerHTML = markupGalleryCard(recipesFiltered);
-        } else {
-          favoriteList.innerHTML = markupGalleryCard(arrResult);
-        }
+      let element = event.target;
 
-        checkFavorites('.favorites-list');
-      
-      });
-    }
+      if (element.dataset['category'] !== 'All categories') {
+        let recipesFiltered = arrResult.filter(el => {
+          return el.category === element.dataset['category'];
+        });
+        favoriteList.innerHTML = markupGalleryCard(recipesFiltered);
+      } else {
+        favoriteList.innerHTML = markupGalleryCard(arrResult);
+      }
+
+      checkFavorites('.favorites-list');
+    });
+  } catch (err) {
+    console.log(err);
   }
-  catch (err) {
-      console.log(err);
-    }
 
-    gallery_btn = document.querySelector('.favorites-list');
-    gallery_btn.addEventListener('click', openModalGaleryRecipesPre);
-  }
+  gallery_btn = document.querySelector('.favorites-list');
+  gallery_btn.addEventListener('click', openModalGaleryRecipesPre);
+}
 
 renderFavoritesCard();
 
