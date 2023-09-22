@@ -80,9 +80,7 @@ body {
   width: 355px;
   height: 280px;
   margin-right: 8px;
-
   border-radius: 15px;
-
   background: var(--hero-bg-slide);
 }
 
