@@ -85,7 +85,7 @@
     display: flex;
     margin-bottom: 16px;
     flex-direction: column;
-    transition: 0.5s;
+    transition: 250ms;
 
 }
 
@@ -101,7 +101,7 @@
     border: 1px solid var(--theme-dark);
     background-color: var(--body-color);
     color: var(--dark-text);
-    transition: 0.5s;
+    transition: 250ms;
 
 }
 
@@ -134,7 +134,7 @@
 
 .modal-order-input {
     resize: none;
-    transition: 0.5s;
+    transition: 250ms;
 
 }
 
@@ -191,11 +191,11 @@
 
     flex: 1 1 auto;
 
-    transition: 0.5s;
+    transition: 250ms;
     background-size: 200% auto;
 
     box-shadow: 0 0 10px var(--dark-text);
-    ;
+    
 
 }
 
