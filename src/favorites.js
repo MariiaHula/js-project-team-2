@@ -9,6 +9,7 @@ import Pagination from 'tui-pagination';
 import '../node_modules/tui-pagination/dist/tui-pagination.css';  
 
     import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { event, nodeName } from 'jquery';
 const closeIconOrderModal = document.querySelector('.modal-order-close');
 const windowOrderModal = document.querySelector('.modal-order-backdrop');
 const openOrderBusket = document.querySelector('.header-busket-order');
@@ -122,14 +123,19 @@ async function renderFavoritesCard() {
     checkFavorites('.favorites-list');
 
     const buttons = favoritesWrapper.children;
-
+  
     for (li of buttons) {
+      
       let button = li.children[0];
 
-      button.addEventListener('click', event => {
+      favoritesWrapper.addEventListener('click', event => {
+        
         let element = event.target;
-
-        if (element.dataset['category'] !== 'All categories') {
+    
+        if (element !== button) {
+          return;
+        }
+        else if (element.dataset['category'] !== 'All categories') {
           let recipesFiltered = arrResult.filter(el => {
             return el.category === element.dataset['category'];
           });
@@ -139,15 +145,17 @@ async function renderFavoritesCard() {
         }
 
         checkFavorites('.favorites-list');
+      
       });
     }
-  } catch (err) {
-    console.log(err);
   }
+  catch (err) {
+      console.log(err);
+    }
 
-  gallery_btn = document.querySelector('.favorites-list');
-  gallery_btn.addEventListener('click', openModalGaleryRecipesPre);
-}
+    gallery_btn = document.querySelector('.favorites-list');
+    gallery_btn.addEventListener('click', openModalGaleryRecipesPre);
+  }
 
 renderFavoritesCard();
 
