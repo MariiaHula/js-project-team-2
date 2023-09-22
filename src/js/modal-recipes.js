@@ -1,5 +1,5 @@
 import { goitGlobalAPI } from "./axios_api"
-
+import localStorage from './localStorage'; 
 const refs = {
     gallery_btn: document.querySelector(".gallery-list"),
     recipes_container: document.querySelector(".recipes-modal-container"),
@@ -8,9 +8,10 @@ const refs = {
     card_markup_modal: document.querySelector(".card-markup-modal"),
     popular_recipes: document.querySelector(".popular-recipes-list"),
     skelet: document.querySelector(".cardSkelet"),
-    extra_modal_button: document.querySelector(".extra-modal-button",)
-    
+    extra_modal_button: document.querySelector(".extra-modal-button"),
+    modal_add_favorite: document.querySelector(".modal-add-favorite"),
 }
+let idRecipes;
 
 // API
 const modalRecipesApi = new goitGlobalAPI();
@@ -41,6 +42,7 @@ function openModalGaleryRecipes(e) {
   const clickedRecipe = e.target.closest('.gallery-item');
   if (!clickedRecipe) return;
   const recipeId = clickedRecipe.id;
+  idRecipes = recipeId;
   openModalRecipes();
   catchRecipes(recipeId);
   setTimeout(() => {
@@ -75,9 +77,32 @@ function openModalRecipes(e) {
     refs.recipes_wrap.classList.add("active");
 
     // Додаємо слухачі для закриття модального вікна
+    
     refs.recipes_container.addEventListener("click", closeModalRecipesOnClick);
     refs.close_btn.addEventListener("click", closeModalRecipes);
-    window.addEventListener("keydown", closeModalRecipesOnEsc);
+  window.addEventListener("keydown", closeModalRecipesOnEsc);
+  
+  refs.modal_add_favorite.addEventListener("click", addToFavorite);
+
+}
+
+function addToFavorite(event) {
+
+      let localStorageArr = localStorage.load('favorites-recipes');
+      if (!Array.isArray(localStorageArr)) {
+        localStorageArr = [];
+      }
+    
+  refs.modal_add_favorite.classList.toggle("active");
+
+  if (refs.modal_add_favorite.textContent === "Add to favorite") {
+    localStorageArr.push(String(idRecipes));
+    localStorage.save('favorites-recipes', localStorageArr);
+    refs.modal_add_favorite.textContent = "Remove from favorite";
+  } else {
+    localStorage.remove('favorites-recipes', String(idRecipes));
+    refs.modal_add_favorite.textContent = "Add to favorite";
+  }
 
 }
 

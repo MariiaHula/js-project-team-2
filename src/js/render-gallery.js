@@ -5,14 +5,23 @@ export function markupGalleryCard(arr) {
   if (!Array.isArray(arr)) {
     return '';
   }
+
   const markup = arr.map(cardEl => {
+
     let ratingStars = '';
-    for (let i = 1; i <= Math.round(cardEl.rating * 2) / 2; i++) {
+    for (let i = 1; i <= 5; i++) {
+      // Определяем, является ли текущая звезда активной (покрашенной)
+
+
+      const isActiveStar = i <= cardEl.rating;
+      const starClass = isActiveStar ? 'svg-star-gallery-active' : 'svg-star-gallery-noActive';
       ratingStars += `
-        <svg  class="svg-star-gallery" >
-        <use href="${iconSvg}#icon-star" ></use>
-        </svg>`
+    <svg class="${starClass}">
+      <use href="${iconSvg}#icon-star"></use>
+    </svg>
+  `;
     }
+
     return `
       <li class="gallery-item" data-category="${cardEl.category}" id="${cardEl._id}">
         <label class="label" >
@@ -30,7 +39,7 @@ export function markupGalleryCard(arr) {
             background-position: -36.5px 0px;
             background-size: 129.2% 112.544%;
             background-repeat: no-repeat;
-            clip-path: inset(1px 1px 1px 1px);
+            clip-path: inset(1px 1px 1px 2px);
           "
         />
         <div class="gallery-wrap-descr-reciept-card">
@@ -46,8 +55,9 @@ export function markupGalleryCard(arr) {
         </div>
       </li>
     `;
+
   }).join('');
-  
+
   return markup;
 };
 
