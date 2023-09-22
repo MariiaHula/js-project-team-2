@@ -85,6 +85,7 @@
     display: flex;
     margin-bottom: 16px;
     flex-direction: column;
+    transition: 0.5s;
 
 }
 
@@ -100,6 +101,7 @@
     border: 1px solid var(--theme-dark);
     background-color: var(--body-color);
     color: var(--dark-text);
+    transition: 0.5s;
 
 }
 
@@ -132,6 +134,7 @@
 
 .modal-order-input {
     resize: none;
+    transition: 0.5s;
 
 }
 
@@ -184,7 +187,6 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    transition: 0.5s;
     line-height: normal;
 
     flex: 1 1 auto;
