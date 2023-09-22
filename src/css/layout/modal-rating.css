@@ -1,6 +1,10 @@
 
 /* BACKDROP */
 
+body.modal-hidden-bcg {
+    overflow-y: hidden;
+}
+
 .modal-rating-backdrop {
      opacity: 0;
    visibility: hidden;

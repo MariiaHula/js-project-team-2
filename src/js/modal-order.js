@@ -12,6 +12,7 @@ const formPhone = document.querySelector('#input_phone');
 const formComment = document.querySelector('.user-message');
 const orderSpinner = document.querySelector('.modal-order-loader');
 const modalOrdBtn = document.querySelector('.modal-order-btn');
+let bodyEl = document.querySelector("body");
 
 
 
@@ -22,13 +23,15 @@ openOrderBtn.addEventListener('click', openOrderModal);
 
 function closeOrderModal(e) {
     windowOrderModal.classList.remove('modal-order-backdrop-active'); 
-
+    bodyEl.classList.remove("modal-hidden-bcg");
+    bodyEl.classList.remove("modal");
      closeIconOrderModal.removeEventListener("click", closeOrderModal);
     windowOrderModal.removeEventListener("click", closeOrderByBcg);
     window.removeEventListener("keydown", closeOrderByEsc);
 }
 
 function openOrderModal(e) {
+     bodyEl.classList.add("modal-hidden-bcg");
     windowOrderModal.classList.add('modal-order-backdrop-active'); 
     closeIconOrderModal.addEventListener('click', closeOrderModal);
      windowOrderModal.addEventListener('click', closeOrderByBcg);

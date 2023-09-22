@@ -1,3 +1,7 @@
+body.modal-hidden-bcg {
+    overflow-y: hidden;
+}
+
 .modal-order-backdrop {
     opacity: 0;
     visibility: hidden;

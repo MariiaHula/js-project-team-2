@@ -6,7 +6,8 @@ const recipes_container = document.querySelector(".recipes-modal-container");
 const recipes_wrap = document.querySelector(".modal-recipes-wrap");
 const input = document.querySelector('.modal-rating-email-input');
 const spinner = document.querySelector('.modal-rating-loader');
-      const modalCard = document.querySelector('.modal-rating-card');
+const modalCard = document.querySelector('.modal-rating-card');
+      const bodyEl = document.querySelector("body");
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { goitGlobalAPI } from "./axios_api";
 
@@ -127,6 +128,7 @@ openIconRatingModal.addEventListener('click', openRatingModal);
 
 
 function openRatingModal(e) {
+      bodyEl.classList.add("modal-hidden-bcg");
     windowRatingModal.classList.add('modal-rating-backdrop-active');
     recipes_container.classList.remove('active');
     recipes_wrap.classList.remove('active');
@@ -139,6 +141,8 @@ function openRatingModal(e) {
 
 
 function closeRatingModal(e) {
+   bodyEl.classList.remove("modal-hidden-bcg");
+   bodyEl.classList.remove("modal");
     windowRatingModal.classList.remove('modal-rating-backdrop-active');
     closeIconRatingModal.removeEventListener("click", closeRatingModal);
     windowRatingModal.removeEventListener("click", closeModalByBcg);
