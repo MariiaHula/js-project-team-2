@@ -3,7 +3,7 @@ body {
 }
 
 .hero-section {
-  /* overflow: hidden; */
+  overflow: hidden;
   position: relative;
   padding-top: 90px;
   padding-bottom: 80px;
