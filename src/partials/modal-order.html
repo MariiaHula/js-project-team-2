@@ -1,82 +1,124 @@
 <!--          form                        -->
 <div class="modal-order-backdrop">
-<div class="modal-order-wrap">
+  <div class="modal-order-wrap">
     <button type="button" class="modal-order-close">
-        
-    
-        <svg class="modal-order-icon">
-            <use href="/src/images/icon.svg#icon-close-modal"></use>
-        </svg>
+      <svg class="modal-order-icon">
+        <use href="/src/images/icon.svg#icon-close-modal"></use>
+      </svg>
     </button>
     <h3 class="modal-order-title">Order now</h3>
-<div class="modal-order-loader loader-14">
-    <svg class="loader-star star-small" version="1.1" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="23.172px" height="23.346px"
-        viewBox="0 0 23.172 23.346" xml:space="preserve">
-        <polygon fill="#EEA10C"
-            points="11.586,0 8.864,8.9 0,8.9 7.193,14.447 4.471,23.346 11.586,17.84 18.739,23.346 16.77,14.985 23.172,8.9 14.306,8.9  ">
-        </polygon>
-    </svg>
-    <svg class="loader-star star-big" version="1.1" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="23.172px" height="23.346px"
-        viewBox="0 0 23.172 23.346" xml:space="preserve">
-        <polygon fill="#eeee0c"
-            points="11.586,0 8.864,8.9 0,8.9 7.193,14.447 4.471,23.346 11.586,17.84 18.739,23.346 16.77,14.985 23.172,8.9 14.306,8.9  ">
-        </polygon>
-    </svg>
-</div>
-<form class="modal-order-form" name="modal_order_form" autocomplete="on" id="modalOrderForm">
-   
-        <!--            Name                    -->
-        <div class="modal-order-inputs">
-            <span class="modal-order-tag">Name</span>
-            <label class="modal-order-name">
-                <input class="modal-order-input required-field" type="text" name="user_name" id="input_name" required
-                    pattern="[А-ЯІЇЄҐа-яіїєґA-Za-z]{2,}(\s[А-ЯІЇЄҐа-яіїєґA-Za-z]{2,})?" placeholder="Name Surname" />
-            </label>
-        </div>
+    <div class="modal-order-loader loader-14">
+      <svg
+        class="loader-star star-small"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="23.172px"
+        height="23.346px"
+        viewBox="0 0 23.172 23.346"
+        xml:space="preserve"
+      >
+        <polygon
+          fill="#EEA10C"
+          points="11.586,0 8.864,8.9 0,8.9 7.193,14.447 4.471,23.346 11.586,17.84 18.739,23.346 16.77,14.985 23.172,8.9 14.306,8.9  "
+        ></polygon>
+      </svg>
+      <svg
+        class="loader-star star-big"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="23.172px"
+        height="23.346px"
+        viewBox="0 0 23.172 23.346"
+        xml:space="preserve"
+      >
+        <polygon
+          fill="#eeee0c"
+          points="11.586,0 8.864,8.9 0,8.9 7.193,14.447 4.471,23.346 11.586,17.84 18.739,23.346 16.77,14.985 23.172,8.9 14.306,8.9  "
+        ></polygon>
+      </svg>
+    </div>
+    <form
+      class="modal-order-form"
+      name="modal_order_form"
+      autocomplete="on"
+      id="modalOrderForm"
+    >
+      <!--            Name                    -->
+      <div class="modal-order-inputs">
+        <span class="modal-order-tag">Name</span>
+        <label class="modal-order-name">
+          <input
+            class="modal-order-input required-field"
+            type="text"
+            name="user_name"
+            id="input_name"
+            required
+            pattern="[А-ЯІЇЄҐа-яіїєґA-Za-z]{2,}(\s[А-ЯІЇЄҐа-яіїєґA-Za-z]{2,})?"
+            placeholder="Name Surname"
+          />
+        </label>
+      </div>
 
-        <!-- Email -->
-        <div class="modal-order-inputs">
-            <span class="modal-order-tag">Email</span>
-            <label class="modal-order-email">
-                <input class="modal-order-input required-field" id="input_email"type="email" name="user_email" 
-                    placeholder="example@gmail.com" />
-            
-            </label>
-        </div>
+      <!-- Email -->
+      <div class="modal-order-inputs">
+        <span class="modal-order-tag">Email</span>
+        <label class="modal-order-email">
+          <input
+            class="modal-order-input required-field"
+            id="input_email"
+            required
+            type="email"
+            name="user_email"
+            placeholder="example@gmail.com"
+          />
+        </label>
+      </div>
 
-        <!-- Phone -->
-        <div class="modal-order-inputs">
-            <span class="modal-order-tag">Phone number</span>
-            <label class="modal-order-phone">
-                <input class="modal-order-input required-field" id="input_phone" type="tel" name="user_phone" required pattern="^\+380[0-9]{9}$"
+      <!-- Phone -->
+      <div class="modal-order-inputs">
+        <span class="modal-order-tag">Phone number</span>
+        <label class="modal-order-phone">
+          <input
+            class="modal-order-input required-field"
+            id="input_phone"
+            type="tel"
+            name="user_phone"
+            required
+            pattern="^\+380[0-9]{9}$"
+            placeholder="+380123456789"
+          />
+        </label>
+      </div>
 
-                    placeholder="+380123456789" />
-               
-            </label>
-        </div>
+      <!-- Comment -->
+      <div class="modal-order-textarea">
+        <span class="modal-order-comment">Comment</span>
+        <label class="modal-comment-label">
+          <textarea
+            name="user_comment"
+            class="user-message modal-order-input"
+            placeholder="Enter your message..."
+          ></textarea>
+        </label>
+      </div>
 
-        <!-- Comment -->
-        <div class="modal-order-textarea">
-            <span class="modal-order-comment">Comment</span>
-            <label class="modal-comment-label">
-                <textarea name="user_comment" class="user-message modal-order-input"
-                    placeholder="Enter your message..."></textarea>
-                
-            </label>
-        </div>
-   
-
-    <button type="submit" id="submitButton" class="modal-order-btn pulse">Send</button>
-</form>
-<div class="anima-wrap">
-<article class="card-modal-order">
-    <span class="top-modal-order"></span>
-    <span class="right-modal-order"></span>
-    <span class="bottom-modal-order"></span>
-    <span class="left-modal-order"></span>
-</article>
-</div>
-</div>
+      <button type="submit" id="submitButton" class="modal-order-btn pulse">
+        Send
+      </button>
+    </form>
+    <div class="anima-wrap">
+      <article class="card-modal-order">
+        <span class="top-modal-order"></span>
+        <span class="right-modal-order"></span>
+        <span class="bottom-modal-order"></span>
+        <span class="left-modal-order"></span>
+      </article>
+    </div>
+  </div>
 </div>

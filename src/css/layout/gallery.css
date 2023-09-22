@@ -30,9 +30,11 @@
 }
 
 .gallery-item {
-  background-image: linear-gradient(1deg,
-      rgba(5, 5, 5, 0.6) 4.82%,
-      rgba(5, 5, 5, 0) 108.72%);
+  background-image: linear-gradient(
+    1deg,
+    rgba(5, 5, 5, 0.6) 4.82%,
+    rgba(5, 5, 5, 0) 108.72%
+  );
 }
 
 .wrap-time-area {
@@ -66,7 +68,7 @@
   font-weight: 500;
   line-height: 1.28;
   outline-color: var(--gal-form-border-col);
-  color: var(--input-gall-search);
+  color: var(--gal-text-col);
   outline: 1px;
 }
 
@@ -138,7 +140,7 @@
 }
 
 .svg-star-gallery-noActive {
-  fill: rgba(248, 248, 248, 0.10);
+  fill: rgba(248, 248, 248, 0.1);
   width: 14px;
   height: 13px;
 }
@@ -177,7 +179,7 @@
   fill: #fff;
 }
 
-.checkbox-favorite:checked+.gallery-icon-checkbox {
+.checkbox-favorite:checked + .gallery-icon-checkbox {
   stroke: #fff;
   fill: #fff;
 }
@@ -193,7 +195,6 @@
 .select-area {
   width: 160px;
 }
-
 
 /* =========================================================================begin=======CARDS */
 
@@ -298,13 +299,6 @@
   .rate {
     width: 72px;
   }
-
-
-
-
-
-
-
 
   .container-gallery {
     padding-left: 32px;
