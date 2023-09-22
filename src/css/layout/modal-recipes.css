@@ -26,8 +26,8 @@ body .modal {
   z-index: 50;
   opacity: 0;
   visibility: hidden;
-  max-width: 335px;
-  max-height: 95%;
+  width: 335px;
+  height: 95%;
   padding: 40px 20px 40px 20px;
   background-color: var(--body-color);
   z-index: 100;
@@ -275,6 +275,8 @@ body .modal {
   }
 }
 .modal-add-favorite.active {
+  min-width: 147px;
+  min-height: 41px;
   background-color: var(--modal-hashtag-item);
 }
 .modal-add-favorite {
