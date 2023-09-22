@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 .favorites-bg {
-  display: none;
+  display: block;
   margin-bottom: 64px;
 }
 
@@ -38,6 +38,7 @@
 
 .js-favorites-wrapper {
   display: flex;
+  text-wrap: nowrap;
   gap: 15px;
   margin-bottom: 32px;
 }
@@ -85,6 +86,7 @@
 
   .favorites-bg {
     display: block;
+    padding-top: 50px;
   }
   .favorites-icon {
     margin-bottom: 32px;
