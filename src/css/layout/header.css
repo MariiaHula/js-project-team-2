@@ -201,6 +201,7 @@
 .header-busket-icon:focus,
 .header-busket-icon:hover {
     stroke: var(--accent-color);
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
