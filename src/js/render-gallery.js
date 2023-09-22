@@ -59,7 +59,7 @@ export function markupGalleryCard(arr) {
   }).join('');
 
   return markup;
-}
+};
 
 
 export function checkFavorites(listClass) {
