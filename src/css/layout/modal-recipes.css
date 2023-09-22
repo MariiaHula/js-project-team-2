@@ -1,6 +1,7 @@
 /* В джс прописати добавлення класу модал для баді коли модалка відкривається */
-body .modal {
-  overflow: hidden;
+body.modal {
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 .recipes-modal-container {
   opacity: 0;

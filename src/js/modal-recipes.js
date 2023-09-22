@@ -9,7 +9,8 @@ const refs = {
     popular_recipes: document.querySelector(".popular-recipes-list"),
     skelet: document.querySelector(".cardSkelet"),
     extra_modal_button: document.querySelector(".extra-modal-button"),
-    modal_add_favorite: document.querySelector(".modal-add-favorite"),
+  modal_add_favorite: document.querySelector(".modal-add-favorite"),
+    body: document.querySelector("body"),
 }
 let idRecipes;
 
@@ -88,6 +89,7 @@ function openModalPopularRecipes(e) {
 
 // OPEN AND CLOSE MODAL
 function openModalRecipes(e) {
+  refs.body.classList.add("modal");
     refs.recipes_container.classList.add("active");
     refs.recipes_wrap.classList.add("active");
 
@@ -128,7 +130,7 @@ function closeModalRecipesOnClick(e) {
 }
 
 function closeModalRecipes(e) {
-
+  refs.body.classList.remove("modal");
     refs.recipes_container.classList.remove("active");
     refs.recipes_wrap.classList.remove("active");
 
